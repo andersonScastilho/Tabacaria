@@ -5,7 +5,7 @@ const Header = () => {
         <HeaderContainer>
             {/* eslint-disable-next-line jsx-a11y/alt-text */}
             <LogoHeader src='https://s1.static.brasilescola.uol.com.br/be/conteudo/images/imagem-em-lente-convexa.jpg' />
-            <h1>Maximum Tabacaria</h1>
+            <h1>Maximus Tabacaria</h1>
             <MenuHeader>
                 <ItemMenu>
                     Desenvolvendo

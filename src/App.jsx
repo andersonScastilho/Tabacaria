@@ -1,11 +1,9 @@
-import Footer from "./component/footer/footer.component"
-import Header from "./component/header/header.component"
+import HomePage from './page/home/home.page'
 
 const App = () => {
     return (
         <>
-            <Header />
-            <Footer />
+            <HomePage />
         </>
     )
 }
