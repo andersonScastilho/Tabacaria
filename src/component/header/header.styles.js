@@ -4,7 +4,7 @@ export const HeaderContainer = styled.header`
     display: flex;
     align-items: center;
     gap: 15px;
-    background-color: #8fa080;
+    background-color: #332d27;
     padding: 10px;
     justify-content: space-between;
 `
@@ -25,9 +25,12 @@ export const ItemMenu = styled.div`
         border: 2px solid transparent;
         padding: 3px;
         box-shadow: 2px 2px 2px #222;
+
+    p{
+        color: #fff;
+    }
     &:hover {
         cursor: pointer;
         border: 2px solid black;
-
 }
 `

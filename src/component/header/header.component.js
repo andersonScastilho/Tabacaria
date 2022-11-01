@@ -8,10 +8,10 @@ const Header = () => {
             <TitleHeader>Maximus LoungeBar</TitleHeader>
             <MenuHeader>
                 <ItemMenu>
-                    Desenvolvendo
+                    <p>Desenvolvendo</p>
                 </ItemMenu>
                 <ItemMenu>
-                    Desenvolvendo
+                    <p>Desenvolvendo</p>
                 </ItemMenu>
             </MenuHeader>
         </HeaderContainer>

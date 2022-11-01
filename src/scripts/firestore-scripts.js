@@ -29,6 +29,22 @@ const Categories = [
                     'https://images.tcdn.com.br/img/img_prod/640437/zomo_strong_mint_50g_266_1_20201213212429.jpg'
             }
         ]
+    },
+    {
+        id: '6228fc5cb7e6cb904bbe014b',
+        name: 'Bebidas',
+        displayName: 'Bebidas',
+        imageUrl:
+            'https://static1.minhavida.com.br/articles/fb/8e/3b/b2/bebidas-destiladas-e-fermentadas-orig-1.jpg',
+        products: [
+            {
+                id: '6228fc8bb7e6cb904bbe014e',
+                name: 'Caipirinha',
+                price: 13,
+                imageUrl:
+                    'https://img.estadao.com.br/fotos/crop/1200x1200/resources/jpg/9/3/1532640931039.jpg'
+            }
+        ]
     }
 ]
 const main = async () => {
