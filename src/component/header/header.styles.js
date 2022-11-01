@@ -4,9 +4,12 @@ export const HeaderContainer = styled.header`
     display: flex;
     align-items: center;
     gap: 15px;
-    background-color: #85725f;
+    background-color: #8fa080;
     padding: 10px;
     justify-content: space-between;
+`
+export const TitleHeader = styled.h1`
+    color: #e30224;
 `
 export const LogoHeader = styled.img`
      height: 6rem;
