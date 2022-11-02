@@ -1,15 +1,15 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from 'firebase/firestore'
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAZU_hWFOTbNUsmPKogScZZgCs3QHZW_Tw",
-    authDomain: "maximus-projeto.firebaseapp.com",
-    projectId: "maximus-projeto",
-    storageBucket: "maximus-projeto.appspot.com",
-    messagingSenderId: "7447715006",
-    appId: "1:7447715006:web:430f690c8e0fea5bf752ef"
+  apiKey: "AIzaSyBwixB4NgQvnWc3HuqkX8-Q-ntquxq3Y4w",
+  authDomain: "maximus-a1103.firebaseapp.com",
+  projectId: "maximus-a1103",
+  storageBucket: "maximus-a1103.appspot.com",
+  messagingSenderId: "1032599396180",
+  appId: "1:1032599396180:web:1b2ae760db97bd1bf532c1",
 };
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app)
+export const db = getFirestore(app);
