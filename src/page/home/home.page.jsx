@@ -1,15 +1,14 @@
-import Categories from "../../component/categories/categories.component"
-import Footer from "../../component/footer/footer.component"
-import Header from "../../component/header/header.component"
+import Cardapio from "../../component/cardapio/cardapio.component";
+import Footer from "../../component/footer/footer.component";
+import Header from "../../component/header/header.component";
 
 const HomePage = () => {
-
-    return (
-        <>
-            <Header />
-            <Categories />
-            <Footer />
-        </>
-    )
-}
-export default HomePage
+  return (
+    <>
+      <Header />
+      <Cardapio />
+      <Footer />
+    </>
+  );
+};
+export default HomePage;
