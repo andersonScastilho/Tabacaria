@@ -20,20 +20,32 @@ const Categories = [
     displayName: "Rosh",
     imageUrl:
       "https://imagensemoldes.com.br/wp-content/uploads/2020/11/Desenho-Narguile-PNG.png",
-    products: [
+    marks: [
       {
-        id: "6228fc8bb7e6cb904bbe014s",
-        name: "Strong",
-        price: 15,
-        imageUrl:
-          "https://images.tcdn.com.br/img/img_prod/640437/zomo_strong_mint_50g_266_1_20201213212429.jpg",
+        id: "6265fdf55548df4h812j54j",
+        name: "zomo",
+        products: [
+          {
+            id: "6228fc8bb7e6cb904bbe014s",
+            name: "Strong",
+            price: 15,
+            imageUrl:
+              "https://images.tcdn.com.br/img/img_prod/640437/zomo_strong_mint_50g_266_1_20201213212429.jpg",
+          },
+        ],
       },
       {
-        id: "6228fc8bb7e6cb904bbe014s",
-        name: "Setebelo",
-        price: 18,
-        imageUrl:
-          "https://images.tcdn.com.br/img/img_prod/640437/zomo_strong_mint_50g_266_1_20201213212429.jpg",
+        id: "6265fdf55548df4h812j54d",
+        name: "Ziggi",
+        products: [
+          {
+            id: "6228fc8bb7e6cb904bbe01d5",
+            name: "7 belo",
+            price: 15,
+            imageUrl:
+              "https://www.tabacariadamata.com.br/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/6/8/689463565_essencia-ziggy-happy-berry.jpg.jpg",
+          },
+        ],
       },
     ],
   },
