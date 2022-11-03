@@ -1,11 +1,11 @@
-import React from "react"
-import { CategoryContainer } from "./category-item.styles"
+import React from "react";
+import { CategoryContainer, CategoryDisplayName } from "./category-item.styles";
 
 const CategoryItem = ({ category }) => {
-    return (
-        <CategoryContainer>
-            <p>{category.displayName}</p>
-        </CategoryContainer>
-    )
-}
-export default CategoryItem
+  return (
+    <CategoryContainer backgroundImage={category.imageUrl}>
+      <CategoryDisplayName>{category.displayName}</CategoryDisplayName>
+    </CategoryContainer>
+  );
+};
+export default CategoryItem;
