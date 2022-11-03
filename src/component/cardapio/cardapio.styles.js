@@ -45,6 +45,7 @@ export const TitleCategory = styled.h3`
 `;
 export const ProdutosContainer = styled.div`
   display: flex;
+  height: 100%;
   flex-direction: column;
   gap: 15px;
 `;
@@ -54,11 +55,12 @@ export const ProdutosContent = styled.div`
   align-items: center;
   border-bottom: 1.5px solid black;
   box-shadow: 1px 1px 1px #222;
-  padding: 5px;
   border-radius: 5px;
+  padding: 3px;
 `;
 export const ImageProduto = styled.img`
   height: 50px;
+  border-radius: 5px;
 `;
 export const NameProduto = styled.p`
   color: black;

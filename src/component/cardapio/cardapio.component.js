@@ -28,17 +28,29 @@ const Cardapio = () => {
         <TitleCardapio>Consumiveis</TitleCardapio>
         <CategoryContainer>
           {categories.map((item) => (
-            <CategoryContent>
+            <CategoryContent key={item.id}>
               <TitleCategory>{item.displayName}</TitleCategory>
               <ProdutosContainer>
-                {item.products.map((produto) => (
-                  <ProdutosContent>
-                    <ImageProduto src={produto.imageUrl} />
-                    <NameProduto key={produto.id}>{produto.name}</NameProduto>
-                    ---
-                    <PrecoProduto>R${produto.price},00 </PrecoProduto>
-                  </ProdutosContent>
-                ))}
+                {item.name === "Bebidas"
+                  ? item.products.map((product) => (
+                      <ProdutosContent key={product.id}>
+                        <ImageProduto src={product.imageUrl} />
+                        <NameProduto>{product.name}</NameProduto>
+                        <PrecoProduto>R$ {product.price},00</PrecoProduto>
+                      </ProdutosContent>
+                    ))
+                  : item.marks.map((mark) => (
+                      <>
+                        <TitleCategory>{mark.name}</TitleCategory>
+                        {mark.products.map((product) => (
+                          <ProdutosContent key={product.id}>
+                            <ImageProduto src={product.imageUrl} />
+                            <NameProduto>{product.name}</NameProduto>
+                            <PrecoProduto>R${product.price},00</PrecoProduto>
+                          </ProdutosContent>
+                        ))}
+                      </>
+                    ))}
               </ProdutosContainer>
             </CategoryContent>
           ))}
