@@ -1,61 +1,55 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { CategoryContext } from "../../contexts/categories/categories.context";
+import LoadingComponent from "../loading/loading.component";
+
 import {
   CardapioContainer,
   CardapioContent,
-  CategoryContainer,
-  CategoryContent,
   ImageProduto,
   NameProduto,
   PrecoProduto,
-  ProdutosContainer,
-  ProdutosContent,
-  TitleCardapio,
+  ProductsContainer,
+  ProductsContent,
   TitleCategory,
+  TitleMark,
 } from "./cardapio.styles";
 
 const Cardapio = () => {
-  const { categories, fetchCategories } = useContext(CategoryContext);
-
-  useEffect(() => {
-    fetchCategories();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const { categories, isLoading } = useContext(CategoryContext);
 
   return (
-    <CardapioContainer>
-      <CardapioContent>
-        <TitleCardapio>Consumiveis</TitleCardapio>
-        <CategoryContainer>
-          {categories.map((item) => (
-            <CategoryContent key={item.id}>
-              <TitleCategory>{item.displayName}</TitleCategory>
-              <ProdutosContainer>
-                {item.name === "Bebidas"
-                  ? item.products.map((product) => (
-                      <ProdutosContent key={product.id}>
-                        <ImageProduto src={product.imageUrl} />
-                        <NameProduto>{product.name}</NameProduto>
-                        <PrecoProduto>R$ {product.price},00</PrecoProduto>
-                      </ProdutosContent>
-                    ))
-                  : item.marks.map((mark) => (
-                      <>
-                        <TitleCategory>{mark.name}</TitleCategory>
-                        {mark.products.map((product) => (
-                          <ProdutosContent key={product.id}>
-                            <ImageProduto src={product.imageUrl} />
-                            <NameProduto>{product.name}</NameProduto>
-                            <PrecoProduto>R${product.price},00</PrecoProduto>
-                          </ProdutosContent>
-                        ))}
-                      </>
-                    ))}
-              </ProdutosContainer>
-            </CategoryContent>
-          ))}
-        </CategoryContainer>
-      </CardapioContent>
+    <CardapioContainer imageUrl="https://www.dicasecuriosidades.net/wp-content/uploads/2019/05/gandalf-facts.jpg">
+      {isLoading && <LoadingComponent />}
+      {categories.map((category) => (
+        <CardapioContent key={category.id}>
+          <TitleCategory>{category.name}</TitleCategory>
+          {category.name === "Bebidas"
+            ? category.tipes.map((tipe) => (
+                <ProductsContainer key={tipe.id}>
+                  <TitleMark>{tipe.name}</TitleMark>
+                  {tipe.products.map((product) => (
+                    <ProductsContent key={product.id}>
+                      <ImageProduto src={product.imageUrl} />
+                      <NameProduto>{product.name}</NameProduto>
+                      <PrecoProduto>R${product.price},00</PrecoProduto>
+                    </ProductsContent>
+                  ))}
+                </ProductsContainer>
+              ))
+            : category.marks.map((mark) => (
+                <ProductsContainer key={mark.id}>
+                  <TitleMark>{mark.name}</TitleMark>
+                  {mark.products.map((product) => (
+                    <ProductsContent key={product.id}>
+                      <ImageProduto src={product.imageUrl} />
+                      <NameProduto>{product.name}</NameProduto>
+                      <PrecoProduto>R${product.price},00</PrecoProduto>
+                    </ProductsContent>
+                  ))}
+                </ProductsContainer>
+              ))}
+        </CardapioContent>
+      ))}
     </CardapioContainer>
   );
 };
