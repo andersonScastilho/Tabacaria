@@ -16,7 +16,6 @@ import {
 
 const Cardapio = () => {
   const { categories, isLoading } = useContext(CategoryContext);
-
   return (
     <CardapioContainer imageUrl="https://www.dicasecuriosidades.net/wp-content/uploads/2019/05/gandalf-facts.jpg">
       {isLoading && <LoadingComponent />}
