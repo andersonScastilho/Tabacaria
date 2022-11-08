@@ -1,9 +1,5 @@
-import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { BsPlus } from "react-icons/bs";
-
-// import { AiOutlineMinus } from "react-icons/ai";
-import { CategoryContext } from "../../contexts/categories/categories.context";
 
 import Header from "../../component/header/header.component";
 import Footer from "../../component/footer/footer.component";
@@ -11,22 +7,15 @@ import CustomButton from "../../component/custom-button/custom-button.component"
 import InputErrorMessage from "../../component/input-error-messag/input-error.component";
 
 import {
-  ButtonIcreaseProdut,
   InputPedidos,
   LabelInputPedidos,
   PedidoContainer,
   PedidoContent,
-  ProductsPrice,
-  ProdutosContainer,
-  ProdutosContent,
-  ProdutosPedidos,
-  TitleCategoryProducts,
-  TTeste,
 } from "./pedidos.style";
 
-const PedidosPage = () => {
-  const { categories } = useContext(CategoryContext);
+import Cardapio from "../../component/cart-products/cart-products.component";
 
+const PedidosPage = () => {
   const {
     register,
     handleSubmit,
@@ -42,7 +31,7 @@ const PedidosPage = () => {
   return (
     <>
       <Header />
-      <PedidoContainer>
+      <PedidoContainer imageUrl="https://cdn.discordapp.com/attachments/929130096177053766/1039629996249071687/702883.jpg">
         <PedidoContent>
           <LabelInputPedidos>Nome</LabelInputPedidos>
           <InputPedidos
@@ -71,44 +60,7 @@ const PedidosPage = () => {
             Adicionar pedido
           </CustomButton>
         </PedidoContent>
-        <ProdutosContainer>
-          {categories.map((item) => (
-            <ProdutosContent key={item.id}>
-              <TitleCategoryProducts key={item.id}>
-                {item.name}
-              </TitleCategoryProducts>
-              {item.name === "Rosh"
-                ? item.marks.map((item) =>
-                    item.products.map((item) => (
-                      <TTeste>
-                        <ProdutosPedidos key={item.id}>
-                          {item.name}
-                        </ProdutosPedidos>
-                        <ProductsPrice>R${item.price},00</ProductsPrice>
-                        <ButtonIcreaseProdut>
-                          <BsPlus size={15} />
-                        </ButtonIcreaseProdut>
-                      </TTeste>
-                    ))
-                  )
-                : item.tipes.map((item) =>
-                    item.name === "Drinks"
-                      ? item.products.map((item) => (
-                          <TTeste key={item.id}>
-                            <ProdutosPedidos key={item.id}>
-                              {item.name}
-                            </ProdutosPedidos>
-                            <ProductsPrice>R${item.price},00</ProductsPrice>
-                            <ButtonIcreaseProdut>
-                              <BsPlus size={15} />
-                            </ButtonIcreaseProdut>
-                          </TTeste>
-                        ))
-                      : null
-                  )}
-            </ProdutosContent>
-          ))}
-        </ProdutosContainer>
+        <Cardapio customButton={<BsPlus />} />
       </PedidoContainer>
       <Footer />
     </>
