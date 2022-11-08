@@ -32,17 +32,3 @@ export const CustomInput = styled.input`
   border-radius: 5px;
   border: ${(props) => (props.hasError ? `2px solid red` : "2px solid black")};
 `;
-
-export const Button = styled.button`
-  border: 2px solid black;
-  height: 35px;
-  width: 150px;
-  border-radius: 5px;
-  font-size: 15px;
-  margin-top: 20px;
-  font-weight: bold;
-  cursor: pointer;
-  &:active {
-    background-color: red;
-  }
-`;

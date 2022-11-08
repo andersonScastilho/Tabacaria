@@ -2,12 +2,7 @@ import { useForm } from "react-hook-form";
 import { BiUser } from "react-icons/bi";
 
 // Styles
-import {
-  Button,
-  CustomInput,
-  LoginContainer,
-  LoginContent,
-} from "./login.styles";
+import { CustomInput, LoginContainer, LoginContent } from "./login.styles";
 
 // Components
 import InputErrorMessage from "../../component/input-error-messag/input-error.component";
@@ -18,8 +13,9 @@ import { auth } from "../../config/firebase.config";
 import { useEffect, useContext } from "react";
 import { UserContext } from "../../contexts/user/user.context";
 import { useNavigate } from "react-router-dom";
+import CustomButton from "../../component/custom-button/custom-button.component";
 
-const LoginPage = () => {
+const LoginPage = (props) => {
   const {
     register,
     handleSubmit,
@@ -35,14 +31,10 @@ const LoginPage = () => {
     if (isAuthenticated) {
       navigate("/");
     }
-  }, [isAuthenticated]);
+  });
   const handleSubmitPress = async (data) => {
     try {
-      const userCredentials = await signInWithEmailAndPassword(
-        auth,
-        data.email,
-        data.password
-      );
+      await signInWithEmailAndPassword(auth, data.email, data.password);
     } catch (error) {
       if (error.code === AuthErrorCodes.INVALID_EMAIL) {
         return setError("email", { type: "emailNoRegister" });
@@ -87,9 +79,9 @@ const LoginPage = () => {
             <InputErrorMessage>Senha Invalida</InputErrorMessage>
           )}
 
-          <Button onClick={() => handleSubmit(handleSubmitPress)()}>
+          <CustomButton onClick={() => handleSubmit(handleSubmitPress)()}>
             Entrar
-          </Button>
+          </CustomButton>
         </LoginContent>
       </LoginContainer>
       <Footer />
