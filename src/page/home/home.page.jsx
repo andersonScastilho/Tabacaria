@@ -1,12 +1,15 @@
-import Cardapio from "../../component/cardapio/cardapio.component";
+import Cardapio from "../../component/cart-products/cart-products.component";
 import Footer from "../../component/footer/footer.component";
 import Header from "../../component/header/header.component";
+import { HomeContainer } from "./home.styles";
 
 const HomePage = () => {
   return (
     <>
       <Header />
-      <Cardapio />
+      <HomeContainer>
+        <Cardapio />
+      </HomeContainer>
       <Footer />
     </>
   );
