@@ -1,14 +1,8 @@
 import styled from "styled-components";
 
 export const CardapioContainer = styled.div`
-  background-image: ${(props) => `url('${props.imageUrl}')`};
-  background-size: 100% 100%;
-  height: 100%;
-  background-repeat: no-repeat;
   display: flex;
-  justify-content: center;
   gap: 7px;
-  padding: 10px;
 `;
 export const TitleCategory = styled.h3`
   color: #fff;
