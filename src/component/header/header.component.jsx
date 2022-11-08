@@ -9,7 +9,7 @@ const Header = () => {
   const { isAuthenticated } = useContext(UserContext);
   return (
     <HeaderContainer imageUrl={MaximusImage}>
-      <TitleHeader>Maximus LoungeBar</TitleHeader>
+      <TitleHeader>Em densenvolvimento</TitleHeader>
       {isAuthenticated && <button onClick={() => signOut(auth)}>Teste</button>}
     </HeaderContainer>
   );
