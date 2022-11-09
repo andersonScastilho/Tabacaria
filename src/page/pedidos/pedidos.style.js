@@ -27,39 +27,3 @@ export const InputPedidos = styled.input`
   border: 2px solid transparent;
   border-radius: 5px;
 `;
-export const ProdutosContainer = styled.div`
-  display: flex;
-  gap: 15px;
-`;
-export const TitleCategoryProducts = styled.p`
-  text-align: center;
-  color: #fff;
-  font-size: 20px;
-`;
-export const ProdutosContent = styled.div`
-  display: flex;
-  gap: 5px;
-  background-color: rgba(0, 0, 0, 0.3);
-  width: 200px;
-  flex-direction: column;
-  border-radius: 7px;
-  border: 2px solid black;
-  padding: 5px;
-`;
-export const ProdutosPedidos = styled.p`
-  color: #fff;
-  text-align: start;
-`;
-export const TTeste = styled.div`
-  display: flex;
-  justify-content: space-between;
-  border-radius: 5px;
-  padding: 3px;
-  border: 2px solid black;
-`;
-export const ButtonIcreaseProdut = styled.button`
-  cursor: pointer;
-`;
-export const ProductsPrice = styled.p`
-  color: #fff;
-`;
