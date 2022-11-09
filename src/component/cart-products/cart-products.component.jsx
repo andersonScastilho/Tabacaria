@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { CategoryContext } from "../../contexts/categories/categories.context";
+import { PedidoContext } from "../../contexts/pedidos/pedidos.context";
 import CustomButton from "../custom-button/custom-button.component";
 import LoadingComponent from "../loading/loading.component";
 
@@ -17,6 +18,12 @@ import {
 
 const Cardapio = (props) => {
   const { categories, isLoading } = useContext(CategoryContext);
+  const { addProductsToPedido } = useContext(PedidoContext);
+
+  const handleAddProductsToPedido = (product) => {
+    addProductsToPedido(product);
+  };
+
   return (
     <CardapioContainer imageUrl="https://www.dicasecuriosidades.net/wp-content/uploads/2019/05/gandalf-facts.jpg">
       {isLoading && <LoadingComponent />}
@@ -33,7 +40,11 @@ const Cardapio = (props) => {
                       <NameProduto>{product.name}</NameProduto>
                       <PrecoProduto>R${product.price},00</PrecoProduto>
                       {props.customButton ? (
-                        <CustomButton>{props.customButton}</CustomButton>
+                        <CustomButton
+                          onClick={() => handleAddProductsToPedido(product)}
+                        >
+                          {props.customButton}
+                        </CustomButton>
                       ) : null}
                     </ProductsContent>
                   ))}
@@ -48,7 +59,11 @@ const Cardapio = (props) => {
                       <NameProduto>{product.name}</NameProduto>
                       <PrecoProduto>R${product.price},00</PrecoProduto>
                       {props.customButton ? (
-                        <CustomButton>{props.customButton}</CustomButton>
+                        <CustomButton
+                          onClick={() => handleAddProductsToPedido(product)}
+                        >
+                          {props.customButton}
+                        </CustomButton>
                       ) : null}
                     </ProductsContent>
                   ))}

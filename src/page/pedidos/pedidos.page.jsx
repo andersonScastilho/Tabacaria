@@ -14,6 +14,8 @@ import {
 } from "./pedidos.style";
 
 import Cardapio from "../../component/cart-products/cart-products.component";
+import { useContext } from "react";
+import { PedidoContext } from "../../contexts/pedidos/pedidos.context";
 
 const PedidosPage = () => {
   const {
@@ -23,11 +25,17 @@ const PedidosPage = () => {
     formState: { errors },
   } = useForm();
 
+  const { products, productsTotalPrice, clearProducts } =
+    useContext(PedidoContext);
+
   const handleSubmitPress = (data) => {
-    console.log(data);
+    let dados = { ...data, products, priceTotal: productsTotalPrice };
+    console.log(dados);
+    clearProducts();
     setValue("nomeCliente", "");
     setValue("mesaCliente", "");
   };
+
   return (
     <>
       <Header />
@@ -56,6 +64,14 @@ const PedidosPage = () => {
           {errors?.mesaCliente?.type === "min" && (
             <InputErrorMessage>Mesa invalida</InputErrorMessage>
           )}
+          <div style={{ background: "#fff", borderRadius: "7px" }}>
+            {products.map((item) => (
+              <p key={item.id}>
+                {item.name} {item.quantity}
+              </p>
+            ))}
+            <p>Total: R${productsTotalPrice},00</p>
+          </div>
           <CustomButton onClick={() => handleSubmit(handleSubmitPress)()}>
             Adicionar pedido
           </CustomButton>

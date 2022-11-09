@@ -5,13 +5,16 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import CategoryContextProvider from "./contexts/categories/categories.context";
 import UserContextProvider from "./contexts/user/user.context";
+import PedidoContextProvider from "./contexts/pedidos/pedidos.context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <CategoryContextProvider>
       <UserContextProvider>
-        <App />
+        <PedidoContextProvider>
+          <App />
+        </PedidoContextProvider>
       </UserContextProvider>
     </CategoryContextProvider>
   </React.StrictMode>
