@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { BsPlus } from "react-icons/bs";
+import { AiOutlineMinus } from "react-icons/ai";
 
 import Header from "../../component/header/header.component";
 import Footer from "../../component/footer/footer.component";
@@ -11,21 +12,23 @@ import {
   LabelInputPedidos,
   PedidoContainer,
   PedidoContent,
-  PreviewItens,
+  PreviewItensContainer,
+  ProductName,
+  PreviewItensContent,
+  ProductQuantity,
 } from "./pedidos.style";
 
 import Cardapio from "../../component/cart-products/cart-products.component";
 import { useContext } from "react";
 import { PedidoContext } from "../../contexts/pedidos/pedidos.context";
-import { useState } from "react";
-import { useEffect } from "react";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../../config/firebase.config";
 
 const PedidosPage = () => {
   const {
     register,
     handleSubmit,
     setValue,
-    watch,
     formState: { errors },
   } = useForm();
   const {
@@ -35,20 +38,12 @@ const PedidosPage = () => {
     decreaseProductQuantity,
   } = useContext(PedidoContext);
 
-  const [nomeCliente, setNomeCliente] = useState("");
-  const [mesaCliente, setMesaCliente] = useState("");
-
-  useEffect(() => {
-    setNomeCliente(watch("nomeCliente"));
-    setMesaCliente(watch("mesaCliente"));
-  });
-
-  const handleSubmitPress = (data) => {
+  const handleSubmitPress = async (data) => {
     let dados = { ...data, products, priceTotal: productsTotalPrice };
-    console.log(dados);
     clearProducts();
     setValue("nomeCliente", "");
     setValue("mesaCliente", "");
+    await addDoc(collection(db, "Pedidos"), dados);
   };
 
   const handleDecreaseProductsToPedido = (productId) => {
@@ -83,20 +78,30 @@ const PedidosPage = () => {
           {errors?.mesaCliente?.type === "min" && (
             <InputErrorMessage>Mesa invalida</InputErrorMessage>
           )}
-          <div style={{ background: "#fff", borderRadius: "7px" }}>
-            <PreviewItens>{`Nome: ${nomeCliente}`}</PreviewItens>
-            <PreviewItens>{`Mesa: ${mesaCliente}`}</PreviewItens>
-
-            {products.map((item) => (
-              <p key={item.id}>
-                {item.name} {item.quantity}
-                <button onClick={() => handleDecreaseProductsToPedido(item.id)}>
-                  test
-                </button>
-              </p>
+          <PreviewItensContainer>
+            <p
+              style={{
+                textAlign: "center",
+                border: "2px solid black",
+                borderRadius: "5px",
+              }}
+            >
+              Preview
+            </p>
+            {products.map((item, indice) => (
+              <PreviewItensContent key={item.id}>
+                <p>{indice} </p>
+                <ProductName>{item.name}</ProductName>
+                <ProductQuantity>Quantidade: {item.quantity}</ProductQuantity>
+                <CustomButton
+                  onClick={() => handleDecreaseProductsToPedido(item.id)}
+                >
+                  <AiOutlineMinus />
+                </CustomButton>
+              </PreviewItensContent>
             ))}
             <p>Total: R${productsTotalPrice},00</p>
-          </div>
+          </PreviewItensContainer>
           <CustomButton onClick={() => handleSubmit(handleSubmitPress)()}>
             Adicionar pedido
           </CustomButton>
