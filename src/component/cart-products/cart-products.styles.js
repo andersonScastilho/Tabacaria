@@ -27,6 +27,7 @@ export const ProductsContainer = styled.div`
   background-color: darkgray;
   display: flex;
   flex-direction: column;
+
   border-radius: 5px;
   padding: 3px;
   gap: 10px;
@@ -34,7 +35,7 @@ export const ProductsContainer = styled.div`
 export const ProductsContent = styled.div`
   display: flex;
   gap: 15px;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
   box-shadow: 1px 1px 1px #222;
