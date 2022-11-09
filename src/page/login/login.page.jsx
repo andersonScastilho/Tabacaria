@@ -15,7 +15,7 @@ import { UserContext } from "../../contexts/user/user.context";
 import { useNavigate } from "react-router-dom";
 import CustomButton from "../../component/custom-button/custom-button.component";
 
-const LoginPage = (props) => {
+const LoginPage = () => {
   const {
     register,
     handleSubmit,
@@ -32,6 +32,7 @@ const LoginPage = (props) => {
       navigate("/");
     }
   });
+
   const handleSubmitPress = async (data) => {
     try {
       await signInWithEmailAndPassword(auth, data.email, data.password);
@@ -60,25 +61,21 @@ const LoginPage = (props) => {
           {errors?.email?.type === "required" && (
             <InputErrorMessage>O e-mail é obrigatório</InputErrorMessage>
           )}
-
           {errors?.email?.type === "emailNoRegister" && (
             <InputErrorMessage>E-mail invalido</InputErrorMessage>
           )}
-
           <CustomInput
             hasError={!!errors?.password}
             type="password"
             placeholder="Senha"
             {...register("password", { required: true })}
           />
-
           {errors?.password?.type === "required" && (
             <InputErrorMessage>A senha é obrigatória</InputErrorMessage>
           )}
           {errors?.password?.type === "passwordInvalid" && (
             <InputErrorMessage>Senha Invalida</InputErrorMessage>
           )}
-
           <CustomButton onClick={() => handleSubmit(handleSubmitPress)()}>
             Entrar
           </CustomButton>
