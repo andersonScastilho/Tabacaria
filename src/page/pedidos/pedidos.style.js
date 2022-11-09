@@ -27,6 +27,27 @@ export const InputPedidos = styled.input`
   border: 2px solid transparent;
   border-radius: 5px;
 `;
-export const PreviewItens = styled.p`
+export const PreviewItensContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: 2px solid black;
+  border-radius: 7px;
+  gap: 10px;
+`;
+export const PreviewItensContent = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  justify-content: space-between;
+  border-radius: 5px;
+  padding: 3px;
+`;
+export const ProductName = styled.p`
+  font-size: 18px;
+  color: red;
+`;
+export const ProductQuantity = styled.p`
+  font-size: 15px;
   color: blue;
 `;
