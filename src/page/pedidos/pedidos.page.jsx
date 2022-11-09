@@ -11,22 +11,37 @@ import {
   LabelInputPedidos,
   PedidoContainer,
   PedidoContent,
+  PreviewItens,
 } from "./pedidos.style";
 
 import Cardapio from "../../component/cart-products/cart-products.component";
 import { useContext } from "react";
 import { PedidoContext } from "../../contexts/pedidos/pedidos.context";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const PedidosPage = () => {
   const {
     register,
     handleSubmit,
     setValue,
+    watch,
     formState: { errors },
   } = useForm();
+  const {
+    products,
+    productsTotalPrice,
+    clearProducts,
+    decreaseProductQuantity,
+  } = useContext(PedidoContext);
 
-  const { products, productsTotalPrice, clearProducts } =
-    useContext(PedidoContext);
+  const [nomeCliente, setNomeCliente] = useState("");
+  const [mesaCliente, setMesaCliente] = useState("");
+
+  useEffect(() => {
+    setNomeCliente(watch("nomeCliente"));
+    setMesaCliente(watch("mesaCliente"));
+  });
 
   const handleSubmitPress = (data) => {
     let dados = { ...data, products, priceTotal: productsTotalPrice };
@@ -34,6 +49,10 @@ const PedidosPage = () => {
     clearProducts();
     setValue("nomeCliente", "");
     setValue("mesaCliente", "");
+  };
+
+  const handleDecreaseProductsToPedido = (productId) => {
+    decreaseProductQuantity(productId);
   };
 
   return (
@@ -65,9 +84,15 @@ const PedidosPage = () => {
             <InputErrorMessage>Mesa invalida</InputErrorMessage>
           )}
           <div style={{ background: "#fff", borderRadius: "7px" }}>
+            <PreviewItens>{`Nome: ${nomeCliente}`}</PreviewItens>
+            <PreviewItens>{`Mesa: ${mesaCliente}`}</PreviewItens>
+
             {products.map((item) => (
               <p key={item.id}>
                 {item.name} {item.quantity}
+                <button onClick={() => handleDecreaseProductsToPedido(item.id)}>
+                  test
+                </button>
               </p>
             ))}
             <p>Total: R${productsTotalPrice},00</p>

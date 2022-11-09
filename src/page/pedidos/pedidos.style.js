@@ -27,3 +27,6 @@ export const InputPedidos = styled.input`
   border: 2px solid transparent;
   border-radius: 5px;
 `;
+export const PreviewItens = styled.p`
+  color: blue;
+`;
