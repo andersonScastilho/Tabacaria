@@ -7,9 +7,7 @@ export const PedidoContext = createContext({
   productsTotalPrice: 0,
   productsCount: 0,
   addProductsToPedido: () => {},
-  removeItemPedido: () => {},
-  // increaseProductQuantity: () => {},
-  // decreaseProductQuantity: () => {},
+  decreaseProductQuantity: () => {},
   clearProducts: () => {},
 });
 
@@ -30,6 +28,18 @@ const PedidoContextProvider = ({ children }) => {
     setProducts((prveState) => [...prveState, { ...product, quantity: 1 }]);
   };
 
+  const decreaseProductQuantity = (productId) => {
+    setProducts((products) =>
+      products
+        .map((product) =>
+          product.id === productId
+            ? { ...product, quantity: product.quantity - 1 }
+            : product
+        )
+        .filter((product) => product.quantity > 0)
+    );
+  };
+
   const productsTotalPrice = useMemo(() => {
     return products.reduce((acc, currentProduct) => {
       return acc + currentProduct.price * currentProduct.quantity;
@@ -39,13 +49,15 @@ const PedidoContextProvider = ({ children }) => {
   const clearProducts = () => {
     setProducts([]);
   };
+
   return (
     <PedidoContext.Provider
       value={{
-        addProductsToPedido,
         products,
         productsTotalPrice,
+        addProductsToPedido,
         clearProducts,
+        decreaseProductQuantity,
       }}
     >
       {children}
