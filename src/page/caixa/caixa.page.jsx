@@ -44,9 +44,18 @@ const Caixa = () => {
   } = useContext(PedidoContext);
 
   const alert = useAlert();
+  const date = new Date();
+
+  const dateAtual = date.toLocaleDateString();
+
   const handleSubmitPress = async (data) => {
     if (products.length > 0) {
-      let dados = { ...data, products, priceTotal: productsTotalPrice };
+      let dados = {
+        ...data,
+        products,
+        priceTotal: productsTotalPrice,
+        dateAtual,
+      };
       clearProducts();
       setValue("nomeCliente", "");
       setValue("mesaCliente", "");
