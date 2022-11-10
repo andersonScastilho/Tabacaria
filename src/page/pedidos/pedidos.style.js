@@ -8,7 +8,7 @@ export const PedidoContainer = styled.div`
   background-size: 100% 100%;
   justify-content: center;
   gap: 25px;
-  padding: 15px;
+  padding: 7px;
 `;
 export const PedidoContent = styled.div`
   display: flex;
@@ -24,30 +24,40 @@ export const InputPedidos = styled.input`
   width: 200px;
   background-color: #222;
   color: #fff;
+  font-size: 18px;
   border: 2px solid transparent;
   border-radius: 5px;
+  ::-webkit-outer-spin-button,
+  ::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 `;
 export const PreviewItensContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #fff;
+  background: #ffffff;
   border: 2px solid black;
   border-radius: 7px;
-  gap: 10px;
+  padding: 3px;
+  gap: 3px;
 `;
 export const PreviewItensContent = styled.div`
   display: flex;
-  align-items: center;
-  gap: 7px;
+  width: 200px;
+  background-color: #3e5954;
   justify-content: space-between;
-  border-radius: 5px;
-  padding: 3px;
+  align-items: center;
+  padding: 5px;
+  border: 2px solid black;
+  border-radius: 3px;
 `;
 export const ProductName = styled.p`
-  font-size: 18px;
-  color: red;
-`;
-export const ProductQuantity = styled.p`
   font-size: 15px;
-  color: blue;
+  color: #fff;
+  font-weight: 500;
+`;
+export const ProductQuantityContainer = styled.div`
+  display: flex;
+  gap: 7px;
 `;
