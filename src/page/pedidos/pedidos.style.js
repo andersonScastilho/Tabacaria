@@ -36,8 +36,6 @@ export const InputPedidos = styled.input`
 export const PreviewItensContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background: #ffffff;
-  border: 2px solid black;
   border-radius: 7px;
   padding: 3px;
   gap: 3px;
@@ -60,4 +58,23 @@ export const ProductName = styled.p`
 export const ProductQuantityContainer = styled.div`
   display: flex;
   gap: 7px;
+`;
+export const ProductQuantity = styled.p`
+  color: #fff;
+`;
+export const ProductTotal = styled.p`
+  padding: 3px;
+  background-color: #008000;
+  border-radius: 3px;
+  color: #fff;
+`;
+export const TitlePreviewContainer = styled.div`
+  background-color: #5e9188;
+  padding: 5px;
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-between;
+`;
+export const TitlePreview = styled.p`
+  color: #fff;
 `;

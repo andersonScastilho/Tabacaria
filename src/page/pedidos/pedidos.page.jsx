@@ -17,6 +17,10 @@ import {
   ProductName,
   PreviewItensContent,
   ProductQuantityContainer,
+  ProductQuantity,
+  ProductTotal,
+  TitlePreviewContainer,
+  TitlePreview,
 } from "./pedidos.style";
 
 import Cardapio from "../../component/cart-products/cart-products.component";
@@ -87,23 +91,18 @@ const PedidosPage = () => {
             <InputErrorMessage>Mesa invalida</InputErrorMessage>
           )}
           <PreviewItensContainer>
-            <div
-              style={{
-                backgroundColor: " #5e9188",
-                padding: "5px",
-                borderRadius: "3px",
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
-              <p style={{ color: "#fff" }}>Item</p>
-              <p style={{ color: "#fff" }}>Quantidade</p>
-            </div>
+            {products.length > 0 ? (
+              <TitlePreviewContainer>
+                <TitlePreview>Item</TitlePreview>
+                <TitlePreview>Quantidade</TitlePreview>
+              </TitlePreviewContainer>
+            ) : null}
+
             {products.map((item) => (
               <PreviewItensContent key={item.id}>
                 <ProductName>{item.name}</ProductName>
                 <ProductQuantityContainer>
-                  <p style={{ color: "#fff" }}>{item.quantity} un</p>
+                  <ProductQuantity>{item.quantity}</ProductQuantity>
                   <CustomButton
                     onClick={() => handleDecreaseProductsToPedido(item.id)}
                   >
@@ -112,16 +111,8 @@ const PedidosPage = () => {
                 </ProductQuantityContainer>
               </PreviewItensContent>
             ))}
-            <p
-              style={{
-                backgroundColor: "#008000",
-                borderRadius: "3px",
-                color: "#fff",
-              }}
-            >
-              Total: R${productsTotalPrice},00
-            </p>
           </PreviewItensContainer>
+          <ProductTotal>Total: R${productsTotalPrice},00</ProductTotal>
           <CustomButton onClick={() => handleSubmit(handleSubmitPress)()}>
             Adicionar pedido
           </CustomButton>
