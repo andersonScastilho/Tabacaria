@@ -3,9 +3,9 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import CategoryContextProvider from "./contexts/categories/categories.context";
-import UserContextProvider from "./contexts/user/user.context";
-import PedidoContextProvider from "./contexts/pedidos/pedidos.context";
+import CategoryContextProvider from "./contexts/categories.context";
+import UserContextProvider from "./contexts/user.context";
+import PedidoContextProvider from "./contexts/pedidos.context";
 import { positions, transitions, Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
 

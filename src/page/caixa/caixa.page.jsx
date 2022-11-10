@@ -25,7 +25,7 @@ import {
 
 import CardProducts from "../../component/card-products/card-products.component";
 import { useContext } from "react";
-import { PedidoContext } from "../../contexts/pedidos/pedidos.context";
+import { PedidoContext } from "../../contexts/pedidos.context";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../config/firebase.config";
 

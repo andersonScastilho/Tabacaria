@@ -11,7 +11,7 @@ import Footer from "../../component/footer/footer.component";
 import { AuthErrorCodes, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../config/firebase.config";
 import { useEffect, useContext } from "react";
-import { UserContext } from "../../contexts/user/user.context";
+import { UserContext } from "../../contexts/user.context";
 import { useNavigate } from "react-router-dom";
 import CustomButton from "../../component/custom-button/custom-button.component";
 

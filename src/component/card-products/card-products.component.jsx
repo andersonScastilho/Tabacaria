@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { CategoryContext } from "../../contexts/categories/categories.context";
-import { PedidoContext } from "../../contexts/pedidos/pedidos.context";
+import { CategoryContext } from "../../contexts/categories.context";
+import { PedidoContext } from "../../contexts/pedidos.context";
 import CustomButton from "../custom-button/custom-button.component";
 import LoadingComponent from "../loading/loading.component";
 

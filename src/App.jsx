@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useContext } from "react";
 
 import { auth } from "./config/firebase.config";
-import { UserContext } from "./contexts/user/user.context";
+import { UserContext } from "./contexts/user.context";
 import { onAuthStateChanged } from "firebase/auth";
 
 import HomePage from "./page/home/home.page";
