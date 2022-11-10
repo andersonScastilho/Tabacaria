@@ -21,15 +21,15 @@ import {
   ProductTotal,
   TitlePreviewContainer,
   TitlePreview,
-} from "./pedidos.style";
+} from "./caixa.style";
 
-import Cardapio from "../../component/cart-products/cart-products.component";
+import CardProducts from "../../component/card-products/card-products.component";
 import { useContext } from "react";
 import { PedidoContext } from "../../contexts/pedidos/pedidos.context";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../config/firebase.config";
 
-const PedidosPage = () => {
+const Caixa = () => {
   const {
     register,
     handleSubmit,
@@ -117,10 +117,10 @@ const PedidosPage = () => {
             Adicionar pedido
           </CustomButton>
         </PedidoContent>
-        <Cardapio customButton={<BsPlus />} />
+        <CardProducts customButton={<BsPlus />} />
       </PedidoContainer>
       <Footer />
     </>
   );
 };
-export default PedidosPage;
+export default Caixa;

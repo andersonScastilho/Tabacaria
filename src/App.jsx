@@ -8,7 +8,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import HomePage from "./page/home/home.page";
 import LoginPage from "./page/login/login.page";
 import { useState } from "react";
-import PedidosPage from "./page/pedidos/pedidos.page";
+import Caixa from "./page/caixa/caixa.page";
 
 const App = () => {
   const [isInitialize, setIsInitialize] = useState(true);
@@ -36,7 +36,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/pedidos" element={<PedidosPage />} />
+        <Route path="/pedidos" element={<Caixa />} />
       </Routes>
     </BrowserRouter>
   );

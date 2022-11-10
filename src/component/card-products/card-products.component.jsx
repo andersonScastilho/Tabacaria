@@ -14,9 +14,9 @@ import {
   ProductsContent,
   TitleCategory,
   TitleMark,
-} from "./cart-products.styles";
+} from "./card-products.styles";
 
-const Cardapio = (props) => {
+const CardProducts = (props) => {
   const { categories, isLoading } = useContext(CategoryContext);
   const { addProductsToPedido } = useContext(PedidoContext);
 
@@ -74,4 +74,4 @@ const Cardapio = (props) => {
     </CardapioContainer>
   );
 };
-export default Cardapio;
+export default CardProducts;
