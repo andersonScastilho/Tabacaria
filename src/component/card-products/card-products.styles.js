@@ -1,16 +1,10 @@
 import styled from "styled-components";
 
-export const CardapioContainer = styled.div`
+export const MenuContainer = styled.div`
   display: flex;
   gap: 7px;
 `;
-export const TitleCategory = styled.h3`
-  color: #fff;
-  border-radius: 3px;
-  text-align: center;
-  background-color: #222;
-`;
-export const CardapioContent = styled.div`
+export const MenuContent = styled.div`
   background-color: rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
@@ -19,9 +13,11 @@ export const CardapioContent = styled.div`
   min-width: 27%;
   border-radius: 5px;
 `;
-export const TitleMark = styled.h4`
+export const TitleCategory = styled.h3`
+  color: #fff;
+  border-radius: 3px;
   text-align: center;
-  color: #222;
+  background-color: #222;
 `;
 export const ProductsContainer = styled.div`
   background-color: darkgray;
@@ -43,7 +39,7 @@ export const ProductsContent = styled.div`
   padding: 3px;
   background-color: #ececec;
 `;
-export const ImageProduto = styled.img`
+export const ImageProduct = styled.img`
   height: 50px;
   border-radius: 5px;
   transition: 600ms 200ms;
@@ -51,12 +47,24 @@ export const ImageProduto = styled.img`
     transform: scale(3.1);
   }
 `;
-export const NameProduto = styled.p`
+export const NameProduct = styled.p`
   color: black;
   font-weight: 600;
 `;
-export const PrecoProduto = styled.p`
+export const PriceProduct = styled.p`
   color: #003e4f;
   font-weight: 600;
   border-bottom: 1px solid black;
+`;
+export const TipeDrinks = styled.h4`
+  color: #fff;
+  border-radius: 3px;
+  text-align: center;
+  background-color: #222;
+`;
+export const MarkRosh = styled.h4`
+  color: #fff;
+  border-radius: 3px;
+  text-align: center;
+  background-color: #222;
 `;

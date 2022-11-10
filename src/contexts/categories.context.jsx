@@ -1,7 +1,7 @@
 import { createContext, useState } from "react";
+import { useEffect } from "react";
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../config/firebase.config";
-import { useEffect } from "react";
 
 export const CategoryContext = createContext({
   categories: [],

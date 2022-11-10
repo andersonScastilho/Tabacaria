@@ -1,41 +1,42 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { BsPlus } from "react-icons/bs";
 import { AiOutlineMinus } from "react-icons/ai";
 import { useAlert } from "react-alert";
+import { addDoc, collection } from "firebase/firestore";
+
+import { PedidoContext } from "../../contexts/pedidos.context";
+import { db } from "../../config/firebase.config";
 
 import Header from "../../component/header/header.component";
 import Footer from "../../component/footer/footer.component";
 import CustomButton from "../../component/custom-button/custom-button.component";
 import InputErrorMessage from "../../component/input-error-messag/input-error.component";
+import CardProducts from "../../component/card-products/card-products.component";
 
 import {
-  InputPedidos,
-  LabelInputPedidos,
-  CaixaContainer,
-  CaixaContent,
+  LabelInputRequired,
+  InputRequired,
+  CashierContainer,
+  CashierContent,
   PreviewItensContainer,
   ProductName,
   PreviewItensContent,
   ProductQuantityContainer,
   ProductQuantity,
-  ProductTotal,
+  ProductTotalPrice,
   TitlePreviewContainer,
   TitlePreview,
 } from "./caixa.style";
 
-import CardProducts from "../../component/card-products/card-products.component";
-import { useContext } from "react";
-import { PedidoContext } from "../../contexts/pedidos.context";
-import { addDoc, collection } from "firebase/firestore";
-import { db } from "../../config/firebase.config";
-
-const Caixa = () => {
+const Cashier = () => {
   const {
     register,
     handleSubmit,
     setValue,
     formState: { errors },
   } = useForm();
+
   const {
     products,
     productsTotalPrice,
@@ -46,7 +47,7 @@ const Caixa = () => {
   const alert = useAlert();
   const date = new Date();
 
-  const dateAtual = date.toLocaleDateString();
+  const currentDate = date.toLocaleDateString();
 
   const handleSubmitPress = async (data) => {
     if (products.length > 0) {
@@ -54,12 +55,15 @@ const Caixa = () => {
         ...data,
         products,
         priceTotal: productsTotalPrice,
-        dateAtual,
+        currentDate,
       };
+
       clearProducts();
       setValue("nomeCliente", "");
-      setValue("mesaCliente", "");
+      setValue("tableClient", "");
+
       await addDoc(collection(db, "Pedidos"), dados);
+
       alert.success("O Pedido foi adicionado");
     } else {
       alert.error("Adicione itens ao pedido");
@@ -73,30 +77,30 @@ const Caixa = () => {
   return (
     <>
       <Header />
-      <CaixaContainer imageUrl="https://cdn.discordapp.com/attachments/929130096177053766/1039629996249071687/702883.jpg">
-        <CaixaContent>
-          <LabelInputPedidos>Nome</LabelInputPedidos>
-          <InputPedidos
+      <CashierContainer imageUrl="https://cdn.discordapp.com/attachments/929130096177053766/1039629996249071687/702883.jpg">
+        <CashierContent>
+          <LabelInputRequired>Nome</LabelInputRequired>
+          <InputRequired
             hasError={!!errors?.nomeCliente}
-            {...register("nomeCliente", { required: true })}
+            {...register("nameClient", { required: true })}
           />
-          {errors?.nomeCliente?.type === "required" && (
+          {errors?.nameClient?.type === "required" && (
             <InputErrorMessage>
               O nome do cliente é obrigaório
             </InputErrorMessage>
           )}
-          <LabelInputPedidos>Mesa</LabelInputPedidos>
-          <InputPedidos
+          <LabelInputRequired>Mesa</LabelInputRequired>
+          <InputRequired
             style={{ width: "70px", textAlign: "center" }}
             type="number"
             min={1}
             hasError={!!errors?.mesaCliente}
-            {...register("mesaCliente", { required: true, min: 0 })}
+            {...register("tableClient", { required: true, min: 0 })}
           />
-          {errors?.mesaCliente?.type === "required" && (
+          {errors?.tableClient?.type === "required" && (
             <InputErrorMessage>Informe a mesa do cliente</InputErrorMessage>
           )}
-          {errors?.mesaCliente?.type === "min" && (
+          {errors?.tableClient?.type === "min" && (
             <InputErrorMessage>Mesa invalida</InputErrorMessage>
           )}
           <PreviewItensContainer>
@@ -121,15 +125,17 @@ const Caixa = () => {
               </PreviewItensContent>
             ))}
           </PreviewItensContainer>
-          <ProductTotal>Total: R${productsTotalPrice},00</ProductTotal>
+          <ProductTotalPrice>
+            Total: R${productsTotalPrice},00
+          </ProductTotalPrice>
           <CustomButton onClick={() => handleSubmit(handleSubmitPress)()}>
             Adicionar pedido
           </CustomButton>
-        </CaixaContent>
+        </CashierContent>
         <CardProducts customButton={<BsPlus />} />
-      </CaixaContainer>
+      </CashierContainer>
       <Footer />
     </>
   );
 };
-export default Caixa;
+export default Cashier;

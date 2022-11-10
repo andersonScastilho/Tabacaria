@@ -1,4 +1,3 @@
-import React from "react";
 import { FooterContainer, FooterText } from "./footer.styles";
 
 const Footer = () => {

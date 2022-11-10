@@ -7,6 +7,7 @@ export const UserContext = createContext({
   LoginUser: () => {},
   LogoutUser: () => {},
 });
+
 const UserContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
 

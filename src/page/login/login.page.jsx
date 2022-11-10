@@ -1,19 +1,18 @@
+import { useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthErrorCodes, signInWithEmailAndPassword } from "firebase/auth";
 import { useForm } from "react-hook-form";
 import { BiUser } from "react-icons/bi";
 
-// Styles
-import { CustomInput, LoginContainer, LoginContent } from "./login.styles";
+import { UserContext } from "../../contexts/user.context";
+import { auth } from "../../config/firebase.config";
 
-// Components
-import InputErrorMessage from "../../component/input-error-messag/input-error.component";
 import Header from "../../component/header/header.component";
 import Footer from "../../component/footer/footer.component";
-import { AuthErrorCodes, signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../config/firebase.config";
-import { useEffect, useContext } from "react";
-import { UserContext } from "../../contexts/user.context";
-import { useNavigate } from "react-router-dom";
+import InputErrorMessage from "../../component/input-error-messag/input-error.component";
 import CustomButton from "../../component/custom-button/custom-button.component";
+
+import { CustomInput, LoginContainer, LoginContent } from "./login.styles";
 
 const LoginPage = () => {
   const {

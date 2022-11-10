@@ -1,8 +1,8 @@
 import { useContext } from "react";
 
+import { UserContext } from "../../contexts/user.context";
 import { signOut } from "firebase/auth";
 import { auth } from "../../config/firebase.config";
-import { UserContext } from "../../contexts/user.context";
 
 import MaximusImage from "../../assets/Maximus_Image.jpeg";
 

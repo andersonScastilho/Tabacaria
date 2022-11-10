@@ -1,19 +1,22 @@
 import { useContext } from "react";
+
 import { CategoryContext } from "../../contexts/categories.context";
 import { PedidoContext } from "../../contexts/pedidos.context";
+
 import CustomButton from "../custom-button/custom-button.component";
 import LoadingComponent from "../loading/loading.component";
 
 import {
-  CardapioContainer,
-  CardapioContent,
-  ImageProduto,
-  NameProduto,
-  PrecoProduto,
+  MenuContainer,
+  MenuContent,
+  ImageProduct,
+  NameProduct,
+  PriceProduct,
   ProductsContainer,
   ProductsContent,
   TitleCategory,
-  TitleMark,
+  MarkRosh,
+  TipeDrinks,
 } from "./card-products.styles";
 
 const CardProducts = (props) => {
@@ -25,20 +28,20 @@ const CardProducts = (props) => {
   };
 
   return (
-    <CardapioContainer imageUrl="https://www.dicasecuriosidades.net/wp-content/uploads/2019/05/gandalf-facts.jpg">
+    <MenuContainer imageUrl="https://www.dicasecuriosidades.net/wp-content/uploads/2019/05/gandalf-facts.jpg">
       {isLoading && <LoadingComponent />}
       {categories.map((category) => (
-        <CardapioContent key={category.id}>
+        <MenuContent key={category.id}>
           <TitleCategory>{category.name}</TitleCategory>
           {category.name === "Bebidas"
             ? category.tipes.map((tipe) => (
                 <ProductsContainer key={tipe.id}>
-                  <TitleMark>{tipe.name}</TitleMark>
+                  <TipeDrinks>{tipe.name}</TipeDrinks>
                   {tipe.products.map((product) => (
                     <ProductsContent key={product.id}>
-                      <ImageProduto src={product.imageUrl} />
-                      <NameProduto>{product.name}</NameProduto>
-                      <PrecoProduto>R${product.price},00</PrecoProduto>
+                      <ImageProduct src={product.imageUrl} />
+                      <NameProduct>{product.name}</NameProduct>
+                      <PriceProduct>R${product.price},00</PriceProduct>
                       {props.customButton ? (
                         <CustomButton
                           onClick={() => handleAddProductsToPedido(product)}
@@ -52,12 +55,12 @@ const CardProducts = (props) => {
               ))
             : category.marks.map((mark) => (
                 <ProductsContainer key={mark.id}>
-                  <TitleMark>{mark.name}</TitleMark>
+                  <MarkRosh>{mark.name}</MarkRosh>
                   {mark.products.map((product) => (
                     <ProductsContent key={product.id}>
-                      <ImageProduto src={product.imageUrl} />
-                      <NameProduto>{product.name}</NameProduto>
-                      <PrecoProduto>R${product.price},00</PrecoProduto>
+                      <ImageProduct src={product.imageUrl} />
+                      <NameProduct>{product.name}</NameProduct>
+                      <PriceProduct>R${product.price},00</PriceProduct>
                       {props.customButton ? (
                         <CustomButton
                           onClick={() => handleAddProductsToPedido(product)}
@@ -69,9 +72,9 @@ const CardProducts = (props) => {
                   ))}
                 </ProductsContainer>
               ))}
-        </CardapioContent>
+        </MenuContent>
       ))}
-    </CardapioContainer>
+    </MenuContainer>
   );
 };
 export default CardProducts;

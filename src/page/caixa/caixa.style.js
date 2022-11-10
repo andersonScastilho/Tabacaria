@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CaixaContainer = styled.div`
+export const CashierContainer = styled.div`
   display: flex;
   height: 100%;
   background-image: ${(props) => `url('${props.imageUrl}')`};
@@ -10,17 +10,17 @@ export const CaixaContainer = styled.div`
   gap: 25px;
   padding: 7px;
 `;
-export const CaixaContent = styled.div`
+export const CashierContent = styled.div`
   display: flex;
   gap: 5px;
   flex-direction: column;
 `;
-export const LabelInputPedidos = styled.label`
+export const LabelInputRequired = styled.label`
   color: #fff;
   font-weight: 450;
   line-height: 30px;
 `;
-export const InputPedidos = styled.input`
+export const InputRequired = styled.input`
   width: 200px;
   background-color: #222;
   color: #fff;
@@ -62,7 +62,7 @@ export const ProductQuantityContainer = styled.div`
 export const ProductQuantity = styled.p`
   color: #fff;
 `;
-export const ProductTotal = styled.p`
+export const ProductTotalPrice = styled.p`
   padding: 3px;
   background-color: #008000;
   border-radius: 3px;

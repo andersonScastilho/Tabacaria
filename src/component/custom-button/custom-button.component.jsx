@@ -1,10 +1,10 @@
-import { CustomButtonContainer } from "./custom-button.style";
+import { CustomButtonStyle } from "./custom-button.style";
 
 const CustomButton = (props) => {
   return (
-    <CustomButtonContainer onClick={props.onClick}>
+    <CustomButtonStyle onClick={props.onClick}>
       {props.children}
-    </CustomButtonContainer>
+    </CustomButtonStyle>
   );
 };
 export default CustomButton;

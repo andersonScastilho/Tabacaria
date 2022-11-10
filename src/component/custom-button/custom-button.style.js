@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CustomButtonContainer = styled.button`
+export const CustomButtonStyle = styled.button`
   border-radius: 5px;
   font-weight: 600;
   padding: 3px;
