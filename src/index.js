@@ -6,6 +6,14 @@ import reportWebVitals from "./reportWebVitals";
 import CategoryContextProvider from "./contexts/categories/categories.context";
 import UserContextProvider from "./contexts/user/user.context";
 import PedidoContextProvider from "./contexts/pedidos/pedidos.context";
+import { positions, transitions, Provider as AlertProvider } from "react-alert";
+import AlertTemplate from "react-alert-template-basic";
+
+const options = {
+  position: positions.TOP_LEFT,
+  timeout: 2500,
+  transition: transitions.SCALE,
+};
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -13,7 +21,9 @@ root.render(
     <CategoryContextProvider>
       <UserContextProvider>
         <PedidoContextProvider>
-          <App />
+          <AlertProvider template={AlertTemplate} {...options}>
+            <App />
+          </AlertProvider>
         </PedidoContextProvider>
       </UserContextProvider>
     </CategoryContextProvider>

@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { BsPlus } from "react-icons/bs";
 import { AiOutlineMinus } from "react-icons/ai";
+import { useAlert } from "react-alert";
 
 import Header from "../../component/header/header.component";
 import Footer from "../../component/footer/footer.component";
@@ -15,7 +16,7 @@ import {
   PreviewItensContainer,
   ProductName,
   PreviewItensContent,
-  ProductQuantity,
+  ProductQuantityContainer,
 } from "./pedidos.style";
 
 import Cardapio from "../../component/cart-products/cart-products.component";
@@ -38,12 +39,18 @@ const PedidosPage = () => {
     decreaseProductQuantity,
   } = useContext(PedidoContext);
 
+  const alert = useAlert();
   const handleSubmitPress = async (data) => {
-    let dados = { ...data, products, priceTotal: productsTotalPrice };
-    clearProducts();
-    setValue("nomeCliente", "");
-    setValue("mesaCliente", "");
-    await addDoc(collection(db, "Pedidos"), dados);
+    if (products.length > 0) {
+      let dados = { ...data, products, priceTotal: productsTotalPrice };
+      clearProducts();
+      setValue("nomeCliente", "");
+      setValue("mesaCliente", "");
+      await addDoc(collection(db, "Pedidos"), dados);
+      alert.success("O Pedido foi adicionado");
+    } else {
+      alert.error("Adicione itens ao pedido");
+    }
   };
 
   const handleDecreaseProductsToPedido = (productId) => {
@@ -67,6 +74,7 @@ const PedidosPage = () => {
           )}
           <LabelInputPedidos>Mesa</LabelInputPedidos>
           <InputPedidos
+            style={{ width: "70px", textAlign: "center" }}
             type="number"
             min={1}
             hasError={!!errors?.mesaCliente}
@@ -79,28 +87,40 @@ const PedidosPage = () => {
             <InputErrorMessage>Mesa invalida</InputErrorMessage>
           )}
           <PreviewItensContainer>
-            <p
+            <div
               style={{
-                textAlign: "center",
-                border: "2px solid black",
-                borderRadius: "5px",
+                backgroundColor: " #5e9188",
+                padding: "5px",
+                borderRadius: "3px",
+                display: "flex",
+                justifyContent: "space-between",
               }}
             >
-              Preview
-            </p>
-            {products.map((item, indice) => (
+              <p style={{ color: "#fff" }}>Item</p>
+              <p style={{ color: "#fff" }}>Quantidade</p>
+            </div>
+            {products.map((item) => (
               <PreviewItensContent key={item.id}>
-                <p>{indice} </p>
                 <ProductName>{item.name}</ProductName>
-                <ProductQuantity>Quantidade: {item.quantity}</ProductQuantity>
-                <CustomButton
-                  onClick={() => handleDecreaseProductsToPedido(item.id)}
-                >
-                  <AiOutlineMinus />
-                </CustomButton>
+                <ProductQuantityContainer>
+                  <p style={{ color: "#fff" }}>{item.quantity} un</p>
+                  <CustomButton
+                    onClick={() => handleDecreaseProductsToPedido(item.id)}
+                  >
+                    <AiOutlineMinus />
+                  </CustomButton>
+                </ProductQuantityContainer>
               </PreviewItensContent>
             ))}
-            <p>Total: R${productsTotalPrice},00</p>
+            <p
+              style={{
+                backgroundColor: "#008000",
+                borderRadius: "3px",
+                color: "#fff",
+              }}
+            >
+              Total: R${productsTotalPrice},00
+            </p>
           </PreviewItensContainer>
           <CustomButton onClick={() => handleSubmit(handleSubmitPress)()}>
             Adicionar pedido
