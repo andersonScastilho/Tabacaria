@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const PedidoContainer = styled.div`
+export const CaixaContainer = styled.div`
   display: flex;
   height: 100%;
   background-image: ${(props) => `url('${props.imageUrl}')`};
@@ -10,7 +10,7 @@ export const PedidoContainer = styled.div`
   gap: 25px;
   padding: 7px;
 `;
-export const PedidoContent = styled.div`
+export const CaixaContent = styled.div`
   display: flex;
   gap: 5px;
   flex-direction: column;

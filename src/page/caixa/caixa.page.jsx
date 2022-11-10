@@ -11,8 +11,8 @@ import InputErrorMessage from "../../component/input-error-messag/input-error.co
 import {
   InputPedidos,
   LabelInputPedidos,
-  PedidoContainer,
-  PedidoContent,
+  CaixaContainer,
+  CaixaContent,
   PreviewItensContainer,
   ProductName,
   PreviewItensContent,
@@ -73,8 +73,8 @@ const Caixa = () => {
   return (
     <>
       <Header />
-      <PedidoContainer imageUrl="https://cdn.discordapp.com/attachments/929130096177053766/1039629996249071687/702883.jpg">
-        <PedidoContent>
+      <CaixaContainer imageUrl="https://cdn.discordapp.com/attachments/929130096177053766/1039629996249071687/702883.jpg">
+        <CaixaContent>
           <LabelInputPedidos>Nome</LabelInputPedidos>
           <InputPedidos
             hasError={!!errors?.nomeCliente}
@@ -125,9 +125,9 @@ const Caixa = () => {
           <CustomButton onClick={() => handleSubmit(handleSubmitPress)()}>
             Adicionar pedido
           </CustomButton>
-        </PedidoContent>
+        </CaixaContent>
         <CardProducts customButton={<BsPlus />} />
-      </PedidoContainer>
+      </CaixaContainer>
       <Footer />
     </>
   );
