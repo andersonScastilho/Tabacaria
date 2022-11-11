@@ -1,7 +1,7 @@
 import { useContext } from "react";
 
 import { CategoryContext } from "../../contexts/categories.context";
-import { PedidoContext } from "../../contexts/pedidos.context";
+import { PedidoContext } from "../../contexts/caixa.context";
 
 import CustomButton from "../custom-button/custom-button.component";
 import LoadingComponent from "../loading/loading.component";

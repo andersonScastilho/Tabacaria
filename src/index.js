@@ -5,7 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import CategoryContextProvider from "./contexts/categories.context";
 import UserContextProvider from "./contexts/user.context";
-import PedidoContextProvider from "./contexts/pedidos.context";
+import PedidoContextProvider from "./contexts/caixa.context";
 import { positions, transitions, Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
 

@@ -5,7 +5,7 @@ import { AiOutlineMinus } from "react-icons/ai";
 import { useAlert } from "react-alert";
 import { addDoc, collection } from "firebase/firestore";
 
-import { PedidoContext } from "../../contexts/pedidos.context";
+import { PedidoContext } from "../../contexts/caixa.context";
 import { db } from "../../config/firebase.config";
 
 import Header from "../../component/header/header.component";
