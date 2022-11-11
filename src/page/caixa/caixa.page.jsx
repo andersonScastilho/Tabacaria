@@ -5,6 +5,7 @@ import { AiOutlineMinus } from "react-icons/ai";
 import { useAlert } from "react-alert";
 import { addDoc, collection } from "firebase/firestore";
 
+import { RequestContext } from "../../contexts/request.context";
 import { CaixaContext } from "../../contexts/caixa.context";
 import { db } from "../../config/firebase.config";
 
@@ -42,9 +43,8 @@ const Cashier = () => {
     productsTotalPrice,
     clearProducts,
     decreaseProductQuantity,
-    countRequest,
-    incrementCountRequest,
   } = useContext(CaixaContext);
+  const { countRequest } = useContext(RequestContext);
 
   const alert = useAlert();
   const date = new Date();
@@ -55,14 +55,12 @@ const Cashier = () => {
     if (products.length > 0) {
       let dataRequest = {
         ...data,
-        id: countRequest,
+        id: countRequest + 1,
         products,
         priceTotal: productsTotalPrice,
         currentDate,
       };
-      console.log(dataRequest);
 
-      incrementCountRequest(countRequest);
       clearProducts();
       setValue("nameClient", "");
       setValue("tableClient", "");
@@ -70,6 +68,9 @@ const Cashier = () => {
       await addDoc(collection(db, "Pedidos"), dataRequest);
 
       alert.success("O Pedido foi adicionado");
+      setTimeout(() => {
+        window.location.reload(true);
+      }, 800);
     } else {
       alert.error("Adicione itens ao pedido");
     }
