@@ -2,14 +2,14 @@ import { useState } from "react";
 import { createContext } from "react";
 import { useMemo } from "react";
 
-export const PedidoContext = createContext({
+export const CaixaContext = createContext({
   products: [],
   addProductsToPedido: () => {},
   decreaseProductQuantity: () => {},
   clearProducts: () => {},
 });
 
-const PedidoContextProvider = ({ children }) => {
+const CaixaContextProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
 
   const addProductsToPedido = (product) => {
@@ -49,7 +49,7 @@ const PedidoContextProvider = ({ children }) => {
   };
 
   return (
-    <PedidoContext.Provider
+    <CaixaContext.Provider
       value={{
         products,
         productsTotalPrice,
@@ -59,7 +59,7 @@ const PedidoContextProvider = ({ children }) => {
       }}
     >
       {children}
-    </PedidoContext.Provider>
+    </CaixaContext.Provider>
   );
 };
-export default PedidoContextProvider;
+export default CaixaContextProvider;

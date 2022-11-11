@@ -5,9 +5,9 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import CategoryContextProvider from "./contexts/categories.context";
 import UserContextProvider from "./contexts/user.context";
-import PedidoContextProvider from "./contexts/caixa.context";
 import { positions, transitions, Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
+import CaixaContextProvider from "./contexts/caixa.context";
 
 const options = {
   position: positions.TOP_LEFT,
@@ -20,11 +20,11 @@ root.render(
   <React.StrictMode>
     <CategoryContextProvider>
       <UserContextProvider>
-        <PedidoContextProvider>
+        <CaixaContextProvider>
           <AlertProvider template={AlertTemplate} {...options}>
             <App />
           </AlertProvider>
-        </PedidoContextProvider>
+        </CaixaContextProvider>
       </UserContextProvider>
     </CategoryContextProvider>
   </React.StrictMode>

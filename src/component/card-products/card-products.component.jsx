@@ -1,7 +1,7 @@
 import { useContext } from "react";
 
 import { CategoryContext } from "../../contexts/categories.context";
-import { PedidoContext } from "../../contexts/caixa.context";
+import { CaixaContext } from "../../contexts/caixa.context";
 
 import CustomButton from "../custom-button/custom-button.component";
 import LoadingComponent from "../loading/loading.component";
@@ -21,7 +21,7 @@ import {
 
 const CardProducts = (props) => {
   const { categories, isLoading } = useContext(CategoryContext);
-  const { addProductsToPedido } = useContext(PedidoContext);
+  const { addProductsToPedido } = useContext(CaixaContext);
 
   const handleAddProductsToPedido = (product) => {
     addProductsToPedido(product);
