@@ -42,6 +42,8 @@ const Cashier = () => {
     productsTotalPrice,
     clearProducts,
     decreaseProductQuantity,
+    countRequest,
+    incrementCountRequest,
   } = useContext(PedidoContext);
 
   const alert = useAlert();
@@ -51,18 +53,21 @@ const Cashier = () => {
 
   const handleSubmitPress = async (data) => {
     if (products.length > 0) {
-      let dados = {
+      let dataRequest = {
         ...data,
+        id: countRequest,
         products,
         priceTotal: productsTotalPrice,
         currentDate,
       };
+      console.log(dataRequest);
 
+      incrementCountRequest(countRequest);
       clearProducts();
-      setValue("nomeCliente", "");
+      setValue("nameClient", "");
       setValue("tableClient", "");
 
-      await addDoc(collection(db, "Pedidos"), dados);
+      await addDoc(collection(db, "Pedidos"), dataRequest);
 
       alert.success("O Pedido foi adicionado");
     } else {
@@ -81,7 +86,7 @@ const Cashier = () => {
         <CashierContent>
           <LabelInputRequired>Nome</LabelInputRequired>
           <InputRequired
-            hasError={!!errors?.nomeCliente}
+            hasError={!!errors?.nameClient}
             {...register("nameClient", { required: true })}
           />
           {errors?.nameClient?.type === "required" && (

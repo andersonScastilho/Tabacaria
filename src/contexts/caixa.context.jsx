@@ -4,8 +4,10 @@ import { useMemo } from "react";
 
 export const PedidoContext = createContext({
   products: [],
+  countRequest: 0,
   productsTotalPrice: 0,
   productsCount: 0,
+  incrementCountRequest: () => {},
   addProductsToPedido: () => {},
   decreaseProductQuantity: () => {},
   clearProducts: () => {},
@@ -50,11 +52,19 @@ const PedidoContextProvider = ({ children }) => {
     setProducts([]);
   };
 
+  const [countRequest, setCountRequest] = useState(0);
+
+  const incrementCountRequest = (currentCount) => {
+    setCountRequest(currentCount + 1);
+  };
+
   return (
     <PedidoContext.Provider
       value={{
         products,
+        countRequest,
         productsTotalPrice,
+        incrementCountRequest,
         addProductsToPedido,
         clearProducts,
         decreaseProductQuantity,
