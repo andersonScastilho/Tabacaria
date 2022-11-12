@@ -8,6 +8,7 @@ import UserContextProvider from "./contexts/user.context";
 import { positions, transitions, Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
 import CaixaContextProvider from "./contexts/caixa.context";
+import RequestContextProvider from "./contexts/request.context";
 
 const options = {
   position: positions.TOP_LEFT,
@@ -21,9 +22,11 @@ root.render(
     <CategoryContextProvider>
       <UserContextProvider>
         <CaixaContextProvider>
-          <AlertProvider template={AlertTemplate} {...options}>
-            <App />
-          </AlertProvider>
+          <RequestContextProvider>
+            <AlertProvider template={AlertTemplate} {...options}>
+              <App />
+            </AlertProvider>
+          </RequestContextProvider>
         </CaixaContextProvider>
       </UserContextProvider>
     </CategoryContextProvider>
