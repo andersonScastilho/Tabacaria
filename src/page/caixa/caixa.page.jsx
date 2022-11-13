@@ -56,6 +56,7 @@ const Cashier = () => {
       let dataRequest = {
         ...data,
         id: countRequest + 1,
+        status: "pendente",
         products,
         priceTotal: productsTotalPrice,
         currentDate,
