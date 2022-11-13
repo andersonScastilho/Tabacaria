@@ -10,6 +10,7 @@ import LoginPage from "./page/login/login.page";
 import { useState } from "react";
 import Caixa from "./page/caixa/caixa.page";
 import RequestPage from "./page/request/request.page";
+import DetailsPage from "./page/request-details/detail.page";
 
 const App = () => {
   const [isInitialize, setIsInitialize] = useState(true);
@@ -39,6 +40,7 @@ const App = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/caixa" element={<Caixa />} />
         <Route path="/request" element={<RequestPage />} />
+        <Route path="details/:id" element={<DetailsPage />} />
       </Routes>
     </BrowserRouter>
   );
