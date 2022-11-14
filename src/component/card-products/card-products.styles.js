@@ -49,6 +49,7 @@ export const ProductsContent = styled.div`
 `;
 export const ImageProduct = styled.img`
   height: 50px;
+  width: 50px;
   border-radius: 5px;
   transition: 600ms 200ms;
   &:hover {
