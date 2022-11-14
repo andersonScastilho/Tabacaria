@@ -5,6 +5,7 @@ import { RequestContext } from "../../contexts/request.context";
 
 import Header from "../../component/header/header.component";
 import Footer from "../../component/footer/footer.component";
+import CustomButton from "../../component/custom-button/custom-button.component";
 
 import {
   FilterSelect,
@@ -13,6 +14,7 @@ import {
   OptionSelect,
   RequestStatus,
   RequestText,
+  RequestsContent,
 } from "./request.style";
 
 const RequestPage = () => {
@@ -45,48 +47,49 @@ const RequestPage = () => {
           <OptionSelect value="valor2">Realizado</OptionSelect>
           <OptionSelect value="valor3">Todos</OptionSelect>
         </FilterSelect>
-
-        {area === "valor1"
-          ? requestPendente.map((request) => (
-              <RequestContent
-                key={request.id}
-                onClick={() => handleDetailsPage(request.id)}
-              >
-                <RequestStatus status={request.status}>
-                  {request.status}
-                </RequestStatus>
-                <RequestText>Nome: {request.nameClient}</RequestText>
-                <RequestText>Mesa: {request.tableClient}</RequestText>
-                <RequestText>Preço Pedido R${request.priceTotal}</RequestText>
-              </RequestContent>
-            ))
-          : area === "valor2"
-          ? requestRealizado.map((request) => (
-              <RequestContent
-                key={request.id}
-                onClick={() => handleDetailsPage(request.id)}
-              >
-                <RequestStatus status={request.status}>
-                  {request.status}
-                </RequestStatus>
-                <RequestText>Nome: {request.nameClient}</RequestText>
-                <RequestText>Mesa: {request.tableClient}</RequestText>
-                <RequestText>Preço Pedido R${request.priceTotal}</RequestText>
-              </RequestContent>
-            ))
-          : request.map((request) => (
-              <RequestContent
-                key={request.id}
-                onClick={() => handleDetailsPage(request.id)}
-              >
-                <RequestStatus status={request.status}>
-                  {request.status}
-                </RequestStatus>
-                <RequestText>Nome: {request.nameClient}</RequestText>
-                <RequestText>Mesa: {request.tableClient}</RequestText>
-                <RequestText>Preço Pedido R${request.priceTotal}</RequestText>
-              </RequestContent>
-            ))}
+        <RequestsContent>
+          {area === "valor1"
+            ? requestPendente.map((request) => (
+                <RequestContent key={request.id}>
+                  <RequestText>Cliente: {request.nameClient}</RequestText>
+                  <RequestText>Mesa: {request.tableClient}</RequestText>
+                  <RequestText>Preço Pedido R${request.priceTotal}</RequestText>
+                  <RequestStatus status={request.status}>
+                    {request.status}
+                  </RequestStatus>
+                  <CustomButton onClick={() => handleDetailsPage(request.id)}>
+                    Visualizar Pedido
+                  </CustomButton>
+                </RequestContent>
+              ))
+            : area === "valor2"
+            ? requestRealizado.map((request) => (
+                <RequestContent key={request.id}>
+                  <RequestText>Nome: {request.nameClient}</RequestText>
+                  <RequestText>Mesa: {request.tableClient}</RequestText>
+                  <RequestText>Preço Pedido R${request.priceTotal}</RequestText>
+                  <RequestStatus status={request.status}>
+                    {request.status}
+                  </RequestStatus>
+                  <CustomButton onClick={() => handleDetailsPage(request.id)}>
+                    Visualizar Pedido
+                  </CustomButton>
+                </RequestContent>
+              ))
+            : request.map((request) => (
+                <RequestContent key={request.id}>
+                  <RequestText>Nome: {request.nameClient}</RequestText>
+                  <RequestText>Mesa: {request.tableClient}</RequestText>
+                  <RequestText>Preço Pedido R${request.priceTotal}</RequestText>
+                  <RequestStatus status={request.status}>
+                    {request.status}
+                  </RequestStatus>
+                  <CustomButton onClick={() => handleDetailsPage(request.id)}>
+                    Visualizar Pedido
+                  </CustomButton>
+                </RequestContent>
+              ))}
+        </RequestsContent>
       </RequestContainer>
       <Footer />
     </>
