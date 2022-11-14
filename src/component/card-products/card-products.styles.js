@@ -23,7 +23,7 @@ export const ProductsContainer = styled.div`
   background-color: darkgray;
   display: flex;
   flex-direction: column;
-
+  height: 50%;
   border-radius: 5px;
   padding: 3px;
   gap: 10px;
