@@ -2,7 +2,11 @@ import styled from "styled-components";
 
 export const MenuContainer = styled.div`
   display: flex;
+  padding: 10px;
   gap: 7px;
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
 `;
 export const MenuContent = styled.div`
   background-color: rgba(0, 0, 0, 0.3);
@@ -38,6 +42,10 @@ export const ProductsContent = styled.div`
   border-radius: 5px;
   padding: 3px;
   background-color: #ececec;
+  @media (max-width: 600px) {
+    width: 80%;
+    align-self: center;
+  }
 `;
 export const ImageProduct = styled.img`
   height: 50px;

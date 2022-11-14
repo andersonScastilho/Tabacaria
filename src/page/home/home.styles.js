@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const HomeContainer = styled.div`
   display: flex;
-  height: 100%;
+  min-height: 100%;
   flex: 1 0 auto;
   background-repeat: no-repeat;
   background-size: 100% 100%;

@@ -10,6 +10,10 @@ export const CashierContainer = styled.div`
   justify-content: center;
   gap: 25px;
   padding: 7px;
+  @media (max-width: 600px) {
+    justify-content: start;
+    flex-direction: column;
+  }
 `;
 export const CashierContent = styled.div`
   display: flex;
