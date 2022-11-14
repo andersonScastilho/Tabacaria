@@ -14,8 +14,11 @@ const DetailsPage = () => {
   const { request } = useContext(RequestContext);
   const { id } = useParams();
 
+  //transformando id: string em number
+  const idNumber = Number(id);
+
   const currentRequest = request.filter((request) => {
-    return request.id == id;
+    return request.id === idNumber;
   });
 
   return (
@@ -24,7 +27,7 @@ const DetailsPage = () => {
       {currentRequest.map((request) => (
         <DetailsRequestContainer key={request.id}>
           <DetailsRequestContent>
-            <p>{request.nameClient}</p>
+            <p style={{ color: "green" }}>{request.nameClient}</p>
           </DetailsRequestContent>
         </DetailsRequestContainer>
       ))}

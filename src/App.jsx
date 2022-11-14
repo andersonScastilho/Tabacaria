@@ -10,6 +10,7 @@ import LoginPage from "./page/login/login.page";
 import { useState } from "react";
 import Caixa from "./page/caixa/caixa.page";
 import RequestPage from "./page/request/request.page";
+import AuthenticationGuard from "./guards/authentication.component";
 import DetailsPage from "./page/request-details/detail.page";
 
 const App = () => {
@@ -38,9 +39,30 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/caixa" element={<Caixa />} />
-        <Route path="/request" element={<RequestPage />} />
-        <Route path="details/:id" element={<DetailsPage />} />
+        <Route
+          path="/caixa"
+          element={
+            <AuthenticationGuard>
+              <Caixa />
+            </AuthenticationGuard>
+          }
+        />
+        <Route
+          path="/request"
+          element={
+            <AuthenticationGuard>
+              <RequestPage />
+            </AuthenticationGuard>
+          }
+        />
+        <Route
+          path="details/:id"
+          element={
+            <AuthenticationGuard>
+              <DetailsPage />
+            </AuthenticationGuard>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
