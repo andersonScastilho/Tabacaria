@@ -50,7 +50,7 @@ const RequestPage = () => {
         <RequestsContent>
           {area === "valor1"
             ? requestPendente.map((request) => (
-                <RequestContent key={request.id}>
+                <RequestContent key={request.idFromFirestore}>
                   <RequestText>Cliente: {request.nameClient}</RequestText>
                   <RequestText>Mesa: {request.tableClient}</RequestText>
                   <RequestText>Preço Pedido R${request.priceTotal}</RequestText>
@@ -67,14 +67,16 @@ const RequestPage = () => {
                     </span>
                     {request.status}
                   </RequestStatus>
-                  <CustomButton onClick={() => handleDetailsPage(request.id)}>
+                  <CustomButton
+                    onClick={() => handleDetailsPage(request.idFromFirestore)}
+                  >
                     Visualizar Pedido
                   </CustomButton>
                 </RequestContent>
               ))
             : area === "valor2"
             ? requestRealizado.map((request) => (
-                <RequestContent key={request.id}>
+                <RequestContent key={request.idFromFirestore}>
                   <RequestText>Nome: {request.nameClient}</RequestText>
                   <RequestText>Mesa: {request.tableClient}</RequestText>
                   <RequestText>Preço Pedido R${request.priceTotal}</RequestText>
@@ -91,13 +93,15 @@ const RequestPage = () => {
                     </span>
                     {request.status}
                   </RequestStatus>
-                  <CustomButton onClick={() => handleDetailsPage(request.id)}>
+                  <CustomButton
+                    onClick={() => handleDetailsPage(request.idFromFirestore)}
+                  >
                     Visualizar Pedido
                   </CustomButton>
                 </RequestContent>
               ))
             : request.map((request) => (
-                <RequestContent key={request.id}>
+                <RequestContent key={request.idFromFirestore}>
                   <RequestText>Nome: {request.nameClient}</RequestText>
                   <RequestText>Mesa: {request.tableClient}</RequestText>
                   <RequestText>Preço Pedido R${request.priceTotal}</RequestText>
@@ -114,7 +118,9 @@ const RequestPage = () => {
                     </span>
                     {request.status}
                   </RequestStatus>
-                  <CustomButton onClick={() => handleDetailsPage(request.id)}>
+                  <CustomButton
+                    onClick={() => handleDetailsPage(request.idFromFirestore)}
+                  >
                     Visualizar Pedido
                   </CustomButton>
                 </RequestContent>
