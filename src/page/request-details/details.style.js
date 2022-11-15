@@ -14,4 +14,14 @@ export const DetailsRequestContent = styled.div`
   width: 350px;
   height: 350px;
   background-color: #fff;
+  padding: 5px;
+`;
+export const DataRequestContainer = styled.div`
+  display: flex;
+  gap: 10px;
+  align-items: center;
+`;
+export const DataRequestText = styled.p`
+  font-size: 18px;
+  font-weight: 300;
 `;

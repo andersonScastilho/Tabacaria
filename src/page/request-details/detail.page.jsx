@@ -1,15 +1,19 @@
 import { useContext } from "react";
 import { useAlert } from "react-alert";
+import { useParams } from "react-router-dom";
+import { BsFillPersonFill } from "react-icons/bs";
+import { BiX, BiCheck } from "react-icons/bi";
+
 import { db } from "../../config/firebase.config";
 import { doc, updateDoc } from "firebase/firestore";
-
 import { RequestContext } from "../../contexts/request.context";
-import { useParams } from "react-router-dom";
 
 import Header from "../../component/header/header.component";
 import Footer from "../../component/footer/footer.component";
 
 import {
+  DataRequestContainer,
+  DataRequestText,
   DetailsRequestContainer,
   DetailsRequestContent,
 } from "./details.style";
@@ -37,36 +41,38 @@ const DetailsPage = () => {
       alert.error("Não foi possivel alterar o status do pedido");
     }
   };
-
   return (
     <>
       <Header />
       <DetailsRequestContainer>
         {currentRequest.map((request) => (
           <DetailsRequestContent key={request.idFromFirestore}>
-            <div style={{ display: "flex", gap: "4px" }}>
-              <h4>Cliente: </h4>
-              <p style={{ fontWeight: "500", fontSize: "16px" }}>
-                {request.nameClient}
-              </p>
-            </div>
-            <div style={{ display: "flex", gap: "4px" }}>
-              <h4>Mesa:</h4>
-              <p style={{ fontWeight: "500", fontSize: "16px" }}>
-                {request.tableClient}
-              </p>
-            </div>
+            <DataRequestContainer>
+              <BsFillPersonFill size={25} />
+              <DataRequestText>Cliente:</DataRequestText>
+              <DataRequestText>{request.nameClient}</DataRequestText>
+            </DataRequestContainer>
+            <DataRequestContainer>
+              <DataRequestText>Mesa:</DataRequestText>
+              <DataRequestText>{request.tableClient}</DataRequestText>
+            </DataRequestContainer>
+            <DataRequestContainer>
+              <DataRequestText>Status</DataRequestText>
+              <DataRequestText>{request.status}</DataRequestText>
+              {currentRequest[0].status === "pendente" ? (
+                <BiX size={25} color="red" />
+              ) : (
+                <BiCheck size={25} color="green" />
+              )}
+            </DataRequestContainer>
             <div style={{ position: "relative", left: "25px" }}>
-              <p>Produtos</p>
-              <ol>
-                {request.products.map((product) => (
-                  <li key={product.id}>{product.name}</li>
+              <ul>
+                {currentRequest[0].products.map((products) => (
+                  <li>{products.name}</li>
                 ))}
-              </ol>
-              <button onClick={handleChangeStatus}>
-                Marcar como realizado
-              </button>
+              </ul>
             </div>
+            <button onClick={handleChangeStatus}>Marcar como realizado</button>
           </DetailsRequestContent>
         ))}
       </DetailsRequestContainer>
