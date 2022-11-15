@@ -31,7 +31,7 @@ const RequestPage = () => {
   const navigate = useNavigate();
 
   const handleDetailsPage = (requestId) => {
-    navigate(`/details/${requestId}`);
+    navigate(`/detalhes/${requestId}`);
   };
 
   return (
