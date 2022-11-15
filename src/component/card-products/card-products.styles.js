@@ -27,9 +27,10 @@ export const ProductsContainer = styled.div`
   background-color: darkgray;
   display: flex;
   flex-direction: column;
-  height: 50%;
+  min-height: 50%;
   border-radius: 5px;
   padding: 3px;
+  padding: 7px;
   gap: 10px;
 `;
 export const ProductsContent = styled.div`
