@@ -48,7 +48,7 @@ const App = () => {
           }
         />
         <Route
-          path="/request"
+          path="/pedidos"
           element={
             <AuthenticationGuard>
               <RequestPage />
@@ -56,7 +56,7 @@ const App = () => {
           }
         />
         <Route
-          path="details/:id"
+          path="detalhes/:id"
           element={
             <AuthenticationGuard>
               <DetailsPage />
