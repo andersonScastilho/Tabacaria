@@ -27,7 +27,26 @@ const DetailsPage = () => {
       {currentRequest.map((request) => (
         <DetailsRequestContainer key={request.id}>
           <DetailsRequestContent>
-            <p style={{ color: "green" }}>{request.nameClient}</p>
+            <div style={{ display: "flex", gap: "4px" }}>
+              <h4>Cliente: </h4>
+              <p style={{ fontWeight: "500", fontSize: "16px" }}>
+                {request.nameClient}
+              </p>
+            </div>
+            <div style={{ display: "flex", gap: "4px" }}>
+              <h4>Mesa:</h4>
+              <p style={{ fontWeight: "500", fontSize: "16px" }}>
+                {request.tableClient}
+              </p>
+            </div>
+            <div style={{ position: "relative", left: "25px" }}>
+              <p>Produtos</p>
+              <ol>
+                {request.products.map((product) => (
+                  <li key={request.id}>{product.name}</li>
+                ))}
+              </ol>
+            </div>
           </DetailsRequestContent>
         </DetailsRequestContainer>
       ))}

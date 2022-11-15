@@ -14,5 +14,4 @@ export const DetailsRequestContent = styled.div`
   width: 350px;
   height: 350px;
   background-color: #fff;
-  opacity: 0.6;
 `;
