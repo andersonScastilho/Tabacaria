@@ -19,7 +19,8 @@ const RequestContextProvider = ({ children }) => {
       const pedidosFromFirestore = [];
       const querySnapshot = await getDocs(collection(db, "Pedidos"));
       querySnapshot.forEach((doc) => {
-        pedidosFromFirestore.push(doc.data());
+        let data = { ...doc.data(), idFromFirestore: doc.id };
+        pedidosFromFirestore.push(data);
       });
       setRequest(pedidosFromFirestore);
     } catch (error) {
