@@ -55,7 +55,7 @@ const Cashier = () => {
     if (products.length > 0) {
       let dataRequest = {
         ...data,
-        id: countRequest + 1,
+        nmrPedido: countRequest + 1,
         status: "pendente",
         products,
         priceTotal: productsTotalPrice,
