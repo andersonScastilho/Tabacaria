@@ -5,7 +5,6 @@ export const RequestContainer = styled.div`
   display: flex;
   background-size: 100% 100%;
   flex-direction: column;
-  min-height: 100%;
   flex: 1 0 auto;
   gap: 7px;
   padding: 10px;

@@ -14,7 +14,6 @@ export const MenuContent = styled.div`
   flex-direction: column;
   padding: 5px;
   gap: 10px;
-  min-width: 27%;
   border-radius: 5px;
 `;
 export const TitleCategory = styled.h3`
@@ -27,7 +26,6 @@ export const ProductsContainer = styled.div`
   background-color: darkgray;
   display: flex;
   flex-direction: column;
-  min-height: 50%;
   border-radius: 5px;
   padding: 3px;
   padding: 7px;

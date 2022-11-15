@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const CashierContainer = styled.div`
   display: flex;
-  min-height: 100%;
   flex: 1 0 auto;
   background-image: ${(props) => `url('${props.imageUrl}')`};
   background-repeat: no-repeat;
@@ -10,6 +9,7 @@ export const CashierContainer = styled.div`
   justify-content: center;
   gap: 25px;
   padding: 7px;
+
   @media (max-width: 600px) {
     justify-content: start;
     flex-direction: column;
