@@ -1,4 +1,8 @@
 import { useContext } from "react";
+import { useAlert } from "react-alert";
+import { db } from "../../config/firebase.config";
+import { doc, updateDoc } from "firebase/firestore";
+
 import { RequestContext } from "../../contexts/request.context";
 import { useParams } from "react-router-dom";
 
@@ -13,20 +17,33 @@ import {
 const DetailsPage = () => {
   const { request } = useContext(RequestContext);
   const { id } = useParams();
-
-  //transformando id: string em number
-  const idNumber = Number(id);
+  const alert = useAlert();
 
   const currentRequest = request.filter((request) => {
-    return request.id === idNumber;
+    return request.idFromFirestore === id;
   });
+
+  const handleChangeStatus = async () => {
+    if (currentRequest[0].status === "pendente") {
+      const requestRef = doc(db, "Pedidos", id);
+      await updateDoc(requestRef, {
+        status: "realizado",
+      });
+      alert.success("O status do pedido foi alterado");
+      setTimeout(() => {
+        window.location.reload(true);
+      }, 700);
+    } else {
+      alert.error("Não foi possivel alterar o status do pedido");
+    }
+  };
 
   return (
     <>
       <Header />
-      {currentRequest.map((request) => (
-        <DetailsRequestContainer key={request.id}>
-          <DetailsRequestContent>
+      <DetailsRequestContainer>
+        {currentRequest.map((request) => (
+          <DetailsRequestContent key={request.idFromFirestore}>
             <div style={{ display: "flex", gap: "4px" }}>
               <h4>Cliente: </h4>
               <p style={{ fontWeight: "500", fontSize: "16px" }}>
@@ -43,13 +60,16 @@ const DetailsPage = () => {
               <p>Produtos</p>
               <ol>
                 {request.products.map((product) => (
-                  <li key={request.id}>{product.name}</li>
+                  <li key={product.id}>{product.name}</li>
                 ))}
               </ol>
+              <button onClick={handleChangeStatus}>
+                Marcar como realizado
+              </button>
             </div>
           </DetailsRequestContent>
-        </DetailsRequestContainer>
-      ))}
+        ))}
+      </DetailsRequestContainer>
       <Footer />
     </>
   );
