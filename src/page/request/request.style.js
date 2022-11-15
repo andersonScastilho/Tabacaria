@@ -36,6 +36,7 @@ export const RequestsContent = styled.div`
 `;
 export const RequestContent = styled.div`
   border: 2px solid black;
+  gap: 5px;
   background-color: #fff;
   display: flex;
   flex-direction: column;
@@ -52,4 +53,6 @@ export const RequestText = styled.p`
 `;
 export const RequestStatus = styled.p`
   color: ${(props) => (props.status === "pendente" ? "red" : "green")};
+  font-size: 18px;
+  font-weight: 450;
 `;

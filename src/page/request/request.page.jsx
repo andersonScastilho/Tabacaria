@@ -55,6 +55,16 @@ const RequestPage = () => {
                   <RequestText>Mesa: {request.tableClient}</RequestText>
                   <RequestText>Preço Pedido R${request.priceTotal}</RequestText>
                   <RequestStatus status={request.status}>
+                    <span
+                      style={{
+                        color: "black",
+                        fontSize: "18px",
+                        fontWeight: "500",
+                        marginRight: "5px",
+                      }}
+                    >
+                      Status:
+                    </span>
                     {request.status}
                   </RequestStatus>
                   <CustomButton onClick={() => handleDetailsPage(request.id)}>
@@ -69,6 +79,16 @@ const RequestPage = () => {
                   <RequestText>Mesa: {request.tableClient}</RequestText>
                   <RequestText>Preço Pedido R${request.priceTotal}</RequestText>
                   <RequestStatus status={request.status}>
+                    <span
+                      style={{
+                        color: "black",
+                        fontSize: "18px",
+                        fontWeight: "500",
+                        marginRight: "5px",
+                      }}
+                    >
+                      Status:
+                    </span>
                     {request.status}
                   </RequestStatus>
                   <CustomButton onClick={() => handleDetailsPage(request.id)}>
@@ -82,6 +102,16 @@ const RequestPage = () => {
                   <RequestText>Mesa: {request.tableClient}</RequestText>
                   <RequestText>Preço Pedido R${request.priceTotal}</RequestText>
                   <RequestStatus status={request.status}>
+                    <span
+                      style={{
+                        color: "black",
+                        fontSize: "18px",
+                        fontWeight: "500",
+                        marginRight: "5px",
+                      }}
+                    >
+                      Status:
+                    </span>
                     {request.status}
                   </RequestStatus>
                   <CustomButton onClick={() => handleDetailsPage(request.id)}>
