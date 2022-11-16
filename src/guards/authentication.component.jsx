@@ -7,13 +7,14 @@ import { UserContext } from "../contexts/user.context";
 const AuthenticationGuard = ({ children }) => {
   const { isAuthenticated } = useContext(UserContext);
   const navigate = useNavigate();
+
   useEffect(() => {
     if (!isAuthenticated) {
       setTimeout(() => {
         navigate("/");
       }, 3000);
     }
-  }, []);
+  }, [isAuthenticated]);
   if (!isAuthenticated) {
     return (
       <>
