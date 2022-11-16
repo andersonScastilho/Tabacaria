@@ -3,6 +3,7 @@ import { useAlert } from "react-alert";
 import { useParams } from "react-router-dom";
 import { BsFillPersonFill } from "react-icons/bs";
 import { BiX, BiCheck } from "react-icons/bi";
+import { GiTable } from "react-icons/gi";
 
 import { db } from "../../config/firebase.config";
 import { doc, updateDoc } from "firebase/firestore";
@@ -16,10 +17,18 @@ import {
   DataRequestText,
   DetailsRequestContainer,
   DetailsRequestContent,
+  RequestProductsContent,
+  RequestProductsContainer,
+  TitleProductText,
+  DataProducts,
+  StatusText,
 } from "./details.style";
+import CustomButton from "../../component/custom-button/custom-button.component";
+import { UserContext } from "../../contexts/user.context";
 
 const DetailsPage = () => {
   const { request } = useContext(RequestContext);
+  const { currentUser } = useContext(UserContext);
   const { id } = useParams();
   const alert = useAlert();
 
@@ -38,7 +47,7 @@ const DetailsPage = () => {
         window.location.reload(true);
       }, 700);
     } else {
-      alert.error("Não foi possivel alterar o status do pedido");
+      alert.error("Pedido ja foi finalizado");
     }
   };
   return (
@@ -46,33 +55,50 @@ const DetailsPage = () => {
       <Header />
       <DetailsRequestContainer>
         {currentRequest.map((request) => (
-          <DetailsRequestContent key={request.idFromFirestore}>
+          <DetailsRequestContent key={id}>
             <DataRequestContainer>
-              <BsFillPersonFill size={25} />
+              <DataRequestText>
+                <BsFillPersonFill color="black" size={25} />
+              </DataRequestText>
               <DataRequestText>Cliente:</DataRequestText>
               <DataRequestText>{request.nameClient}</DataRequestText>
             </DataRequestContainer>
             <DataRequestContainer>
+              <DataRequestText>
+                <GiTable color="black" size={29} />
+              </DataRequestText>
               <DataRequestText>Mesa:</DataRequestText>
               <DataRequestText>{request.tableClient}</DataRequestText>
             </DataRequestContainer>
             <DataRequestContainer>
               <DataRequestText>Status</DataRequestText>
-              <DataRequestText>{request.status}</DataRequestText>
+              <StatusText status={request.status}>{request.status}</StatusText>
               {currentRequest[0].status === "pendente" ? (
-                <BiX size={25} color="red" />
+                <DataRequestContainer key={request.staus}>
+                  <DataRequestText style={{ position: "relative", top: "5px" }}>
+                    <BiX size={25} color="red" />
+                  </DataRequestText>
+                </DataRequestContainer>
               ) : (
-                <BiCheck size={25} color="green" />
+                <DataRequestText>
+                  <BiCheck size={25} color="green" />
+                </DataRequestText>
               )}
             </DataRequestContainer>
-            <div style={{ position: "relative", left: "25px" }}>
-              <ul>
-                {currentRequest[0].products.map((products) => (
-                  <li>{products.name}</li>
-                ))}
-              </ul>
-            </div>
-            <button onClick={handleChangeStatus}>Marcar como realizado</button>
+            <TitleProductText>Produtos</TitleProductText>
+            <RequestProductsContainer>
+              {currentRequest[0].products.map((products) => (
+                <RequestProductsContent key={products.id}>
+                  <DataProducts>Item: {products.name}</DataProducts>
+                  <DataProducts>Quantidade: {products.quantity}</DataProducts>
+                </RequestProductsContent>
+              ))}
+            </RequestProductsContainer>
+            {currentUser.email === "leosilvacast@gmail.com" ? (
+              <CustomButton onClick={handleChangeStatus}>
+                Finalizar Pedido
+              </CustomButton>
+            ) : null}
           </DetailsRequestContent>
         ))}
       </DetailsRequestContainer>
