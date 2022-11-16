@@ -1,5 +1,5 @@
 import { useContext } from "react";
-
+import { GiMagicHat } from "react-icons/gi";
 import { UserContext } from "../../contexts/user.context";
 import { signOut } from "firebase/auth";
 import { auth } from "../../config/firebase.config";
@@ -8,18 +8,40 @@ import { RiLogoutBoxRLine } from "react-icons/ri";
 import CustomButton from "../custom-button/custom-button.component";
 import MaximusImage from "../../assets/Maximus_Image.jpeg";
 
-import { HeaderContainer, TitleHeader } from "./header.styles";
+import { ButtonContainer, HeaderContainer, TitleHeader } from "./header.styles";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const { isAuthenticated } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  const handleRequestClick = () => {
+    navigate("/pedidos");
+  };
+  const handleCaixaClick = () => {
+    navigate("/caixa");
+  };
+  const handleLoginClick = () => {
+    navigate("/login");
+  };
   return (
     <HeaderContainer imageUrl={MaximusImage}>
+      <GiMagicHat color="#fff" size={50} />
       <TitleHeader>Em densenvolvimento</TitleHeader>
-      {isAuthenticated && (
-        <CustomButton onClick={() => signOut(auth)}>
-          <RiLogoutBoxRLine size={15} />
-        </CustomButton>
-      )}
+      <ButtonContainer>
+        {isAuthenticated && (
+          <>
+            <CustomButton onClick={handleCaixaClick}>Caixa</CustomButton>
+            <CustomButton onClick={handleRequestClick}>Pedidos</CustomButton>
+            <CustomButton onClick={() => signOut(auth)}>
+              <RiLogoutBoxRLine size={15} />
+            </CustomButton>
+          </>
+        )}
+        {!isAuthenticated && (
+          <CustomButton onClick={handleLoginClick}>Login</CustomButton>
+        )}
+      </ButtonContainer>
     </HeaderContainer>
   );
 };

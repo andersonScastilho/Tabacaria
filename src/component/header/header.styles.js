@@ -11,3 +11,7 @@ export const HeaderContainer = styled.header`
 export const TitleHeader = styled.h1`
   color: #fff;
 `;
+export const ButtonContainer = styled.div`
+  display: flex;
+  gap: 15px;
+`;
