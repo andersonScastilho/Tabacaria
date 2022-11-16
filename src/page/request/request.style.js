@@ -59,3 +59,9 @@ export const RequestStatus = styled.p`
   font-size: 18px;
   font-weight: 450;
 `;
+export const SpanDescription = styled.span`
+  color: black;
+  font-size: 18px;
+  font-weight: 500;
+  margin-right: 5px;
+`;

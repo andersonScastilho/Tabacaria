@@ -15,6 +15,7 @@ import {
   RequestStatus,
   RequestText,
   RequestsContent,
+  SpanDescription,
 } from "./request.style";
 
 const RequestPage = () => {
@@ -55,16 +56,7 @@ const RequestPage = () => {
                   <RequestText>Mesa: {request.tableClient}</RequestText>
                   <RequestText>Preço Pedido R${request.priceTotal}</RequestText>
                   <RequestStatus status={request.status}>
-                    <span
-                      style={{
-                        color: "black",
-                        fontSize: "18px",
-                        fontWeight: "500",
-                        marginRight: "5px",
-                      }}
-                    >
-                      Status:
-                    </span>
+                    <SpanDescription>Status:</SpanDescription>
                     {request.status}
                   </RequestStatus>
                   <CustomButton
@@ -81,16 +73,7 @@ const RequestPage = () => {
                   <RequestText>Mesa: {request.tableClient}</RequestText>
                   <RequestText>Preço Pedido R${request.priceTotal}</RequestText>
                   <RequestStatus status={request.status}>
-                    <span
-                      style={{
-                        color: "black",
-                        fontSize: "18px",
-                        fontWeight: "500",
-                        marginRight: "5px",
-                      }}
-                    >
-                      Status:
-                    </span>
+                    <SpanDescription>Status:</SpanDescription>
                     {request.status}
                   </RequestStatus>
                   <CustomButton
@@ -106,16 +89,7 @@ const RequestPage = () => {
                   <RequestText>Mesa: {request.tableClient}</RequestText>
                   <RequestText>Preço Pedido R${request.priceTotal}</RequestText>
                   <RequestStatus status={request.status}>
-                    <span
-                      style={{
-                        color: "black",
-                        fontSize: "18px",
-                        fontWeight: "500",
-                        marginRight: "5px",
-                      }}
-                    >
-                      Status:
-                    </span>
+                    <SpanDescription>Status:</SpanDescription>
                     {request.status}
                   </RequestStatus>
                   <CustomButton
