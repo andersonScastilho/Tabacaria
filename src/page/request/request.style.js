@@ -33,6 +33,9 @@ export const RequestsContent = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 15px;
+  @media (max-width: 579px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 export const RequestContent = styled.div`
   border: 2px solid black;
