@@ -65,7 +65,7 @@ const App = () => {
           }
         />
         <Route
-          path="/produto/detalhes/:categoryId/:produtoId"
+          path="/produto/detalhes/:categoryId/:typeormarkId/:produtoId"
           element={
             <AuthenticationGuard>
               <ProductDetails />
