@@ -12,6 +12,7 @@ import Caixa from "./page/caixa/caixa.page";
 import RequestPage from "./page/request/request.page";
 import AuthenticationGuard from "./guards/authentication.component";
 import DetailsPage from "./page/request-details/detail.page";
+import ProductDetails from "./page/product-details/product-details.component";
 
 const App = () => {
   const [isInitialize, setIsInitialize] = useState(true);
@@ -60,6 +61,14 @@ const App = () => {
           element={
             <AuthenticationGuard>
               <DetailsPage />
+            </AuthenticationGuard>
+          }
+        />
+        <Route
+          path="/produto/detalhes/:categoryId/:produtoId"
+          element={
+            <AuthenticationGuard>
+              <ProductDetails />
             </AuthenticationGuard>
           }
         />

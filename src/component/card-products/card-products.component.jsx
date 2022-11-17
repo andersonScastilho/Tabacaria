@@ -18,13 +18,19 @@ import {
   MarkRosh,
   TipeDrinks,
 } from "./card-products.styles";
+import { useNavigate } from "react-router-dom";
 
 const CardProducts = (props) => {
   const { categories, isLoading } = useContext(CategoryContext);
   const { addProductsToPedido } = useContext(CaixaContext);
+  const navigate = useNavigate();
 
   const handleAddProductsToPedido = (product) => {
     addProductsToPedido(product);
+  };
+
+  const handleProductDetails = (categoryId, produtoId) => {
+    navigate(`/produto/detalhes/:${categoryId}/:${produtoId}`);
   };
 
   return (
@@ -38,7 +44,12 @@ const CardProducts = (props) => {
                 <ProductsContainer key={tipe.id}>
                   <TipeDrinks>{tipe.name}</TipeDrinks>
                   {tipe.products.map((product) => (
-                    <ProductsContent key={product.id}>
+                    <ProductsContent
+                      key={product.id}
+                      onClick={() =>
+                        handleProductDetails(category.id, product.id)
+                      }
+                    >
                       <ImageProduct src={product.imageUrl} />
                       <NameProduct>{product.name}</NameProduct>
                       <PriceProduct>R${product.price},00</PriceProduct>
