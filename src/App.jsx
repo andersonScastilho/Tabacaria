@@ -56,7 +56,7 @@ const App = () => {
           }
         />
         <Route
-          path="detalhes/:id"
+          path="/pedido/detalhes/:id"
           element={
             <AuthenticationGuard>
               <DetailsPage />

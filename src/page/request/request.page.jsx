@@ -32,7 +32,7 @@ const RequestPage = () => {
   const navigate = useNavigate();
 
   const handleDetailsPage = (requestId) => {
-    navigate(`/detalhes/${requestId}`);
+    navigate(`/pedido/detalhes/${requestId}`);
   };
 
   return (
