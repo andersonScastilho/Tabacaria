@@ -81,12 +81,7 @@ const CardProducts = (props) => {
                 <ProductsContainer key={mark.id}>
                   <MarkRosh>{mark.name}</MarkRosh>
                   {mark.products.map((product) => (
-                    <ProductsContent
-                      key={product.id}
-                      onClick={() =>
-                        handleProductDetails(category.id, mark.id, product.id)
-                      }
-                    >
+                    <ProductsContent key={product.id}>
                       <ImageProduct src={product.imageUrl} />
                       <NameProduct>{product.name}</NameProduct>
                       <PriceProduct>R${product.price},00</PriceProduct>
@@ -106,6 +101,7 @@ const CardProducts = (props) => {
                       ) : null}
                       {props.customButton ? (
                         <CustomButton
+                          key={product.id}
                           onClick={() => handleAddProductsToPedido(product)}
                         >
                           {props.customButton}
