@@ -50,6 +50,7 @@ const DetailsPage = () => {
       alert.error("Pedido ja foi finalizado");
     }
   };
+
   return (
     <>
       <Header />
@@ -93,7 +94,9 @@ const DetailsPage = () => {
                   <DataProducts>Quantidade: {products.quantity}</DataProducts>
                 </RequestProductsContent>
               ))}
+              <DataRequestText></DataRequestText>
             </RequestProductsContainer>
+            Total Pedido: ${request.priceTotal},00
             {currentUser.email === "leosilvacast@gmail.com" ? (
               <CustomButton onClick={handleChangeStatus}>
                 Finalizar Pedido
