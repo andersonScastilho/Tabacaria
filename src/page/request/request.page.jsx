@@ -54,7 +54,7 @@ const RequestPage = () => {
                 <RequestContent key={request.idFromFirestore}>
                   <RequestText>Cliente: {request.nameClient}</RequestText>
                   <RequestText>Mesa: {request.tableClient}</RequestText>
-                  <RequestText>Preço Pedido R${request.priceTotal}</RequestText>
+                  <RequestText>Horario {request.currentHors}</RequestText>
                   <RequestStatus status={request.status}>
                     <SpanDescription>Status:</SpanDescription>
                     {request.status}
@@ -71,7 +71,7 @@ const RequestPage = () => {
                 <RequestContent key={request.idFromFirestore}>
                   <RequestText>Nome: {request.nameClient}</RequestText>
                   <RequestText>Mesa: {request.tableClient}</RequestText>
-                  <RequestText>Preço Pedido R${request.priceTotal}</RequestText>
+                  <RequestText>Horario {request.currentHors}</RequestText>
                   <RequestStatus status={request.status}>
                     <SpanDescription>Status:</SpanDescription>
                     {request.status}

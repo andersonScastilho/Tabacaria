@@ -52,6 +52,7 @@ const Cashier = () => {
   const date = new Date();
 
   const currentDate = date.toLocaleDateString();
+  const currentHors = date.toLocaleTimeString();
 
   const handleSubmitPress = async (data) => {
     if (products.length > 0) {
@@ -62,6 +63,7 @@ const Cashier = () => {
         products,
         priceTotal: productsTotalPrice,
         currentDate,
+        currentHors,
       };
 
       clearProducts();
