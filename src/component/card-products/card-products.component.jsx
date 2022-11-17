@@ -30,7 +30,7 @@ const CardProducts = (props) => {
   };
 
   const handleProductDetails = (categoryId, produtoId) => {
-    navigate(`/produto/detalhes/:${categoryId}/:${produtoId}`);
+    navigate(`/produto/detalhes/${categoryId}/${produtoId}`);
   };
 
   return (
