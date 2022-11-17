@@ -1,6 +1,7 @@
 import { useContext } from "react";
 
 import { CategoryContext } from "../../contexts/categories.context";
+import { UserContext } from "../../contexts/user.context";
 import { CaixaContext } from "../../contexts/caixa.context";
 
 import CustomButton from "../custom-button/custom-button.component";
@@ -23,14 +24,16 @@ import { useNavigate } from "react-router-dom";
 const CardProducts = (props) => {
   const { categories, isLoading } = useContext(CategoryContext);
   const { addProductsToPedido } = useContext(CaixaContext);
+  const { isAuthenticated } = useContext(UserContext);
+
   const navigate = useNavigate();
 
   const handleAddProductsToPedido = (product) => {
     addProductsToPedido(product);
   };
 
-  const handleProductDetails = (categoryId, produtoId) => {
-    navigate(`/produto/detalhes/${categoryId}/${produtoId}`);
+  const handleProductDetails = (categoryId, tipeormarkId, produtoId) => {
+    navigate(`/produto/detalhes/${categoryId}/${tipeormarkId}/${produtoId}`);
   };
 
   return (
@@ -44,17 +47,27 @@ const CardProducts = (props) => {
                 <ProductsContainer key={tipe.id}>
                   <TipeDrinks>{tipe.name}</TipeDrinks>
                   {tipe.products.map((product) => (
-                    <ProductsContent
-                      key={product.id}
-                      onClick={() =>
-                        handleProductDetails(category.id, product.id)
-                      }
-                    >
+                    <ProductsContent key={product.id}>
                       <ImageProduct src={product.imageUrl} />
                       <NameProduct>{product.name}</NameProduct>
                       <PriceProduct>R${product.price},00</PriceProduct>
+                      {isAuthenticated && props.edit === true ? (
+                        <CustomButton
+                          key={product.id}
+                          onClick={() =>
+                            handleProductDetails(
+                              category.id,
+                              tipe.id,
+                              product.id
+                            )
+                          }
+                        >
+                          Editar Produto
+                        </CustomButton>
+                      ) : null}
                       {props.customButton ? (
                         <CustomButton
+                          key={product.id}
                           onClick={() => handleAddProductsToPedido(product)}
                         >
                           {props.customButton}
@@ -68,10 +81,29 @@ const CardProducts = (props) => {
                 <ProductsContainer key={mark.id}>
                   <MarkRosh>{mark.name}</MarkRosh>
                   {mark.products.map((product) => (
-                    <ProductsContent key={product.id}>
+                    <ProductsContent
+                      key={product.id}
+                      onClick={() =>
+                        handleProductDetails(category.id, mark.id, product.id)
+                      }
+                    >
                       <ImageProduct src={product.imageUrl} />
                       <NameProduct>{product.name}</NameProduct>
                       <PriceProduct>R${product.price},00</PriceProduct>
+                      {isAuthenticated && props.edit === true ? (
+                        <CustomButton
+                          key={product.id}
+                          onClick={() =>
+                            handleProductDetails(
+                              category.id,
+                              mark.id,
+                              product.id
+                            )
+                          }
+                        >
+                          Editar Produto
+                        </CustomButton>
+                      ) : null}
                       {props.customButton ? (
                         <CustomButton
                           onClick={() => handleAddProductsToPedido(product)}

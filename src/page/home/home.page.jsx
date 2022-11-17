@@ -9,7 +9,7 @@ const HomePage = () => {
     <>
       <Header />
       <HomeContainer>
-        <CardProducts />
+        <CardProducts edit={true} />
       </HomeContainer>
       <Footer />
     </>
