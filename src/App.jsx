@@ -12,7 +12,7 @@ import Caixa from "./page/caixa/caixa.page";
 import RequestPage from "./page/request/request.page";
 import AuthenticationGuard from "./guards/authentication.component";
 import DetailsPage from "./page/request-details/detail.page";
-import ProductDetails from "./page/product-details/product-details.component";
+import ProductDetails from "./page/product-details/product-details.page";
 
 const App = () => {
   const [isInitialize, setIsInitialize] = useState(true);
