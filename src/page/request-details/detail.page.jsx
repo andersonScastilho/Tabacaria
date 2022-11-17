@@ -7,6 +7,7 @@ import { GiTable } from "react-icons/gi";
 
 import { db } from "../../config/firebase.config";
 import { doc, updateDoc } from "firebase/firestore";
+import { UserContext } from "../../contexts/user.context";
 import { RequestContext } from "../../contexts/request.context";
 
 import Header from "../../component/header/header.component";
@@ -24,7 +25,6 @@ import {
   StatusText,
 } from "./details.style";
 import CustomButton from "../../component/custom-button/custom-button.component";
-import { UserContext } from "../../contexts/user.context";
 
 const DetailsPage = () => {
   const { request } = useContext(RequestContext);
