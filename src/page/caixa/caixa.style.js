@@ -38,6 +38,9 @@ export const InputRequired = styled.input`
     margin: 0;
   }
 `;
+export const SelectOfPayment = styled.select``;
+export const OptionOfPayment = styled.option``;
+
 export const PreviewItensContainer = styled.div`
   display: flex;
   flex-direction: column;

@@ -28,6 +28,8 @@ import {
   ProductTotalPrice,
   TitlePreviewContainer,
   TitlePreview,
+  SelectOfPayment,
+  OptionOfPayment,
 } from "./caixa.style";
 
 const Cashier = () => {
@@ -110,6 +112,16 @@ const Cashier = () => {
           {errors?.tableClient?.type === "min" && (
             <InputErrorMessage>Mesa invalida</InputErrorMessage>
           )}
+          <SelectOfPayment {...register("formOfPayment", { required: true })}>
+            <OptionOfPayment value="dinheiro">Dinheiro</OptionOfPayment>
+            <OptionOfPayment value="cartaoDebito">
+              Cartão - Debito
+            </OptionOfPayment>
+            <OptionOfPayment value="cartaoCredito">
+              Cartao - Credito
+            </OptionOfPayment>
+            <OptionOfPayment value="pix">Pix</OptionOfPayment>
+          </SelectOfPayment>
           <PreviewItensContainer>
             {products.length > 0 ? (
               <TitlePreviewContainer>
