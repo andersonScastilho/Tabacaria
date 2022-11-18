@@ -153,7 +153,7 @@ const Cashier = () => {
             <PreviewItensContent>
               <TitlePreview>Quantidade</TitlePreview>
               {products.map((item) => (
-                <ProductQuantityContainer>
+                <ProductQuantityContainer key={item.id}>
                   <ProductQuantity>{item.quantity} un</ProductQuantity>
                   <CustomButton
                     onClick={() => handleDecreaseProductsToPedido(item.id)}

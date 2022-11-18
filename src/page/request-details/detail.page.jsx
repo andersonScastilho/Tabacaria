@@ -7,7 +7,7 @@ import { GiTable } from "react-icons/gi";
 import { useForm } from "react-hook-form";
 
 import { db } from "../../config/firebase.config";
-import { doc, setDoc, updateDoc } from "firebase/firestore";
+import { doc, updateDoc } from "firebase/firestore";
 import { UserContext } from "../../contexts/user.context";
 import { RequestContext } from "../../contexts/request.context";
 
