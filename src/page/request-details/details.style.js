@@ -26,7 +26,7 @@ export const DataRequestContainer = styled.div`
   align-items: center;
 `;
 export const DataRequestText = styled.p`
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 400;
 `;
 export const InputOfCheckbox = styled.input`

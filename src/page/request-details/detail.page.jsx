@@ -146,6 +146,9 @@ const DetailsPage = () => {
                   <DataRequestText>
                     Quantidade: {products.quantity}
                   </DataRequestText>
+                  <DataRequestText>
+                    Observação: {request.observation}
+                  </DataRequestText>
                   <DataRequestContainer>
                     <DataRequestText>Status:</DataRequestText>
                     <StatusText status={products.status}>
