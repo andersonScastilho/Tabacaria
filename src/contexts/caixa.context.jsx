@@ -23,7 +23,10 @@ const CaixaContextProvider = ({ children }) => {
         )
       );
     }
-    setProducts((prveState) => [...prveState, { ...product, quantity: 1 }]);
+    setProducts((prveState) => [
+      ...prveState,
+      { ...product, status: "pendente", quantity: 1 },
+    ]);
   };
 
   const decreaseProductQuantity = (productId) => {
