@@ -62,8 +62,8 @@ const Cashier = () => {
         status: "pendente",
         products,
         priceTotal: productsTotalPrice,
-        currentDate,
         currentHors,
+        currentDate,
       };
 
       clearProducts();
