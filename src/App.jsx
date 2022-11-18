@@ -13,6 +13,7 @@ import RequestPage from "./page/request/request.page";
 import AuthenticationGuard from "./guards/authentication.component";
 import DetailsPage from "./page/request-details/detail.page";
 import ProductDetails from "./page/product-details/product-details.page";
+import FechamentoPage from "./page/fechamento/fechamento.page";
 
 const App = () => {
   const [isInitialize, setIsInitialize] = useState(true);
@@ -69,6 +70,14 @@ const App = () => {
           element={
             <AuthenticationGuard>
               <ProductDetails />
+            </AuthenticationGuard>
+          }
+        />
+        <Route
+          path="/fechamento"
+          element={
+            <AuthenticationGuard>
+              <FechamentoPage />
             </AuthenticationGuard>
           }
         />
