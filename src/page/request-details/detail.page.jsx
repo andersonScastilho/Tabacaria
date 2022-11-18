@@ -11,7 +11,6 @@ import { doc, updateDoc } from "firebase/firestore";
 import { UserContext } from "../../contexts/user.context";
 import { RequestContext } from "../../contexts/request.context";
 
-import InputErrorMessage from "../../component/input-error-messag/input-error.component";
 import Header from "../../component/header/header.component";
 import Footer from "../../component/footer/footer.component";
 import CustomButton from "../../component/custom-button/custom-button.component";
@@ -159,7 +158,7 @@ const DetailsPage = () => {
               ))}
             </RequestProductsContainer>
             Total Pedido: ${request.priceTotal}
-            {currentUser.email === "leosilvacast@gmail.com" ? (
+            {currentUser.email === "userteste@gmail.com" ? (
               <CustomButton onClick={() => handleSubmit(handleChangeStatus)()}>
                 Finalizar Pedido
               </CustomButton>
