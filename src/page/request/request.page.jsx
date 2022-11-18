@@ -57,8 +57,12 @@ const RequestPage = () => {
                   <RequestText>Cliente: {request.nameClient}</RequestText>
                   <RequestText>Mesa: {request.tableClient}</RequestText>
                   <RequestText>Horario {request.currentHors}</RequestText>
+                  <RequestStatus status={request.paymentStats}>
+                    <SpanDescription>Pagamento: </SpanDescription>
+                    {request.paymentStats}
+                  </RequestStatus>
                   <RequestStatus status={request.status}>
-                    <SpanDescription>Status:</SpanDescription>
+                    <SpanDescription>Status pedido:</SpanDescription>
                     {request.status}
                   </RequestStatus>
                   <CustomButton
@@ -74,6 +78,10 @@ const RequestPage = () => {
                   <RequestText>Nome: {request.nameClient}</RequestText>
                   <RequestText>Mesa: {request.tableClient}</RequestText>
                   <RequestText>Horario {request.currentHors}</RequestText>
+                  <RequestStatus status={request.paymentStats}>
+                    <SpanDescription>Pagamento: </SpanDescription>
+                    {request.paymentStats}
+                  </RequestStatus>
                   <RequestStatus status={request.status}>
                     <SpanDescription>Status:</SpanDescription>
                     {request.status}
@@ -89,7 +97,11 @@ const RequestPage = () => {
                 <RequestContent key={request.idFromFirestore}>
                   <RequestText>Nome: {request.nameClient}</RequestText>
                   <RequestText>Mesa: {request.tableClient}</RequestText>
-                  <RequestText>Preço Pedido R${request.priceTotal}</RequestText>
+                  <RequestText>Horario {request.currentHors}</RequestText>
+                  <RequestStatus status={request.paymentStats}>
+                    <SpanDescription>Pagamento: </SpanDescription>
+                    {request.paymentStats}
+                  </RequestStatus>
                   <RequestStatus status={request.status}>
                     <SpanDescription>Status:</SpanDescription>
                     {request.status}

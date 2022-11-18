@@ -53,36 +53,26 @@ const Cashier = () => {
   const currentDate = date.toLocaleDateString();
   const currentHors = date.toLocaleTimeString();
 
+  let paymentStats;
   const handleSubmitPress = async (data) => {
-    let dataRequest;
-    const nameCliente = data.nameClient;
-    const tableClient = data.tableClient;
-
+    if (data.formOfPayment === "false") {
+      paymentStats = "pendente";
+    } else {
+      paymentStats = "realizado";
+    }
     if (products.length > 0) {
-      if (data.formOfPayment !== "false") {
-        dataRequest = {
-          ...data,
-          nmrPedido: countRequest + 1,
-          status: "pendente",
-          paymentStats: "Realizado",
-          products,
-          priceTotal: productsTotalPrice,
-          currentHors,
-          currentDate,
-        };
-      } else if (data.formOfPayment == "false") {
-        dataRequest = {
-          nameCliente,
-          tableClient,
-          nmrPedido: countRequest + 1,
-          status: "pendente",
-          paymentStats: "pendente",
-          products,
-          priceTotal: productsTotalPrice,
-          currentHors,
-          currentDate,
-        };
-      }
+      let dataRequest = {
+        ...data,
+        nmrPedido: countRequest + 1,
+        status: "pendente",
+        formOfPayment: data.formOfPayment,
+        paymentStats,
+        products,
+        priceTotal: productsTotalPrice,
+        currentHors,
+        currentDate,
+      };
+
       clearProducts();
       setValue("nameClient", "");
       setValue("tableClient", "");
@@ -150,7 +140,7 @@ const Cashier = () => {
               maxWidth: "250px",
               maxHeight: "80px",
             }}
-          ></textarea>
+          />
           <PreviewItensContainer>
             <PreviewItensContent>
               <TitlePreview>Produtos</TitlePreview>
