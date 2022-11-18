@@ -13,7 +13,7 @@ export const DetailsRequestContent = styled.div`
   border: 2px solid black;
   border-radius: 5px;
   width: 350px;
-  height: 420px;
+  height: 470px;
   background-color: #c6d4e1;
   display: flex;
   flex-direction: column;
@@ -89,13 +89,12 @@ export const RequestProductsContent = styled.div`
   gap: 7px;
   padding: 5px;
 `;
-export const DataProducts = styled.p`
-  font-weight: 450;
-  font-size: 17px;
-`;
-
 export const StatusText = styled.p`
   font-weight: 450;
   font-size: 18px;
   color: ${(props) => (props.status === "pendente" ? "red" : "green")};
 `;
+export const SelectOfPayment = styled.select`
+  width: 150px;
+`;
+export const OptionOfPayment = styled.option``;

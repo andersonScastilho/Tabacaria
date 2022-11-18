@@ -4,14 +4,17 @@ import { useParams } from "react-router-dom";
 import { BsFillPersonFill } from "react-icons/bs";
 import { BiX, BiCheck } from "react-icons/bi";
 import { GiTable } from "react-icons/gi";
+import { useForm } from "react-hook-form";
 
 import { db } from "../../config/firebase.config";
-import { doc, updateDoc } from "firebase/firestore";
+import { doc, setDoc, updateDoc } from "firebase/firestore";
 import { UserContext } from "../../contexts/user.context";
 import { RequestContext } from "../../contexts/request.context";
 
+import InputErrorMessage from "../../component/input-error-messag/input-error.component";
 import Header from "../../component/header/header.component";
 import Footer from "../../component/footer/footer.component";
+import CustomButton from "../../component/custom-button/custom-button.component";
 
 import {
   DataRequestContainer,
@@ -21,10 +24,10 @@ import {
   RequestProductsContent,
   RequestProductsContainer,
   TitleProductText,
-  DataProducts,
   StatusText,
+  SelectOfPayment,
+  OptionOfPayment,
 } from "./details.style";
-import CustomButton from "../../component/custom-button/custom-button.component";
 
 const DetailsPage = () => {
   const { request } = useContext(RequestContext);
@@ -32,17 +35,28 @@ const DetailsPage = () => {
   const { id } = useParams();
   const alert = useAlert();
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
   const currentRequest = request.filter((request) => {
     return request.idFromFirestore === id;
   });
 
-  const handleChangeStatus = async () => {
+  const handleChangeStatus = async (data) => {
     if (currentRequest[0].status === "pendente") {
       const requestRef = doc(db, "Pedidos", id);
+
       await updateDoc(requestRef, {
-        status: "realizado",
+        status: "finalizado",
+        formOfPayment: data.formOfPayment,
+        paymentStats: "realizado",
       });
+
       alert.success("O status do pedido foi alterado");
+
       setTimeout(() => {
         window.location.reload(true);
       }, 700);
@@ -71,11 +85,49 @@ const DetailsPage = () => {
               <DataRequestText>Mesa:</DataRequestText>
               <DataRequestText>{request.tableClient}</DataRequestText>
             </DataRequestContainer>
+            {request.paymentStats === "pendente" ? (
+              <>
+                <SelectOfPayment
+                  {...register("formOfPayment", { required: true })}
+                >
+                  <OptionOfPayment value="dinheiro">Dinheiro</OptionOfPayment>
+                  <OptionOfPayment value="cartaoDebito">
+                    Cartão - Debito
+                  </OptionOfPayment>
+                  <OptionOfPayment value="cartaoCredito">
+                    Cartao - Credito
+                  </OptionOfPayment>
+                  <OptionOfPayment value="pix">Pix</OptionOfPayment>
+                </SelectOfPayment>
+                {errors?.formOfPayment?.type === "required" && (
+                  <InputErrorMessage>
+                    Informe a forma de pagamento
+                  </InputErrorMessage>
+                )}
+              </>
+            ) : null}
             <DataRequestContainer>
-              <DataRequestText>Status</DataRequestText>
+              <DataRequestText>Pagamento</DataRequestText>
+              <StatusText status={request.paymentStats}>
+                {request.paymentStats}
+              </StatusText>
+              {currentRequest[0].status === "pendente" ? (
+                <DataRequestContainer key={request.id}>
+                  <DataRequestText style={{ position: "relative", top: "5px" }}>
+                    <BiX size={25} color="red" />
+                  </DataRequestText>
+                </DataRequestContainer>
+              ) : (
+                <DataRequestText>
+                  <BiCheck size={25} color="green" />
+                </DataRequestText>
+              )}
+            </DataRequestContainer>
+            <DataRequestContainer>
+              <DataRequestText>Status Pedido</DataRequestText>
               <StatusText status={request.status}>{request.status}</StatusText>
               {currentRequest[0].status === "pendente" ? (
-                <DataRequestContainer key={request.staus}>
+                <DataRequestContainer key={request.id}>
                   <DataRequestText style={{ position: "relative", top: "5px" }}>
                     <BiX size={25} color="red" />
                   </DataRequestText>
@@ -90,15 +142,23 @@ const DetailsPage = () => {
             <RequestProductsContainer>
               {currentRequest[0].products.map((products) => (
                 <RequestProductsContent key={products.id}>
-                  <DataProducts>Item: {products.name}</DataProducts>
-                  <DataProducts>Quantidade: {products.quantity}</DataProducts>
+                  <DataRequestText>Item: {products.name}</DataRequestText>
+                  <DataRequestText>
+                    Quantidade: {products.quantity}
+                  </DataRequestText>
+                  <DataRequestContainer>
+                    <DataRequestText>Status:</DataRequestText>
+                    <StatusText status={products.status}>
+                      {products.status}
+                    </StatusText>
+                  </DataRequestContainer>
+                  <CustomButton>Finalizar item</CustomButton>
                 </RequestProductsContent>
               ))}
-              <DataRequestText></DataRequestText>
             </RequestProductsContainer>
-            Total Pedido: ${request.priceTotal},00
+            Total Pedido: ${request.priceTotal}
             {currentUser.email === "leosilvacast@gmail.com" ? (
-              <CustomButton onClick={handleChangeStatus}>
+              <CustomButton onClick={() => handleSubmit(handleChangeStatus)()}>
                 Finalizar Pedido
               </CustomButton>
             ) : null}
