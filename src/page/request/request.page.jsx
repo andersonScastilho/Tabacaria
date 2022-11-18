@@ -24,10 +24,12 @@ const RequestPage = () => {
   const requestPendente = request.filter((request) => {
     return request.status === "pendente";
   });
+
   const requestRealizado = request.filter((request) => {
     return request.status === "realizado";
   });
-  const [area, setArea] = useState("valor1");
+
+  const [area, setArea] = useState("value1");
 
   const navigate = useNavigate();
 
@@ -44,12 +46,12 @@ const RequestPage = () => {
           value={area}
           onChange={(e) => setArea(e.target.value)}
         >
-          <OptionSelect value="valor1">Pendente</OptionSelect>
-          <OptionSelect value="valor2">Realizado</OptionSelect>
-          <OptionSelect value="valor3">Todos</OptionSelect>
+          <OptionSelect value="value1">Pendente</OptionSelect>
+          <OptionSelect value="value2">Realizado</OptionSelect>
+          <OptionSelect value="value3">Todos</OptionSelect>
         </FilterSelect>
         <RequestsContent>
-          {area === "valor1"
+          {area === "value1"
             ? requestPendente.map((request) => (
                 <RequestContent key={request.idFromFirestore}>
                   <RequestText>Cliente: {request.nameClient}</RequestText>
@@ -66,7 +68,7 @@ const RequestPage = () => {
                   </CustomButton>
                 </RequestContent>
               ))
-            : area === "valor2"
+            : area === "value2"
             ? requestRealizado.map((request) => (
                 <RequestContent key={request.idFromFirestore}>
                   <RequestText>Nome: {request.nameClient}</RequestText>
