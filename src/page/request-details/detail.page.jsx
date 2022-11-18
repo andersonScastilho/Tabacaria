@@ -46,7 +46,7 @@ const DetailsPage = () => {
   });
 
   const handleChangeStatus = async (data) => {
-    if (currentRequest[0].status === "pendente") {
+    if (data.formOfPayment !== "false") {
       const requestRef = doc(db, "Pedidos", id);
 
       await updateDoc(requestRef, {
@@ -61,7 +61,7 @@ const DetailsPage = () => {
         window.location.reload(true);
       }, 700);
     } else {
-      alert.error("Pedido ja foi finalizado");
+      alert.error("Informe a forma de pagamento");
     }
   };
 
@@ -88,8 +88,12 @@ const DetailsPage = () => {
             {request.paymentStats === "pendente" ? (
               <>
                 <SelectOfPayment
-                  {...register("formOfPayment", { required: true })}
+                  {...register("formOfPayment", {
+                    required: true,
+                    validate: "dinheiro" | "cartaoDebito" | "cartaoCredito",
+                  })}
                 >
+                  <OptionOfPayment value="false"></OptionOfPayment>
                   <OptionOfPayment value="dinheiro">Dinheiro</OptionOfPayment>
                   <OptionOfPayment value="cartaoDebito">
                     Cartão - Debito
@@ -99,11 +103,6 @@ const DetailsPage = () => {
                   </OptionOfPayment>
                   <OptionOfPayment value="pix">Pix</OptionOfPayment>
                 </SelectOfPayment>
-                {errors?.formOfPayment?.type === "required" && (
-                  <InputErrorMessage>
-                    Informe a forma de pagamento
-                  </InputErrorMessage>
-                )}
               </>
             ) : null}
             <DataRequestContainer>
