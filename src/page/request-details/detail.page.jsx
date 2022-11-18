@@ -7,7 +7,7 @@ import { GiTable } from "react-icons/gi";
 import { useForm } from "react-hook-form";
 
 import { db } from "../../config/firebase.config";
-import { doc, updateDoc } from "firebase/firestore";
+import { doc, setDoc, updateDoc } from "firebase/firestore";
 import { UserContext } from "../../contexts/user.context";
 import { RequestContext } from "../../contexts/request.context";
 
@@ -43,6 +43,37 @@ const DetailsPage = () => {
   const currentRequest = request.filter((request) => {
     return request.idFromFirestore === id;
   });
+
+  const handleFinalizeItem = async (product) => {
+    const frankDocRef = doc(db, "Pedidos", id);
+
+    let dataProducts = [...currentRequest[0].products];
+
+    let dataProductSemCurrentProduct = dataProducts.filter((item) => {
+      return item.id !== product.id;
+    });
+
+    let currentProduct = dataProducts.filter((item) => {
+      return item.id === product.id;
+    });
+
+    await updateDoc(frankDocRef, {
+      products: [
+        ...dataProductSemCurrentProduct,
+        (currentProduct = {
+          id: product.id,
+          imageUrl: product.imageUrl,
+          name: product.name,
+          price: product.price,
+          quantity: product.quantity,
+          status: "realizado",
+        }),
+      ],
+    });
+    setTimeout(() => {
+      window.location.reload(true);
+    }, 700);
+  };
 
   const handleChangeStatus = async (data) => {
     if (data.formOfPayment !== "false") {
@@ -89,7 +120,6 @@ const DetailsPage = () => {
                 <SelectOfPayment
                   {...register("formOfPayment", {
                     required: true,
-                    validate: "dinheiro" | "cartaoDebito" | "cartaoCredito",
                   })}
                 >
                   <OptionOfPayment value="false"></OptionOfPayment>
@@ -138,22 +168,24 @@ const DetailsPage = () => {
             </DataRequestContainer>
             <TitleProductText>Produtos</TitleProductText>
             <RequestProductsContainer>
-              {currentRequest[0].products.map((products) => (
-                <RequestProductsContent key={products.id}>
-                  <DataRequestText>Item: {products.name}</DataRequestText>
+              {currentRequest[0].products.map((product) => (
+                <RequestProductsContent key={product.id}>
+                  <DataRequestText>Item: {product.name}</DataRequestText>
                   <DataRequestText>
-                    Quantidade: {products.quantity}
+                    Quantidade: {product.quantity}
                   </DataRequestText>
                   <DataRequestText>
                     Observação: {request.observation}
                   </DataRequestText>
                   <DataRequestContainer>
                     <DataRequestText>Status:</DataRequestText>
-                    <StatusText status={products.status}>
-                      {products.status}
+                    <StatusText status={product.status}>
+                      {product.status}
                     </StatusText>
                   </DataRequestContainer>
-                  <CustomButton>Finalizar item</CustomButton>
+                  <CustomButton onClick={() => handleFinalizeItem(product)}>
+                    Finalizar item
+                  </CustomButton>
                 </RequestProductsContent>
               ))}
             </RequestProductsContainer>
