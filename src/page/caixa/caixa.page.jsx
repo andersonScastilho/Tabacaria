@@ -26,7 +26,6 @@ import {
   ProductQuantityContainer,
   ProductQuantity,
   ProductTotalPrice,
-  TitlePreviewContainer,
   TitlePreview,
   SelectOfPayment,
   OptionOfPayment,
@@ -55,17 +54,35 @@ const Cashier = () => {
   const currentHors = date.toLocaleTimeString();
 
   const handleSubmitPress = async (data) => {
-    if (products.length > 0) {
-      let dataRequest = {
-        ...data,
-        nmrPedido: countRequest + 1,
-        status: "pendente",
-        products,
-        priceTotal: productsTotalPrice,
-        currentHors,
-        currentDate,
-      };
+    let dataRequest;
+    const nameCliente = data.nameClient;
+    const tableClient = data.tableClient;
 
+    if (products.length > 0) {
+      if (data.formOfPayment !== "false") {
+        dataRequest = {
+          ...data,
+          nmrPedido: countRequest + 1,
+          status: "pendente",
+          paymentStats: "Realizado",
+          products,
+          priceTotal: productsTotalPrice,
+          currentHors,
+          currentDate,
+        };
+      } else if (data.formOfPayment == "false") {
+        dataRequest = {
+          nameCliente,
+          tableClient,
+          nmrPedido: countRequest + 1,
+          status: "pendente",
+          paymentStats: "pendente",
+          products,
+          priceTotal: productsTotalPrice,
+          currentHors,
+          currentDate,
+        };
+      }
       clearProducts();
       setValue("nameClient", "");
       setValue("tableClient", "");
@@ -114,7 +131,8 @@ const Cashier = () => {
           {errors?.tableClient?.type === "min" && (
             <InputErrorMessage>Mesa invalida</InputErrorMessage>
           )}
-          <SelectOfPayment {...register("formOfPayment", { required: true })}>
+          <SelectOfPayment {...register("formOfPayment")}>
+            <OptionOfPayment value="false"></OptionOfPayment>
             <OptionOfPayment value="dinheiro">Dinheiro</OptionOfPayment>
             <OptionOfPayment value="cartaoDebito">
               Cartão - Debito
@@ -134,26 +152,27 @@ const Cashier = () => {
             }}
           ></textarea>
           <PreviewItensContainer>
-            {products.length > 0 ? (
-              <TitlePreviewContainer>
-                <TitlePreview>Item</TitlePreview>
-                <TitlePreview>Quantidade</TitlePreview>
-              </TitlePreviewContainer>
-            ) : null}
-
-            {products.map((item) => (
-              <PreviewItensContent key={item.id}>
-                <ProductName>{item.name}</ProductName>
+            <PreviewItensContent>
+              <TitlePreview>Produtos</TitlePreview>
+              {products.map((item) => (
+                <PreviewItensContent key={item.id}>
+                  <ProductName>{item.name}</ProductName>
+                </PreviewItensContent>
+              ))}
+            </PreviewItensContent>
+            <PreviewItensContent>
+              <TitlePreview>Quantidade</TitlePreview>
+              {products.map((item) => (
                 <ProductQuantityContainer>
-                  <ProductQuantity>{item.quantity}</ProductQuantity>
+                  <ProductQuantity>{item.quantity} un</ProductQuantity>
                   <CustomButton
                     onClick={() => handleDecreaseProductsToPedido(item.id)}
                   >
                     <AiOutlineMinus />
                   </CustomButton>
                 </ProductQuantityContainer>
-              </PreviewItensContent>
-            ))}
+              ))}
+            </PreviewItensContent>
           </PreviewItensContainer>
           <ProductTotalPrice>
             Total: R${productsTotalPrice},00

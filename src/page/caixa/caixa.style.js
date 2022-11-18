@@ -38,34 +38,30 @@ export const InputRequired = styled.input`
     margin: 0;
   }
 `;
-export const SelectOfPayment = styled.select``;
-export const OptionOfPayment = styled.option``;
-
 export const PreviewItensContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  border-radius: 7px;
-  padding: 3px;
-  gap: 3px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background-color: #3e5954;
+  border-radius: 5px;
 `;
 export const PreviewItensContent = styled.div`
-  display: flex;
-  width: 200px;
-  background-color: #3e5954;
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px;
-  border: 2px solid black;
   border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 3px;
 `;
 export const ProductName = styled.p`
   font-size: 15px;
   color: #fff;
   font-weight: 500;
+  text-align: center;
 `;
 export const ProductQuantityContainer = styled.div`
   display: flex;
   gap: 7px;
+  justify-content: center;
+  align-items: center;
 `;
 export const ProductQuantity = styled.p`
   color: #fff;
@@ -85,4 +81,12 @@ export const TitlePreviewContainer = styled.div`
 `;
 export const TitlePreview = styled.p`
   color: #fff;
+  text-align: center;
+  background-color: #222;
+  border-radius: 3px;
+  margin-bottom: 3px;
 `;
+export const SelectOfPayment = styled.select`
+  width: 150px;
+`;
+export const OptionOfPayment = styled.option``;
