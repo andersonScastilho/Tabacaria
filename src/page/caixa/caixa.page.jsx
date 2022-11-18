@@ -124,6 +124,15 @@ const Cashier = () => {
             </OptionOfPayment>
             <OptionOfPayment value="pix">Pix</OptionOfPayment>
           </SelectOfPayment>
+          <textarea
+            {...register("observation")}
+            style={{
+              minWidth: "250px",
+              minHeight: "80px",
+              maxWidth: "250px",
+              maxHeight: "80px",
+            }}
+          ></textarea>
           <PreviewItensContainer>
             {products.length > 0 ? (
               <TitlePreviewContainer>
