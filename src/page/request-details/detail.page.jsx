@@ -7,7 +7,7 @@ import { GiTable } from "react-icons/gi";
 import { useForm } from "react-hook-form";
 
 import { db } from "../../config/firebase.config";
-import { doc, setDoc, updateDoc } from "firebase/firestore";
+import { doc, updateDoc } from "firebase/firestore";
 import { UserContext } from "../../contexts/user.context";
 import { RequestContext } from "../../contexts/request.context";
 
@@ -44,6 +44,10 @@ const DetailsPage = () => {
     return request.idFromFirestore === id;
   });
 
+  const allProductOfRequest = currentRequest[0]?.products.every((item) => {
+    return item.status === "realizado";
+  });
+
   const handleFinalizeItem = async (product) => {
     const frankDocRef = doc(db, "Pedidos", id);
 
@@ -75,34 +79,37 @@ const DetailsPage = () => {
     }, 700);
   };
 
-  const handleChangeStatus = async (data) => {
+  const handleFinalizeRequest = async (data) => {
     const requestRef = doc(db, "Pedidos", id);
+    if (allProductOfRequest === true) {
+      if (data.paymentStats !== "pendente" && data.formOfPayment !== "false") {
+        await updateDoc(requestRef, {
+          status: "finalizado",
+          paymentStats: "realizado",
+        });
 
-    if (data.paymentStats !== "pendente" && data.formOfPayment !== "false") {
-      await updateDoc(requestRef, {
-        status: "finalizado",
-        paymentStats: "realizado",
-      });
+        alert.success("O status do pedido foi alterado");
 
-      alert.success("O status do pedido foi alterado");
+        setTimeout(() => {
+          window.location.reload(true);
+        }, 700);
+      } else if (data.formOfPayment !== "false") {
+        await updateDoc(requestRef, {
+          status: "finalizado",
+          formOfPayment: data.formOfPayment,
+          paymentStats: "realizado",
+        });
 
-      setTimeout(() => {
-        window.location.reload(true);
-      }, 700);
-    } else if (data.formOfPayment !== "false") {
-      await updateDoc(requestRef, {
-        status: "finalizado",
-        formOfPayment: data.formOfPayment,
-        paymentStats: "realizado",
-      });
+        alert.success("O status do pedido foi alterado");
 
-      alert.success("O status do pedido foi alterado");
-
-      setTimeout(() => {
-        window.location.reload(true);
-      }, 700);
+        setTimeout(() => {
+          window.location.reload(true);
+        }, 700);
+      } else {
+        alert.error("Informe a forma de pagamento");
+      }
     } else {
-      alert.error("Informe a forma de pagamento");
+      alert.error("Tem item pendente");
     }
   };
 
@@ -206,7 +213,9 @@ const DetailsPage = () => {
             </RequestProductsContainer>
             Total Pedido: ${request.priceTotal}
             {currentUser.email === "userteste@gmail.com" ? (
-              <CustomButton onClick={() => handleSubmit(handleChangeStatus)()}>
+              <CustomButton
+                onClick={() => handleSubmit(handleFinalizeRequest)()}
+              >
                 Finalizar Pedido
               </CustomButton>
             ) : null}
