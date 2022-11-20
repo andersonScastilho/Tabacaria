@@ -21,14 +21,24 @@ import {
 const RequestPage = () => {
   const { request } = useContext(RequestContext);
 
+  const date = new Date();
+
+  const currentDate = date.toLocaleDateString();
+
   const requestPendente = request.filter((request) => {
-    return request.status === "em andamento";
+    return (
+      request.status === "em andamento" && request.currentDate === currentDate
+    );
+  });
+  const requestAllToday = request.filter((request) => {
+    return request.currentDate === currentDate;
   });
 
   const requestRealizado = request.filter((request) => {
-    return request.status === "finalizado";
+    return (
+      request.status === "finalizado" && request.currentDate === currentDate
+    );
   });
-  console.log(requestRealizado);
 
   const [area, setArea] = useState("value1");
 
@@ -94,7 +104,7 @@ const RequestPage = () => {
                   </CustomButton>
                 </RequestContent>
               ))
-            : request.map((request) => (
+            : requestAllToday.map((request) => (
                 <RequestContent key={request.idFromFirestore}>
                   <RequestText>Nome: {request.nameClient}</RequestText>
                   <RequestText>Mesa: {request.tableClient}</RequestText>
