@@ -64,7 +64,7 @@ const Cashier = () => {
       let dataRequest = {
         ...data,
         nmrPedido: countRequest + 1,
-        status: "pendente",
+        status: "em andamento",
         formOfPayment: data.formOfPayment,
         paymentStats,
         products,
