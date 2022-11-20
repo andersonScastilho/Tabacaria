@@ -22,12 +22,13 @@ const RequestPage = () => {
   const { request } = useContext(RequestContext);
 
   const requestPendente = request.filter((request) => {
-    return request.status === "pendente";
+    return request.status === "em andamento";
   });
 
   const requestRealizado = request.filter((request) => {
-    return request.status === "realizado";
+    return request.status === "finalizado";
   });
+  console.log(requestRealizado);
 
   const [area, setArea] = useState("value1");
 
