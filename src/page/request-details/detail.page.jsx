@@ -126,6 +126,13 @@ const DetailsPage = () => {
               <DataRequestText>Mesa:</DataRequestText>
               <DataRequestText>{request.tableClient}</DataRequestText>
             </DataRequestContainer>
+            <DataRequestContainer>
+              <DataRequestText>
+                <GiTable color="black" size={29} />
+              </DataRequestText>
+              <DataRequestText>Observação:</DataRequestText>
+              <DataRequestText>{request.observation}</DataRequestText>
+            </DataRequestContainer>
             {request.paymentStats === "pendente" ? (
               <>
                 <SelectOfPayment
@@ -184,9 +191,6 @@ const DetailsPage = () => {
                   <DataRequestText>Item: {product.name}</DataRequestText>
                   <DataRequestText>
                     Quantidade: {product.quantity}
-                  </DataRequestText>
-                  <DataRequestText>
-                    Observação: {request.observation}
                   </DataRequestText>
                   <DataRequestContainer>
                     <DataRequestText>Status:</DataRequestText>
