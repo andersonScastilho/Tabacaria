@@ -76,9 +76,20 @@ const DetailsPage = () => {
   };
 
   const handleChangeStatus = async (data) => {
-    if (data.formOfPayment !== "false") {
-      const requestRef = doc(db, "Pedidos", id);
+    const requestRef = doc(db, "Pedidos", id);
 
+    if (data.paymentStats !== "pendente" && data.formOfPayment !== "false") {
+      await updateDoc(requestRef, {
+        status: "finalizado",
+        paymentStats: "realizado",
+      });
+
+      alert.success("O status do pedido foi alterado");
+
+      setTimeout(() => {
+        window.location.reload(true);
+      }, 700);
+    } else if (data.formOfPayment !== "false") {
       await updateDoc(requestRef, {
         status: "finalizado",
         formOfPayment: data.formOfPayment,
@@ -139,7 +150,7 @@ const DetailsPage = () => {
               <StatusText status={request.paymentStats}>
                 {request.paymentStats}
               </StatusText>
-              {currentRequest[0].status === "pendente" ? (
+              {currentRequest[0].paymentStats === "pendente" ? (
                 <DataRequestContainer key={request.id}>
                   <DataRequestText style={{ position: "relative", top: "5px" }}>
                     <BiX size={25} color="red" />
@@ -154,7 +165,7 @@ const DetailsPage = () => {
             <DataRequestContainer>
               <DataRequestText>Status Pedido</DataRequestText>
               <StatusText status={request.status}>{request.status}</StatusText>
-              {currentRequest[0].status === "pendente" ? (
+              {currentRequest[0].status === "em andamento" ? (
                 <DataRequestContainer key={request.id}>
                   <DataRequestText style={{ position: "relative", top: "5px" }}>
                     <BiX size={25} color="red" />
