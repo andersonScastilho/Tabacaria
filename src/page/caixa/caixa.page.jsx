@@ -29,6 +29,7 @@ import {
   TitlePreview,
   SelectOfPayment,
   OptionOfPayment,
+  InputTextArea,
 } from "./caixa.style";
 
 const Cashier = () => {
@@ -121,6 +122,8 @@ const Cashier = () => {
           {errors?.tableClient?.type === "min" && (
             <InputErrorMessage>Mesa invalida</InputErrorMessage>
           )}
+
+          <LabelInputRequired>Forma de pagamento: </LabelInputRequired>
           <SelectOfPayment {...register("formOfPayment")}>
             <OptionOfPayment value="false"></OptionOfPayment>
             <OptionOfPayment value="dinheiro">Dinheiro</OptionOfPayment>
@@ -132,15 +135,8 @@ const Cashier = () => {
             </OptionOfPayment>
             <OptionOfPayment value="pix">Pix</OptionOfPayment>
           </SelectOfPayment>
-          <textarea
-            {...register("observation")}
-            style={{
-              minWidth: "250px",
-              minHeight: "80px",
-              maxWidth: "250px",
-              maxHeight: "80px",
-            }}
-          />
+          <LabelInputRequired>Observação: </LabelInputRequired>
+          <InputTextArea {...register("observation")} />
           <PreviewItensContainer>
             <PreviewItensContent>
               <TitlePreview>Produtos</TitlePreview>

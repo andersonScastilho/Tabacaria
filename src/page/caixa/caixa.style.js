@@ -62,6 +62,8 @@ export const ProductQuantityContainer = styled.div`
   gap: 7px;
   justify-content: center;
   align-items: center;
+  border-radius: 3px;
+  padding: 2px;
 `;
 export const ProductQuantity = styled.p`
   color: #fff;
@@ -90,3 +92,9 @@ export const SelectOfPayment = styled.select`
   width: 150px;
 `;
 export const OptionOfPayment = styled.option``;
+export const InputTextArea = styled.textarea`
+  min-width: 250px;
+  min-height: 80px;
+  max-width: 250px;
+  max-height: 80px;
+`;
