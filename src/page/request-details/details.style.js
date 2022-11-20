@@ -92,7 +92,8 @@ export const RequestProductsContent = styled.div`
 export const StatusText = styled.p`
   font-weight: 450;
   font-size: 18px;
-  color: ${(props) => (props.status === "pendente" ? "red" : "green")};
+  color: ${(props) =>
+    props.status === "pendente" || "em andamento" ? "red" : "green"};
 `;
 export const SelectOfPayment = styled.select`
   width: 150px;
