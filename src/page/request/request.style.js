@@ -55,7 +55,8 @@ export const RequestText = styled.p`
   font-weight: 500;
 `;
 export const RequestStatus = styled.p`
-  color: ${(props) => (props.status === "pendente" ? "red" : "green")};
+  color: ${(props) =>
+    props.status === "pendente" || "em andamento" ? "red" : "green"};
   font-size: 18px;
   font-weight: 450;
 `;
