@@ -81,11 +81,14 @@ const DetailsPage = () => {
 
   const handleFinalizeRequest = async (data) => {
     const requestRef = doc(db, "Pedidos", id);
+
     if (allProductOfRequest === true) {
-      if (data.paymentStats !== "pendente" && data.formOfPayment !== "false") {
+      if (
+        currentRequest[0].formOfPayment !== "false" &&
+        currentRequest[0].paymentStats === "realizado"
+      ) {
         await updateDoc(requestRef, {
           status: "finalizado",
-          paymentStats: "realizado",
         });
 
         alert.success("O status do pedido foi alterado");
@@ -93,10 +96,13 @@ const DetailsPage = () => {
         setTimeout(() => {
           window.location.reload(true);
         }, 700);
-      } else if (data.formOfPayment !== "false") {
+      } else if (
+        currentRequest[0].formOfPayment === "false" &&
+        data.formOfPayment !== "false"
+      ) {
         await updateDoc(requestRef, {
           status: "finalizado",
-          formOfPayment: data.formOfPayment,
+          formOfPayment: "ola",
           paymentStats: "realizado",
         });
 
