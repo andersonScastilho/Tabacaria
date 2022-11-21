@@ -102,7 +102,7 @@ const DetailsPage = () => {
       ) {
         await updateDoc(requestRef, {
           status: "finalizado",
-          formOfPayment: "ola",
+          formOfPayment: data.formOfPayment,
           paymentStats: "realizado",
         });
 
