@@ -7,8 +7,11 @@ import { useForm } from "react-hook-form";
 import {
   FechamentoContainer,
   FechamentoFilterContainer,
+  InputFilterFechamento,
+  LabelFilterFechamento,
 } from "./fechamento.styles";
 import { useState } from "react";
+import CustomButton from "../../component/custom-button/custom-button.component";
 
 const FechamentoPage = () => {
   // const { currentUser, isAuthenticated } = useContext(UserContext);
@@ -25,6 +28,21 @@ const FechamentoPage = () => {
   const PriceTotalRequest = requesFiltred?.reduce((acc, item) => {
     return acc + item.priceTotal;
   }, 0);
+
+  const PaymentInDinheiro = requesFiltred?.filter((item) => {
+    return item.formOfPayment === "dinheiro";
+  });
+  const PaymentInCreditCard = requesFiltred?.filter((item) => {
+    return item.formOfPayment === "cartaoCredito";
+  });
+
+  const PaymentInDebitCard = requesFiltred?.filter((item) => {
+    return item.formOfPayment === "cartaoDebito";
+  });
+
+  const PaymentInPix = requesFiltred?.filter((item) => {
+    return item.formOfPayment === "pix";
+  });
 
   const handleSubmitPress = (data) => {
     function adicionaZero(numero) {
@@ -69,30 +87,48 @@ const FechamentoPage = () => {
       <Header />
       <FechamentoContainer>
         <FechamentoFilterContainer>
-          <label>Data inicio: </label>
-          <input
+          <LabelFilterFechamento>Data inicio: </LabelFilterFechamento>
+          <InputFilterFechamento
             type="date"
             {...register("dateInicio", {
               required: true,
             })}
           />
-          <label htmlFor="">Hora inicio: </label>
-          <input type="time" {...register("horaInicio")} />
+          <LabelFilterFechamento htmlFor="">Hora inicio:</LabelFilterFechamento>
+          <InputFilterFechamento type="time" {...register("horaInicio")} />
 
-          <label htmlFor="">Data fim: </label>
-          <input
+          <LabelFilterFechamento htmlFor="">Data fim: </LabelFilterFechamento>
+          <InputFilterFechamento
             type="date"
             {...register("dateFim", {
               required: true,
             })}
           />
-          <label htmlFor="">Hora fim: </label>
-          <input type="time" {...register("horaFim")} />
+          <LabelFilterFechamento htmlFor="">Hora fim: </LabelFilterFechamento>
+          <InputFilterFechamento type="time" {...register("horaFim")} />
 
-          <button onClick={() => handleSubmit(handleSubmitPress)()}>
-            Teste
-          </button>
+          <CustomButton onClick={() => handleSubmit(handleSubmitPress)()}>
+            consultar fechamento
+          </CustomButton>
         </FechamentoFilterContainer>
+        <div
+          style={{
+            background: "#fff",
+            height: "250px",
+            margin: "auto",
+            border: "2px solid black",
+            borderRadius: "7px",
+          }}
+        >
+          {/* <h3>{`Fechamento de ${}`}</h3> */}
+
+          <p>Pagamento em dinheiro: {`${PaymentInDinheiro?.length}`}</p>
+          <p>Pagamento no cartao debito: {`${PaymentInDebitCard?.length}`}</p>
+          <p>Pagamento no cartao credito: {`${PaymentInCreditCard?.length}`}</p>
+          <p>Pagamento no pix: {`${PaymentInPix?.length}`}</p>
+          <p> Lucro Total: {`R$${PriceTotalRequest}`}</p>
+          <p>Total de pedidos: {`${TotalRequest}`}</p>
+        </div>
       </FechamentoContainer>
       <Footer />
     </>
