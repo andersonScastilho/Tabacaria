@@ -152,7 +152,7 @@ const Categories = [
         ],
       },
       {
-        id: "6265fdf55548df4h8dyi5ef",
+        id: "6265fdf55548df4h8dyige5",
         name: "Pimp",
         products: [
           {
