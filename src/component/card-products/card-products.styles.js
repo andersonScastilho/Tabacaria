@@ -9,12 +9,11 @@ export const MenuContainer = styled.div`
   }
 `;
 export const MenuContent = styled.div`
-  background-color: rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
   padding: 5px;
-  gap: 10px;
   border-radius: 5px;
+  gap: 10px;
 `;
 export const TitleCategory = styled.h3`
   color: #fff;
@@ -23,28 +22,22 @@ export const TitleCategory = styled.h3`
   background-color: #222;
 `;
 export const ProductsContainer = styled.div`
-  background-color: darkgray;
   display: flex;
   flex-direction: column;
-  border-radius: 5px;
   padding: 3px;
-  padding: 7px;
-  gap: 10px;
+  gap: 5px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
 `;
 export const ProductsContent = styled.div`
   display: flex;
-  gap: 15px;
+  gap: 10px;
   justify-content: space-between;
-  flex-wrap: wrap;
   align-items: center;
   box-shadow: 1px 1px 1px #222;
   border-radius: 5px;
+  background-color: #dee7e7;
   padding: 3px;
-  background-color: #ececec;
-  @media (max-width: 600px) {
-    width: 80%;
-    align-self: center;
-  }
 `;
 export const ImageProduct = styled.img`
   height: 50px;
@@ -56,11 +49,11 @@ export const ImageProduct = styled.img`
   }
 `;
 export const NameProduct = styled.p`
-  color: black;
+  color: #282832;
   font-weight: 600;
 `;
 export const PriceProduct = styled.p`
-  color: #003e4f;
+  color: #a92727;
   font-weight: 600;
   border-bottom: 1px solid black;
 `;
@@ -68,11 +61,11 @@ export const TipeDrinks = styled.h4`
   color: #fff;
   border-radius: 3px;
   text-align: center;
-  background-color: #222;
+  background-color: #a92727;
 `;
 export const MarkRosh = styled.h4`
   color: #fff;
   border-radius: 3px;
   text-align: center;
-  background-color: #222;
+  background-color: #a92727;
 `;
