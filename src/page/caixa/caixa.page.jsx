@@ -141,9 +141,9 @@ const Cashier = () => {
             <PreviewItensContent>
               <TitlePreview>Produtos</TitlePreview>
               {products.map((item) => (
-                <PreviewItensContent key={item.id}>
+                <ProductQuantityContainer key={item.id}>
                   <ProductName>{item.name}</ProductName>
-                </PreviewItensContent>
+                </ProductQuantityContainer>
               ))}
             </PreviewItensContent>
             <PreviewItensContent>

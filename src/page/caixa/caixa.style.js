@@ -48,7 +48,6 @@ export const PreviewItensContent = styled.div`
   border-radius: 3px;
   display: flex;
   flex-direction: column;
-  gap: 7px;
   padding: 3px;
 `;
 export const ProductName = styled.p`
@@ -60,13 +59,18 @@ export const ProductName = styled.p`
 export const ProductQuantityContainer = styled.div`
   display: flex;
   gap: 7px;
+  height: 45px;
   justify-content: center;
   align-items: center;
   border-radius: 3px;
-  padding: 2px;
+  padding: 5px;
 `;
 export const ProductQuantity = styled.p`
+  line-height: 25px;
+  font-size: 15px;
   color: #fff;
+  font-weight: 500;
+  text-align: center;
 `;
 export const ProductTotalPrice = styled.p`
   padding: 3px;
