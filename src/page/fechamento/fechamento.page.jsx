@@ -6,9 +6,14 @@ import { RequestContext } from "../../contexts/request.context";
 import { useForm } from "react-hook-form";
 import {
   FechamentoContainer,
+  FechamentoContent,
   FechamentoFilterContainer,
+  FechamentoItemContent,
+  InfoNameText,
+  InfoText,
   InputFilterFechamento,
   LabelFilterFechamento,
+  TitleFechamento,
 } from "./fechamento.styles";
 import { useState } from "react";
 import CustomButton from "../../component/custom-button/custom-button.component";
@@ -111,24 +116,33 @@ const FechamentoPage = () => {
             consultar fechamento
           </CustomButton>
         </FechamentoFilterContainer>
-        <div
-          style={{
-            background: "#fff",
-            height: "250px",
-            margin: "auto",
-            border: "2px solid black",
-            borderRadius: "7px",
-          }}
-        >
-          {/* <h3>{`Fechamento de ${}`}</h3> */}
-
-          <p>Pagamento em dinheiro: {`${PaymentInDinheiro?.length}`}</p>
-          <p>Pagamento no cartao debito: {`${PaymentInDebitCard?.length}`}</p>
-          <p>Pagamento no cartao credito: {`${PaymentInCreditCard?.length}`}</p>
-          <p>Pagamento no pix: {`${PaymentInPix?.length}`}</p>
-          <p> Lucro Total: {`R$${PriceTotalRequest}`}</p>
-          <p>Total de pedidos: {`${TotalRequest}`}</p>
-        </div>
+        <FechamentoContent>
+          <TitleFechamento>Fechamento</TitleFechamento>
+          <FechamentoItemContent>
+            <InfoNameText>Quantidade de pedidos: </InfoNameText>
+            <InfoText>{`${TotalRequest}`}</InfoText>
+          </FechamentoItemContent>
+          <FechamentoItemContent>
+            <InfoNameText>Pagamento em dinheiro: </InfoNameText>
+            <InfoText>{`${PaymentInDinheiro?.length}`}</InfoText>
+          </FechamentoItemContent>
+          <FechamentoItemContent>
+            <InfoNameText>Pagamento no cartao debito:</InfoNameText>
+            <InfoText>{`${PaymentInDebitCard?.length}`}</InfoText>
+          </FechamentoItemContent>
+          <FechamentoItemContent>
+            <InfoNameText>Pagamento no cartao credito:</InfoNameText>
+            <InfoText>{`${PaymentInCreditCard?.length}`}</InfoText>
+          </FechamentoItemContent>
+          <FechamentoItemContent>
+            <InfoNameText>Pagamento no pix:</InfoNameText>
+            <InfoText> {`${PaymentInPix?.length}`}</InfoText>
+          </FechamentoItemContent>
+          <FechamentoItemContent>
+            <InfoNameText>Lucro Total:</InfoNameText>
+            <InfoText> {`R$${PriceTotalRequest}`}</InfoText>
+          </FechamentoItemContent>
+        </FechamentoContent>
       </FechamentoContainer>
       <Footer />
     </>
