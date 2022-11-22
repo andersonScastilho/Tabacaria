@@ -84,7 +84,7 @@ const Categories = [
             imageUrl: "",
           },
           {
-            id: "6228fc8bb7e6cb904bbe0dfe",
+            id: "6228fc8bb7e6cb904bbeerfe",
             name: "Coco Tropica ",
             price: 20,
             imageUrl: "",
@@ -108,7 +108,7 @@ const Categories = [
             imageUrl: "",
           },
           {
-            id: "62dfec8bb7e6cb9d8dbds4dfe",
+            id: "62dfec8bb7e6cb9d8dbdse5bg",
             name: "Abacaxi",
             price: 20,
             imageUrl: "",
@@ -284,7 +284,7 @@ const Categories = [
         ],
       },
       {
-        id: "6265fdf558ev054h8dyi5ez",
+        id: "6265fdf558ev054h8dy8der",
         name: "Maximu's",
         products: [
           {
