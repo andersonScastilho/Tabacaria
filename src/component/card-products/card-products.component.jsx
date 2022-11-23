@@ -32,9 +32,9 @@ const CardProducts = (props) => {
     addProductsToPedido(product);
   };
 
-  const handleProductDetails = (categoryId, tipeormarkId, produtoId) => {
-    navigate(`/produto/detalhes/${categoryId}/${tipeormarkId}/${produtoId}`);
-  };
+  // const handleProductDetails = (categoryId, tipeormarkId, produtoId) => {
+  //   navigate(`/produto/detalhes/${categoryId}/${tipeormarkId}/${produtoId}`);
+  // };
 
   return (
     <MenuContainer imageUrl="https://www.dicasecuriosidades.net/wp-content/uploads/2019/05/gandalf-facts.jpg">
@@ -51,7 +51,7 @@ const CardProducts = (props) => {
                       <ImageProduct src={product.imageUrl} />
                       <NameProduct>{product.name}</NameProduct>
                       <PriceProduct>R${product.price},00</PriceProduct>
-                      {isAuthenticated && props.edit === true ? (
+                      {/* {isAuthenticated && props.edit === true ? (
                         <CustomButton
                           key={product.id}
                           onClick={() =>
@@ -64,7 +64,7 @@ const CardProducts = (props) => {
                         >
                           Editar Produto
                         </CustomButton>
-                      ) : null}
+                      ) : null} */}
                       {props.customButton ? (
                         <CustomButton
                           key={product.id}
@@ -85,7 +85,7 @@ const CardProducts = (props) => {
                       <ImageProduct src={product.imageUrl} />
                       <NameProduct>{product.name}</NameProduct>
                       <PriceProduct>R${product.price},00</PriceProduct>
-                      {isAuthenticated && props.edit === true ? (
+                      {/* {isAuthenticated && props.edit === true ? (
                         <CustomButton
                           key={product.id}
                           onClick={() =>
@@ -98,7 +98,7 @@ const CardProducts = (props) => {
                         >
                           Editar Produto
                         </CustomButton>
-                      ) : null}
+                      ) : null} */}
                       {props.customButton ? (
                         <CustomButton
                           key={product.id}
