@@ -120,27 +120,47 @@ const FechamentoPage = () => {
           <TitleFechamento>Fechamento</TitleFechamento>
           <FechamentoItemContent>
             <InfoNameText>Quantidade de pedidos: </InfoNameText>
-            <InfoText>{`${TotalRequest}`}</InfoText>
+            <InfoText>
+              {TotalRequest !== undefined ? `${TotalRequest}` : null}
+            </InfoText>
           </FechamentoItemContent>
           <FechamentoItemContent>
             <InfoNameText>Pagamento em dinheiro: </InfoNameText>
-            <InfoText>{`${PaymentInDinheiro?.length}`}</InfoText>
+            <InfoText>
+              {PaymentInDinheiro !== undefined
+                ? `${PaymentInDinheiro?.length}`
+                : null}
+            </InfoText>
           </FechamentoItemContent>
           <FechamentoItemContent>
             <InfoNameText>Pagamento no cartao debito:</InfoNameText>
-            <InfoText>{`${PaymentInDebitCard?.length}`}</InfoText>
+            <InfoText>
+              {PaymentInDebitCard !== undefined
+                ? `${PaymentInDebitCard?.length}`
+                : null}
+            </InfoText>
           </FechamentoItemContent>
           <FechamentoItemContent>
             <InfoNameText>Pagamento no cartao credito:</InfoNameText>
-            <InfoText>{`${PaymentInCreditCard?.length}`}</InfoText>
+            <InfoText>
+              {PaymentInCreditCard !== undefined
+                ? `${PaymentInCreditCard?.length}`
+                : null}
+            </InfoText>
           </FechamentoItemContent>
           <FechamentoItemContent>
             <InfoNameText>Pagamento no pix:</InfoNameText>
-            <InfoText> {`${PaymentInPix?.length}`}</InfoText>
+            <InfoText>
+              {PaymentInPix !== undefined ? `${PaymentInPix?.length}` : null}
+            </InfoText>
           </FechamentoItemContent>
           <FechamentoItemContent>
             <InfoNameText>Lucro Total:</InfoNameText>
-            <InfoText> {`R$${PriceTotalRequest}`}</InfoText>
+            <InfoText>
+              {PriceTotalRequest !== undefined
+                ? `R$${PriceTotalRequest}`
+                : null}
+            </InfoText>
           </FechamentoItemContent>
         </FechamentoContent>
       </FechamentoContainer>
