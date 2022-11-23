@@ -12,7 +12,7 @@ import { ButtonContainer, HeaderContainer, TitleHeader } from "./header.styles";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
-  const { isAuthenticated } = useContext(UserContext);
+  const { isAuthenticated, currentUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleRequestClick = () => {
@@ -24,6 +24,10 @@ const Header = () => {
   const handleLoginClick = () => {
     navigate("/login");
   };
+  const handleFechamentoClick = () => {
+    navigate("/fechamento");
+  };
+  console.log(currentUser);
   return (
     <HeaderContainer imageUrl={MaximusImage}>
       <GiMagicHat color="#fff" size={50} />
@@ -33,6 +37,9 @@ const Header = () => {
           <>
             <CustomButton onClick={handleCaixaClick}>Caixa</CustomButton>
             <CustomButton onClick={handleRequestClick}>Pedidos</CustomButton>
+            <CustomButton onClick={handleFechamentoClick}>
+              Fechamento
+            </CustomButton>
             <CustomButton onClick={() => signOut(auth)}>
               <RiLogoutBoxRLine size={15} />
             </CustomButton>
