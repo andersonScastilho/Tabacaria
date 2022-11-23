@@ -492,6 +492,163 @@ const Categories = [
           },
         ],
       },
+      {
+        id: "6dfsf1d5fs5f15dsf15eif834b",
+        name: "Whisk",
+        products: [
+          {
+            id: "d5dsaf4ddd8f5sd4f88e3fdf",
+            name: "Cavalo Branco",
+            price: 25,
+            imageUrl: "",
+          },
+          {
+            id: "d5dsaf4ddd8f5sd4f88elvsd",
+            name: "Red Label",
+            price: 30,
+            imageUrl: "",
+          },
+          {
+            id: "d5dsaf4ddd8f5sd4f88dpcvb",
+            name: "Jack Daniel's",
+            price: 35,
+            imageUrl: "",
+          },
+          {
+            id: "d5dsaf4ddd8f5sd4f855sdvi",
+            name: "Black Label",
+            price: 40,
+            imageUrl: "",
+          },
+          {
+            id: "6228fc8bb7e6cb904bb8dube",
+            name: "Double Black",
+            price: 50,
+            imageUrl: "",
+          },
+          {
+            id: "6228fc8bb7e6cb9048dçvirc",
+            name: "Gold Label",
+            price: 50,
+            imageUrl: "",
+          },
+          {
+            id: "fds55s4456sfsdfee4ef4f5e",
+            name: "Combo Cavalo Branco",
+            price: 160,
+            imageUrl: "",
+          },
+          {
+            id: "6o5evh8bb7e6cb904bbedafe",
+            name: "Combo Red Label",
+            price: 200,
+            imageUrl: "",
+          },
+          {
+            id: "d5e1g4ntjut2j44jtkuj56yt",
+            name: "Combo Jack Daniel's",
+            price: 280,
+            imageUrl: "",
+          },
+          {
+            id: "6dpe538bb7e6cb5d8ev5ge8v",
+            name: "Combo Black Label",
+            price: 320,
+            imageUrl: "",
+          },
+          {
+            id: "6228fc8bb7e78dfdasfd4ere2",
+            name: "Combo Double Black",
+            price: 420,
+            imageUrl: "",
+          },
+          {
+            id: "6228fc8bb7e78dfdasfepv4er",
+            name: "Combo Gold Label",
+            price: 520,
+            imageUrl: "",
+          },
+        ],
+      },
+      {
+        id: "6dfsf1d5fs5f15dsfs5f1",
+        name: "Chop Germania Pilsen",
+        products: [
+          {
+            id: "d5dsaf4ddd8f5sd4f88evpss",
+            name: "Copo",
+            price: 15,
+            imageUrl: "",
+          },
+          {
+            id: "d5dsaf4ddd8f5sd4f85de9bd",
+            name: "Torre 2,5L",
+            price: 60,
+            imageUrl: "",
+          },
+          {
+            id: "d5dsaf4ddd8f5sd4f8558dpv",
+            name: "Torre 3,5L",
+            price: 80,
+            imageUrl: "",
+          },
+        ],
+      },
+      {
+        id: "6dfsf1d5fs5f158evf5s15f1",
+        name: "Torre de Caipirinha",
+        products: [
+          {
+            id: "d5a8dvdddd8f5sd4f85dsfa0",
+            name: "Budwiser",
+            price: 80,
+            imageUrl: "",
+          },
+          {
+            id: "d5dsaf4ddd8f8dpvf85ds12d",
+            name: "De vinho c/ yakult",
+            price: 100,
+            imageUrl: "",
+          },
+          {
+            id: "d5dsaf4ddd8f5sd8dpv5dvh8",
+            name: "De Vodka 3,5L",
+            price: 80,
+            imageUrl: "",
+          },
+          {
+            id: "d5ds8dpvdd8f5sd8dpv5dxf8",
+            name: "De Vodka c/ yakult 3,5L",
+            price: 100,
+            imageUrl: "",
+          },
+        ],
+      },
+      {
+        id: "6dfsf1d5fs5f15dsfidpvs15f1",
+        name: "Outros",
+        products: [
+          {
+            id: "d5dsaf4ddd88dvd4f85dsfa0",
+            name: "Coca Cola 350ml",
+            price: 5,
+            imageUrl: "",
+          },
+          {
+            id: "d5dsaf4dd8dpbd4f85ds1fds",
+            name: "Red Bull 250ml",
+            price: 10,
+            imageUrl:
+              "https://www.heineken.com/media-la/01pfxdqq/heineken-original-bottle.png?quality=85",
+          },
+          {
+            id: "d5dsaf4ddd8dgbf4f855dvh8",
+            name: "Agua Mineral 300ml",
+            price: 3,
+            imageUrl: "",
+          },
+        ],
+      },
     ],
   },
 ];
