@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useAlert } from "react-alert";
 import { useParams } from "react-router-dom";
-import { BsFillPersonFill } from "react-icons/bs";
+import { BsFillPersonFill, BsEyeSlashFill } from "react-icons/bs";
 import { BiX, BiCheck } from "react-icons/bi";
 import { GiTable } from "react-icons/gi";
 import { useForm } from "react-hook-form";
@@ -141,7 +141,7 @@ const DetailsPage = () => {
             </DataRequestContainer>
             <DataRequestContainer>
               <DataRequestText>
-                <GiTable color="black" size={29} />
+                <BsEyeSlashFill />
               </DataRequestText>
               <DataRequestText>Observação:</DataRequestText>
               <DataRequestText>{request.observation}</DataRequestText>
