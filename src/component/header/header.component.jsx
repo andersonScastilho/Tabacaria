@@ -30,7 +30,12 @@ const Header = () => {
   console.log(currentUser);
   return (
     <HeaderContainer imageUrl={MaximusImage}>
-      <GiMagicHat color="#fff" size={50} />
+      <GiMagicHat
+        style={{ cursor: "pointer" }}
+        color="#fff"
+        size={50}
+        onClick={() => navigate("/")}
+      />
       <TitleHeader>Em densenvolvimento</TitleHeader>
       <ButtonContainer>
         {isAuthenticated && (
