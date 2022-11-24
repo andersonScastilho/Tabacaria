@@ -57,6 +57,8 @@ const FechamentoPage = () => {
 
     let dateInicio = new Date(data.dateInicio); //29/01/2020
     let horaInicio = `${data.horaInicio}:59`;
+    let dateFim = new Date(data.dateFim);
+    let horaFim = `${data.horaFim}:59`;
 
     let dataInicioFormatada =
       adicionaZero(dateInicio.getDate() + 1).toString() +
@@ -64,10 +66,6 @@ const FechamentoPage = () => {
       adicionaZero(dateInicio.getMonth() + 1).toString() +
       "/" +
       dateInicio.getFullYear();
-
-    let dateFim = new Date(data.dateFim);
-
-    let horaFim = `${data.horaFim}:59`;
 
     let dataFimFormatada =
       adicionaZero(dateFim.getDate() + 1).toString() +
