@@ -58,18 +58,20 @@ const CardProducts = (props) => {
   return (
     <MenuContainer imageUrl="https://www.dicasecuriosidades.net/wp-content/uploads/2019/05/gandalf-facts.jpg">
       {isLoading && <LoadingComponent />}
-      <input
-        type="text"
-        value={busca}
-        onChange={(event) => setBusca(event.target.value)}
-      />
-      <ul>
-        {frutasFiltrada.map((produto) => (
-          <li style={{ color: "white" }} key={produto.id}>
-            {produto}
-          </li>
-        ))}
-      </ul>
+      <div>
+        <input
+          type="text"
+          value={busca}
+          onChange={(event) => setBusca(event.target.value)}
+        />
+        <ul>
+          {frutasFiltrada.map((produto) => (
+            <li style={{ color: "white" }} key={produto.id}>
+              {produto}
+            </li>
+          ))}
+        </ul>
+      </div>
       {categories.map((category) => (
         <MenuContent key={category.id}>
           <TitleCategory>{category.name}</TitleCategory>
