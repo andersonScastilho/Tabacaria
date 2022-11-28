@@ -13,7 +13,6 @@ export const RequestContext = createContext({
 
 const RequestContextProvider = ({ children }) => {
   const [request, setRequest] = useState([]);
-  const [requestAllMoment, setRequestAllMoment] = useState([]);
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -35,26 +34,8 @@ const RequestContextProvider = ({ children }) => {
     }
   };
 
-  const fetchPedidosAllMoment = async () => {
-    try {
-      setIsLoading(true);
-      const pedidosFromFirestore = [];
-      const querySnapshot = await getDocs(collection(db, "Pedidos"));
-      querySnapshot.forEach((doc) => {
-        let data = { ...doc.data(), idFromFirestore: doc.id };
-        pedidosFromFirestore.push(data);
-      });
-      setRequestAllMoment(pedidosFromFirestore);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
   useEffect(() => {
-    setTimeout(() => {
-      fetchPedidos();
-    }, 5000);
+    fetchPedidos();
   }, []);
 
   return (
