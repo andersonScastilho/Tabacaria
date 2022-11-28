@@ -599,12 +599,6 @@ const Categories = [
         name: "Torre de Caipirinha",
         products: [
           {
-            id: "d5a8dvdddd8f5sd4f85dsfa0",
-            name: "Budwiser",
-            price: 80,
-            imageUrl: "",
-          },
-          {
             id: "d5dsaf4ddd8f8dpvf85ds12d",
             name: "De vinho c/ yakult",
             price: 100,
