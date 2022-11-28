@@ -17,9 +17,10 @@ import {
   RequestsContent,
   SpanDescription,
 } from "./request.style";
+import LoadingComponent from "../../component/loading/loading.component";
 
 const RequestPage = () => {
-  const { request } = useContext(RequestContext);
+  const { request, isLoading } = useContext(RequestContext);
 
   const date = new Date();
 
@@ -50,6 +51,7 @@ const RequestPage = () => {
 
   return (
     <>
+      {isLoading && <LoadingComponent />}
       <Header />
       <RequestContainer>
         <FilterSelect

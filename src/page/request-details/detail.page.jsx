@@ -29,7 +29,7 @@ import {
 } from "./details.style";
 
 const DetailsPage = () => {
-  const { request } = useContext(RequestContext);
+  const { request, fetchPedidos } = useContext(RequestContext);
   const { currentUser } = useContext(UserContext);
   const { id } = useParams();
   const alert = useAlert();
@@ -74,9 +74,8 @@ const DetailsPage = () => {
         }),
       ],
     });
-    setTimeout(() => {
-      window.location.reload(true);
-    }, 700);
+    alert.success("O status do item foi alterado");
+    fetchPedidos();
   };
 
   const handleFinalizeRequest = async (data) => {
@@ -90,12 +89,7 @@ const DetailsPage = () => {
         await updateDoc(requestRef, {
           status: "finalizado",
         });
-
         alert.success("O status do pedido foi alterado");
-
-        setTimeout(() => {
-          window.location.reload(true);
-        }, 700);
       } else if (
         currentRequest[0].formOfPayment === "false" &&
         data.formOfPayment !== "false"
@@ -107,16 +101,13 @@ const DetailsPage = () => {
         });
 
         alert.success("O status do pedido foi alterado");
-
-        setTimeout(() => {
-          window.location.reload(true);
-        }, 700);
       } else {
         alert.error("Informe a forma de pagamento");
       }
     } else {
       alert.error("Tem item pendente");
     }
+    fetchPedidos();
   };
 
   return (
