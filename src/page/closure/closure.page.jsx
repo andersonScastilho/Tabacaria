@@ -52,15 +52,15 @@ const ClosurePage = () => {
   });
 
   const handleSubmitPress = (data) => {
+    let dateInicio = new Date(data.dateInicio); //29/01/2020
+    let horaInicio = `${data.horaInicio}:59`;
+    let horaFim = `${data.horaFim}:59`;
+    let dateFim = new Date(data.dateFim);
+
     function adicionaZero(numero) {
       if (numero <= 9) return "0" + numero;
       else return numero;
     }
-
-    let dateInicio = new Date(data.dateInicio); //29/01/2020
-    let horaInicio = `${data.horaInicio}:59`;
-    let dateFim = new Date(data.dateFim);
-    let horaFim = `${data.horaFim}:59`;
 
     let dataInicioFormatada =
       adicionaZero(dateInicio.getDate() + 1).toString() +
