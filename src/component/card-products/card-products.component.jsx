@@ -66,9 +66,14 @@ const CardProducts = (props) => {
         />
         <ul>
           {frutasFiltrada.map((produto) => (
-            <li style={{ color: "white" }} key={produto.id}>
-              {produto}
-            </li>
+            <a href={`#${produto}`}>
+              <li
+                style={{ color: "white", cursor: "pointer" }}
+                key={produto.name}
+              >
+                {produto}
+              </li>
+            </a>
           ))}
         </ul>
       </div>
@@ -80,7 +85,7 @@ const CardProducts = (props) => {
                 <ProductsContainer key={tipe.id}>
                   <TipeDrinks>{tipe.name}</TipeDrinks>
                   {tipe.products.map((product) => (
-                    <ProductsContent key={product.id}>
+                    <ProductsContent key={product.id} id={product.name}>
                       <ImageProduct src={product.imageUrl} />
                       <NameProduct>{product.name}</NameProduct>
                       <PriceProduct>R${product.price},00</PriceProduct>
