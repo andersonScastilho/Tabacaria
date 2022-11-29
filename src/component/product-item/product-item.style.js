@@ -6,6 +6,7 @@ export const ProductsContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   box-shadow: 1px 1px 1px #222;
+  max-width: 350px;
   border-radius: 5px;
   background-color: #dee7e7;
   padding: 5px;
