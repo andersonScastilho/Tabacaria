@@ -33,7 +33,6 @@ const CardProducts = (props) => {
   return (
     <MenuContainer imageUrl="https://www.dicasecuriosidades.net/wp-content/uploads/2019/05/gandalf-facts.jpg">
       {isLoading && <LoadingComponent />}
-
       {categories.map((category) => (
         <MenuContent key={category.id}>
           <TitleCategory>{category.name}</TitleCategory>
@@ -42,11 +41,7 @@ const CardProducts = (props) => {
                 <ProductsContainer key={tipe.id}>
                   <TipeDrinks>{tipe.name}</TipeDrinks>
                   {tipe.products.map((product) => (
-                    <ProductItemComponent
-                      name={product.name}
-                      imageUrl={product.imageUrl}
-                      price={product.price}
-                    />
+                    <ProductItemComponent product={product} />
                   ))}
                 </ProductsContainer>
               ))
@@ -54,11 +49,7 @@ const CardProducts = (props) => {
                 <ProductsContainer key={mark.id}>
                   <MarkRosh>{mark.name}</MarkRosh>
                   {mark.products.map((product) => (
-                    <ProductItemComponent
-                      name={product.name}
-                      imageUrl={product.imageUrl}
-                      price={product.price}
-                    />
+                    <ProductItemComponent product={product} />
                   ))}
                 </ProductsContainer>
               ))}
