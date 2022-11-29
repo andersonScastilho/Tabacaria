@@ -3,7 +3,7 @@ import {
   NameProduct,
   PriceProduct,
   ProductsContainer,
-} from "./product.style";
+} from "./product-item.style";
 import { BsPlus } from "react-icons/bs";
 
 import CustomButton from "../custom-button/custom-button.component";

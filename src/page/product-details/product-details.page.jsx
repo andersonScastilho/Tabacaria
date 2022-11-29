@@ -1,8 +1,9 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
-import { CategoryContext } from "../../contexts/categories.context";
 import { BsPencil } from "react-icons/bs";
-import { useState } from "react";
+
+import { CategoryContext } from "../../contexts/categories.context";
+
 import {
   DetailsProductContainer,
   DetailsProductContent,
@@ -10,7 +11,7 @@ import {
   ProductContainer,
 } from "./product-details.style";
 
-const ProductDetails = () => {
+const ProductDetailsPage = () => {
   const { categories } = useContext(CategoryContext);
   const { categoryId, typeormarkId, produtoId } = useParams();
 
@@ -62,4 +63,4 @@ const ProductDetails = () => {
     </DetailsProductContainer>
   );
 };
-export default ProductDetails;
+export default ProductDetailsPage;

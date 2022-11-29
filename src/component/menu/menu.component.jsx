@@ -3,7 +3,7 @@ import { useContext } from "react";
 import ProductItemComponent from "../product-item/product-item.component";
 
 import { CategoryContext } from "../../contexts/categories.context";
-import { CaixaContext } from "../../contexts/caixa.context";
+import { CashierContext } from "../../contexts/cashier.context";
 
 import {
   MenuContainer,
@@ -15,7 +15,7 @@ import {
 
 const MenuComponent = (props) => {
   const { categories } = useContext(CategoryContext);
-  const { addProductsToPedido } = useContext(CaixaContext);
+  const { addProductsToPedido } = useContext(CashierContext);
 
   const handleAddProductToCaixa = (product) => {
     addProductsToPedido(product);

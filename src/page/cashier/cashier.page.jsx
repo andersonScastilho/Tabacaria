@@ -6,12 +6,13 @@ import { useAlert } from "react-alert";
 import { addDoc, collection } from "firebase/firestore";
 
 import { RequestContext } from "../../contexts/request.context";
-import { CaixaContext } from "../../contexts/caixa.context";
+import { CashierContext } from "../../contexts/cashier.context";
 import { db } from "../../config/firebase.config";
 
 import Header from "../../component/header/header.component";
 import Footer from "../../component/footer/footer.component";
 import CustomButton from "../../component/custom-button/custom-button.component";
+import MenuComponent from "../../component/menu/menu.component";
 import InputErrorMessage from "../../component/input-error-messag/input-error.component";
 
 import {
@@ -29,9 +30,9 @@ import {
   SelectOfPayment,
   OptionOfPayment,
   InputTextArea,
-} from "./caixa.style";
-import MenuComponent from "../../component/menu/menu.component";
-const Cashier = () => {
+} from "./cashier.style";
+
+const CashierPage = () => {
   const {
     register,
     handleSubmit,
@@ -44,7 +45,7 @@ const Cashier = () => {
     productsTotalPrice,
     clearProducts,
     decreaseProductQuantity,
-  } = useContext(CaixaContext);
+  } = useContext(CashierContext);
   const { countRequest } = useContext(RequestContext);
 
   const alert = useAlert();
@@ -172,4 +173,4 @@ const Cashier = () => {
     </>
   );
 };
-export default Cashier;
+export default CashierPage;

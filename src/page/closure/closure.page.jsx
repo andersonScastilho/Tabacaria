@@ -1,9 +1,13 @@
-import { useContext } from "react";
-import Footer from "../../component/footer/footer.component";
-import Header from "../../component/header/header.component";
+import { useState, useContext } from "react";
+import { useForm } from "react-hook-form";
+
 import { UserContext } from "../../contexts/user.context";
 import { RequestContext } from "../../contexts/request.context";
-import { useForm } from "react-hook-form";
+
+import Header from "../../component/header/header.component";
+import Footer from "../../component/footer/footer.component";
+import CustomButton from "../../component/custom-button/custom-button.component";
+
 import {
   FechamentoContainer,
   FechamentoContent,
@@ -14,11 +18,9 @@ import {
   InputFilterFechamento,
   LabelFilterFechamento,
   TitleFechamento,
-} from "./fechamento.styles";
-import { useState } from "react";
-import CustomButton from "../../component/custom-button/custom-button.component";
+} from "./closure.styles";
 
-const FechamentoPage = () => {
+const ClosurePage = () => {
   // const { currentUser, isAuthenticated } = useContext(UserContext);
   const { request } = useContext(RequestContext);
 
@@ -166,4 +168,4 @@ const FechamentoPage = () => {
     </>
   );
 };
-export default FechamentoPage;
+export default ClosurePage;

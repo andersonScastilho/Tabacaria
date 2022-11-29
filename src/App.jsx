@@ -1,19 +1,20 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
 import { useContext } from "react";
 
 import { auth } from "./config/firebase.config";
 import { UserContext } from "./contexts/user.context";
 import { onAuthStateChanged } from "firebase/auth";
 
+import AuthenticationGuard from "./guards/authentication.component";
+
 import HomePage from "./page/home/home.page";
 import LoginPage from "./page/login/login.page";
-import { useState } from "react";
-import Caixa from "./page/caixa/caixa.page";
+import RequestDetailsPage from "./page/request-details/request-details.page";
+import CashierPage from "./page/cashier/cashier.page";
 import RequestPage from "./page/request/request.page";
-import AuthenticationGuard from "./guards/authentication.component";
-import DetailsPage from "./page/request-details/detail.page";
-import ProductDetails from "./page/product-details/product-details.page";
-import FechamentoPage from "./page/fechamento/fechamento.page";
+import ProductDetailPage from "./page/product-details/product-details.page";
+import ClosurePage from "./page/closure/closure.page";
 
 const App = () => {
   const [isInitialize, setIsInitialize] = useState(true);
@@ -45,7 +46,7 @@ const App = () => {
           path="/caixa"
           element={
             <AuthenticationGuard>
-              <Caixa />
+              <CashierPage />
             </AuthenticationGuard>
           }
         />
@@ -61,7 +62,7 @@ const App = () => {
           path="/pedido/detalhes/:id"
           element={
             <AuthenticationGuard>
-              <DetailsPage />
+              <RequestDetailsPage />
             </AuthenticationGuard>
           }
         />
@@ -69,7 +70,7 @@ const App = () => {
           path="/produto/detalhes/:categoryId/:typeormarkId/:produtoId"
           element={
             <AuthenticationGuard>
-              <ProductDetails />
+              <ProductDetailPage />
             </AuthenticationGuard>
           }
         />
@@ -77,7 +78,7 @@ const App = () => {
           path="/fechamento"
           element={
             <AuthenticationGuard>
-              <FechamentoPage />
+              <ClosurePage />
             </AuthenticationGuard>
           }
         />

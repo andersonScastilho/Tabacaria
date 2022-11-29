@@ -7,7 +7,7 @@ import CategoryContextProvider from "./contexts/categories.context";
 import UserContextProvider from "./contexts/user.context";
 import { positions, transitions, Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
-import CaixaContextProvider from "./contexts/caixa.context";
+import CashierContextProvider from "./contexts/cashier.context";
 import RequestContextProvider from "./contexts/request.context";
 
 const options = {
@@ -21,13 +21,13 @@ root.render(
   <React.StrictMode>
     <CategoryContextProvider>
       <UserContextProvider>
-        <CaixaContextProvider>
+        <CashierContextProvider>
           <RequestContextProvider>
             <AlertProvider template={AlertTemplate} {...options}>
               <App />
             </AlertProvider>
           </RequestContextProvider>
-        </CaixaContextProvider>
+        </CashierContextProvider>
       </UserContextProvider>
     </CategoryContextProvider>
   </React.StrictMode>

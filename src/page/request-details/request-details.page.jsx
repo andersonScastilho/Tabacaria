@@ -26,9 +26,9 @@ import {
   StatusText,
   SelectOfPayment,
   OptionOfPayment,
-} from "./details.style";
+} from "./request-details.style";
 
-const DetailsPage = () => {
+const RequestDatilsPage = () => {
   const { request, fetchPedidos } = useContext(RequestContext);
   const { currentUser } = useContext(UserContext);
   const { id } = useParams();
@@ -223,4 +223,4 @@ const DetailsPage = () => {
     </>
   );
 };
-export default DetailsPage;
+export default RequestDatilsPage;
