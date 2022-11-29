@@ -21,7 +21,7 @@ const Categories = [
     displayName: "Rosh",
     imageUrl:
       "https://imagensemoldes.com.br/wp-content/uploads/2020/11/Desenho-Narguile-PNG.png",
-    marks: [
+    tipeOrMark: [
       {
         id: "6265fdf55548df4h812j54j",
         name: "Zomo",
@@ -345,7 +345,7 @@ const Categories = [
     displayName: "Bebidas",
     imageUrl:
       "https://static1.minhavida.com.br/articles/fb/8e/3b/b2/bebidas-destiladas-e-fermentadas-orig-1.jpg",
-    tipes: [
+    tipeOrMark: [
       {
         id: "21dfas1f515fdsf58mnjd",
         name: "Drinks",

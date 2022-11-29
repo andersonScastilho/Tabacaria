@@ -15,13 +15,13 @@ export const MenuContent = styled.div`
   border-radius: 5px;
   gap: 10px;
 `;
-export const TitleCategory = styled.h3`
+export const TitleCategory = styled.h2`
   color: #fff;
   border-radius: 3px;
   text-align: center;
   background-color: #222;
 `;
-export const ProductsContainer = styled.div`
+export const ProductContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 3px;
@@ -29,14 +29,7 @@ export const ProductsContainer = styled.div`
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 5px;
 `;
-
-export const TipeDrinks = styled.h4`
-  color: #fff;
-  border-radius: 3px;
-  text-align: center;
-  background-color: #a92727;
-`;
-export const MarkRosh = styled.h4`
+export const TipeOrMarkName = styled.h3`
   color: #fff;
   border-radius: 3px;
   text-align: center;

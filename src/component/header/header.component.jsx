@@ -35,12 +35,8 @@ const Header = () => {
   const allfrutas = [];
 
   categories.map((category) =>
-    category.name === "Bebidas" ? (
-      category.tipes.map((type) =>
-        type.products.map((product) => allfrutas.push(product))
-      )
-    ) : (
-      <></>
+    category.tipeOrMark.map((type) =>
+      type.products.map((product) => allfrutas.push(product))
     )
   );
 

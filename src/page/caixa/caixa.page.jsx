@@ -13,7 +13,6 @@ import Header from "../../component/header/header.component";
 import Footer from "../../component/footer/footer.component";
 import CustomButton from "../../component/custom-button/custom-button.component";
 import InputErrorMessage from "../../component/input-error-messag/input-error.component";
-import CardProducts from "../../component/card-products/card-products.component";
 
 import {
   LabelInputRequired,
@@ -31,7 +30,7 @@ import {
   OptionOfPayment,
   InputTextArea,
 } from "./caixa.style";
-
+import MenuComponent from "../../component/menu/menu.component";
 const Cashier = () => {
   const {
     register,
@@ -167,7 +166,7 @@ const Cashier = () => {
             Adicionar pedido
           </CustomButton>
         </CashierContent>
-        <CardProducts button={true} customButton={<BsPlus />} />
+        <MenuComponent button={true} customButton={<BsPlus />} />
       </CashierContainer>
       <Footer />
     </>
