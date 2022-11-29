@@ -41,7 +41,11 @@ const CardProducts = (props) => {
                 <ProductsContainer key={tipe.id}>
                   <TipeDrinks>{tipe.name}</TipeDrinks>
                   {tipe.products.map((product) => (
-                    <ProductItemComponent product={product} />
+                    <ProductItemComponent
+                      key={product.id}
+                      product={product}
+                      id={product.name}
+                    />
                   ))}
                 </ProductsContainer>
               ))
@@ -49,7 +53,11 @@ const CardProducts = (props) => {
                 <ProductsContainer key={mark.id}>
                   <MarkRosh>{mark.name}</MarkRosh>
                   {mark.products.map((product) => (
-                    <ProductItemComponent product={product} />
+                    <ProductItemComponent
+                      key={product.id}
+                      product={product}
+                      id={product.name}
+                    />
                   ))}
                 </ProductsContainer>
               ))}

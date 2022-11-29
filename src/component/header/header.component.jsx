@@ -40,17 +40,19 @@ const Header = () => {
         type.products.map((product) => allfrutas.push(product))
       )
     ) : (
-      <p key={"oi"}></p>
+      <></>
     )
   );
 
   const frutas = [];
-  allfrutas.filter((fruta) => frutas.push(fruta.name));
 
+  allfrutas.filter((fruta) => frutas.push(fruta));
+
+  console.log(frutas);
   const LowerBuscar = busca.toLowerCase();
 
   const frutasFiltrada = frutas?.filter((fruta) =>
-    fruta.toLowerCase().includes(LowerBuscar)
+    fruta.name.toLowerCase().includes(LowerBuscar)
   );
   return (
     <HeaderContainer imageUrl={MaximusImage}>
@@ -75,8 +77,8 @@ const Header = () => {
             }}
           >
             {frutasFiltrada.map((produto) => (
-              <a href={`#${produto}`}>
-                <ProductItemCompoent name={produto} />
+              <a href={`#${produto.name}`}>
+                <ProductItemCompoent product={produto} />
               </a>
             ))}
           </div>
