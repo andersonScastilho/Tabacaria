@@ -12,10 +12,12 @@ import ProductItemCompoent from "../product-item/product-item.component";
 import { ButtonContainer, HeaderContainer, TitleHeader } from "./header.styles";
 import { useNavigate } from "react-router-dom";
 import { CategoryContext } from "../../contexts/categories.context";
+import { CashierContext } from "../../contexts/cashier.context";
 
 const Header = (props) => {
   const { isAuthenticated, currentUser } = useContext(UserContext);
   const { categories } = useContext(CategoryContext);
+  const { addProductsToPedido } = useContext(CashierContext);
 
   const navigate = useNavigate();
 
@@ -51,6 +53,9 @@ const Header = (props) => {
   const frutasFiltrada = frutas?.filter((fruta) =>
     fruta.name.toLowerCase().includes(LowerBuscar)
   );
+  const handleAddProductToCashier = (product) => {
+    addProductsToPedido(product);
+  };
   return (
     <HeaderContainer imageUrl={MaximusImage}>
       <GiMagicHat
@@ -75,9 +80,11 @@ const Header = (props) => {
               }}
             >
               {frutasFiltrada.map((produto) => (
-                <a href={`#${produto.name}`}>
-                  <ProductItemCompoent button={true} product={produto} />
-                </a>
+                <ProductItemCompoent
+                  button={true}
+                  product={produto}
+                  onClick={() => handleAddProductToCashier(produto)}
+                />
               ))}
             </div>
           )}
