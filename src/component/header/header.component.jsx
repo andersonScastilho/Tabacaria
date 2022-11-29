@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { GiMagicHat } from "react-icons/gi";
 import { UserContext } from "../../contexts/user.context";
 import { signOut } from "firebase/auth";
@@ -10,9 +10,11 @@ import MaximusImage from "../../assets/Maximus_Image.jpeg";
 
 import { ButtonContainer, HeaderContainer, TitleHeader } from "./header.styles";
 import { useNavigate } from "react-router-dom";
+import { CategoryContext } from "../../contexts/categories.context";
 
 const Header = () => {
   const { isAuthenticated, currentUser } = useContext(UserContext);
+  const { categories } = useContext(CategoryContext);
   const navigate = useNavigate();
 
   const handleRequestClick = () => {
@@ -27,7 +29,28 @@ const Header = () => {
   const handleFechamentoClick = () => {
     navigate("/fechamento");
   };
-  console.log(currentUser);
+  const [busca, setBusca] = useState("");
+
+  const allfrutas = [];
+
+  categories.map((category) =>
+    category.name === "Bebidas" ? (
+      category.tipes.map((type) =>
+        type.products.map((product) => allfrutas.push(product))
+      )
+    ) : (
+      <p key={"oi"}></p>
+    )
+  );
+
+  const frutas = [];
+  allfrutas.filter((fruta) => frutas.push(fruta.name));
+
+  const LowerBuscar = busca.toLowerCase();
+
+  const frutasFiltrada = frutas?.filter((fruta) =>
+    fruta.toLowerCase().includes(LowerBuscar)
+  );
   return (
     <HeaderContainer imageUrl={MaximusImage}>
       <GiMagicHat
@@ -37,6 +60,32 @@ const Header = () => {
         onClick={() => navigate("/")}
       />
       <TitleHeader>Em densenvolvimento</TitleHeader>
+      <div>
+        <input
+          type="text"
+          value={busca}
+          onChange={(event) => setBusca(event.target.value)}
+        />
+        {busca !== "" && (
+          <div
+            style={{
+              position: "absolute",
+              background: "white",
+            }}
+          >
+            {frutasFiltrada.map((produto) => (
+              <a href={`#${produto}`}>
+                <p
+                  style={{ color: "black", cursor: "pointer" }}
+                  key={produto.name}
+                >
+                  {produto}
+                </p>
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
       <ButtonContainer>
         {isAuthenticated && (
           <>

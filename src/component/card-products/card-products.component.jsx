@@ -32,51 +32,11 @@ const CardProducts = (props) => {
   const handleAddProductsToPedido = (product) => {
     addProductsToPedido(product);
   };
-  const [busca, setBusca] = useState("");
-
-  const allfrutas = [];
-
-  categories.map((category) =>
-    category.name === "Bebidas" ? (
-      category.tipes.map((type) =>
-        type.products.map((product) => allfrutas.push(product))
-      )
-    ) : (
-      <p key={"oi"}></p>
-    )
-  );
-
-  const frutas = [];
-  allfrutas.filter((fruta) => frutas.push(fruta.name));
-
-  const LowerBuscar = busca.toLowerCase();
-
-  const frutasFiltrada = frutas?.filter((fruta) =>
-    fruta.toLowerCase().includes(LowerBuscar)
-  );
 
   return (
     <MenuContainer imageUrl="https://www.dicasecuriosidades.net/wp-content/uploads/2019/05/gandalf-facts.jpg">
       {isLoading && <LoadingComponent />}
-      <div>
-        <input
-          type="text"
-          value={busca}
-          onChange={(event) => setBusca(event.target.value)}
-        />
-        <ul>
-          {frutasFiltrada.map((produto) => (
-            <a href={`#${produto}`}>
-              <li
-                style={{ color: "white", cursor: "pointer" }}
-                key={produto.name}
-              >
-                {produto}
-              </li>
-            </a>
-          ))}
-        </ul>
-      </div>
+
       {categories.map((category) => (
         <MenuContent key={category.id}>
           <TitleCategory>{category.name}</TitleCategory>
