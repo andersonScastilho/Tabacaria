@@ -10,7 +10,9 @@ export const CustomButtonStyle = styled.button`
   align-items: center;
   background-color: #777;
   box-shadow: -2px 2px 0 #222, -2px 2px 0 #000;
-  cursor: pointer;
+  &:hover {
+    cursor: pointer;
+  }
   &:active {
     box-shadow: inset -4px 3px 0 #222;
   }

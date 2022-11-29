@@ -95,7 +95,7 @@ const CashierPage = () => {
 
   return (
     <>
-      <Header />
+      <Header search={true} />
       <CashierContainer imageUrl="https://cdn.discordapp.com/attachments/929130096177053766/1039629996249071687/702883.jpg">
         <CashierContent>
           <LabelInputRequired>Nome</LabelInputRequired>

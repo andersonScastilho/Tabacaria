@@ -13,9 +13,10 @@ import { ButtonContainer, HeaderContainer, TitleHeader } from "./header.styles";
 import { useNavigate } from "react-router-dom";
 import { CategoryContext } from "../../contexts/categories.context";
 
-const Header = () => {
+const Header = (props) => {
   const { isAuthenticated, currentUser } = useContext(UserContext);
   const { categories } = useContext(CategoryContext);
+
   const navigate = useNavigate();
 
   const handleRequestClick = () => {
@@ -59,27 +60,29 @@ const Header = () => {
         onClick={() => navigate("/")}
       />
       <TitleHeader>Em densenvolvimento</TitleHeader>
-      <div>
-        <input
-          type="text"
-          value={busca}
-          onChange={(event) => setBusca(event.target.value)}
-        />
-        {busca !== "" && (
-          <div
-            style={{
-              position: "absolute",
-              background: "white",
-            }}
-          >
-            {frutasFiltrada.map((produto) => (
-              <a href={`#${produto.name}`}>
-                <ProductItemCompoent button={true} product={produto} />
-              </a>
-            ))}
-          </div>
-        )}
-      </div>
+      {props.search && (
+        <div>
+          <input
+            type="text"
+            value={busca}
+            onChange={(event) => setBusca(event.target.value)}
+          />
+          {busca !== "" && (
+            <div
+              style={{
+                position: "absolute",
+                background: "white",
+              }}
+            >
+              {frutasFiltrada.map((produto) => (
+                <a href={`#${produto.name}`}>
+                  <ProductItemCompoent button={true} product={produto} />
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
       <ButtonContainer>
         {isAuthenticated && (
           <>
