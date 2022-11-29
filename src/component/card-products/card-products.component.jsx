@@ -17,13 +17,21 @@ import {
 } from "./card-products.styles";
 // import { useNavigate } from "react-router-dom";
 // import { useState } from "react";
+import { CaixaContext } from "../../contexts/caixa.context";
+
 import ProductItemComponent from "../product-item/product-item.component";
 
 const CardProducts = (props) => {
   const { categories, isLoading } = useContext(CategoryContext);
+  const { addProductsToPedido } = useContext(CaixaContext);
+
   // const { isAuthenticated } = useContext(UserContext);
 
-  // const navigate = useNavigate();
+  // const navigate = useNavigate();  const { addProductsToPedido } = useContext(CaixaContext);
+
+  const handleAddProductToCaixa = (product) => {
+    addProductsToPedido(product);
+  };
 
   return (
     <MenuContainer imageUrl="https://www.dicasecuriosidades.net/wp-content/uploads/2019/05/gandalf-facts.jpg">
@@ -40,7 +48,8 @@ const CardProducts = (props) => {
                       key={product.id}
                       product={product}
                       id={product.name}
-                      button={true}
+                      button={props.button}
+                      onClick={() => handleAddProductToCaixa(product)}
                     />
                   ))}
                 </ProductsContainer>
@@ -53,7 +62,7 @@ const CardProducts = (props) => {
                       key={product.id}
                       product={product}
                       id={product.name}
-                      button={true}
+                      button={props.button}
                     />
                   ))}
                 </ProductsContainer>
