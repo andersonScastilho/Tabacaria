@@ -12,7 +12,7 @@ const ProductItemComponent = ({ imageUrl, name, price, button }) => {
     <ProductsContainer>
       <ImageProduct src={imageUrl} />
       <NameProduct>{name}</NameProduct>
-      <PriceProduct>{price},00</PriceProduct>
+      {price && <PriceProduct>{price},00</PriceProduct>}
       {button === true ? <CustomButton>{<BsPlus />}</CustomButton> : null}
     </ProductsContainer>
   );

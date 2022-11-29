@@ -7,6 +7,7 @@ import { RiLogoutBoxRLine } from "react-icons/ri";
 
 import CustomButton from "../custom-button/custom-button.component";
 import MaximusImage from "../../assets/Maximus_Image.jpeg";
+import ProductItemCompoent from "../product-item/product-item.component";
 
 import { ButtonContainer, HeaderContainer, TitleHeader } from "./header.styles";
 import { useNavigate } from "react-router-dom";
@@ -75,12 +76,7 @@ const Header = () => {
           >
             {frutasFiltrada.map((produto) => (
               <a href={`#${produto}`}>
-                <p
-                  style={{ color: "black", cursor: "pointer" }}
-                  key={produto.name}
-                >
-                  {produto}
-                </p>
+                <ProductItemCompoent name={produto} />
               </a>
             ))}
           </div>
