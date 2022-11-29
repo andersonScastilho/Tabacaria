@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { GiMagicHat } from "react-icons/gi";
+import { BsSearch } from "react-icons/bs";
 import { UserContext } from "../../contexts/user.context";
 import { signOut } from "firebase/auth";
 import { auth } from "../../config/firebase.config";
@@ -55,7 +56,9 @@ const Header = (props) => {
   );
   const handleAddProductToCashier = (product) => {
     addProductsToPedido(product);
+    setBusca("");
   };
+
   return (
     <HeaderContainer imageUrl={MaximusImage}>
       <GiMagicHat
@@ -67,16 +70,36 @@ const Header = (props) => {
       <TitleHeader>Em densenvolvimento</TitleHeader>
       {props.search && (
         <div>
-          <input
-            type="text"
-            value={busca}
-            onChange={(event) => setBusca(event.target.value)}
-          />
+          <div
+            style={{
+              display: "flex",
+              padding: "3px",
+            }}
+          >
+            <input
+              style={{ borderRadius: "5px", padding: "4px" }}
+              type="text"
+              value={busca}
+              onChange={(event) => setBusca(event.target.value)}
+            />
+            {busca === "" && (
+              <p style={{ marginLeft: "-25px", marginTop: "7px" }}>
+                <BsSearch size={20} color="black" />
+              </p>
+            )}
+          </div>
           {busca !== "" && (
             <div
               style={{
                 position: "absolute",
                 background: "white",
+                display: "flex",
+                flexDirection: "column",
+                gap: "7px",
+                maxHeight: "400px",
+                overflow: "auto ",
+                backgroundColor: "darkgray",
+                padding: "7px",
               }}
             >
               {frutasFiltrada.map((produto) => (
