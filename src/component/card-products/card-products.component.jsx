@@ -1,10 +1,10 @@
 import { useContext } from "react";
 
 import { CategoryContext } from "../../contexts/categories.context";
-import { UserContext } from "../../contexts/user.context";
-import { CaixaContext } from "../../contexts/caixa.context";
+// import { UserContext } from "../../contexts/user.context";
+// import { CaixaContext } from "../../contexts/caixa.context";
 
-import CustomButton from "../custom-button/custom-button.component";
+// import CustomButton from "../custom-button/custom-button.component";
 import LoadingComponent from "../loading/loading.component";
 
 import {
@@ -15,20 +15,15 @@ import {
   MarkRosh,
   TipeDrinks,
 } from "./card-products.styles";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+// import { useNavigate } from "react-router-dom";
+// import { useState } from "react";
 import ProductItemComponent from "../product-item/product-item.component";
 
 const CardProducts = (props) => {
   const { categories, isLoading } = useContext(CategoryContext);
-  const { addProductsToPedido } = useContext(CaixaContext);
-  const { isAuthenticated } = useContext(UserContext);
+  // const { isAuthenticated } = useContext(UserContext);
 
-  const navigate = useNavigate();
-
-  const handleAddProductsToPedido = (product) => {
-    addProductsToPedido(product);
-  };
+  // const navigate = useNavigate();
 
   return (
     <MenuContainer imageUrl="https://www.dicasecuriosidades.net/wp-content/uploads/2019/05/gandalf-facts.jpg">
@@ -45,6 +40,7 @@ const CardProducts = (props) => {
                       key={product.id}
                       product={product}
                       id={product.name}
+                      button={true}
                     />
                   ))}
                 </ProductsContainer>
@@ -57,6 +53,7 @@ const CardProducts = (props) => {
                       key={product.id}
                       product={product}
                       id={product.name}
+                      button={true}
                     />
                   ))}
                 </ProductsContainer>

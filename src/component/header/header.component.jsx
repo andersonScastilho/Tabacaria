@@ -78,7 +78,7 @@ const Header = () => {
           >
             {frutasFiltrada.map((produto) => (
               <a href={`#${produto.name}`}>
-                <ProductItemCompoent product={produto} />
+                <ProductItemCompoent button={true} product={produto} />
               </a>
             ))}
           </div>

@@ -167,7 +167,7 @@ const Cashier = () => {
             Adicionar pedido
           </CustomButton>
         </CashierContent>
-        <CardProducts customButton={<BsPlus />} />
+        <CardProducts button={true} customButton={<BsPlus />} />
       </CashierContainer>
       <Footer />
     </>
