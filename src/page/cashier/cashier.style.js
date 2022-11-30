@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const CashierContainer = styled.div`
   display: flex;
   flex: 1 0 auto;
+  min-height: 100%;
   background-color: #282832;
 
   justify-content: center;
@@ -22,6 +23,9 @@ export const CashierContent = styled.div`
   max-height: 850px;
   border-radius: 7px;
   padding: 7px;
+  @media (max-width: 680px) {
+    flex-wrap: wrap-reverse;
+  }
 `;
 export const LabelInputRequired = styled.label`
   color: #fff;
