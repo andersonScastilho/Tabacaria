@@ -17,12 +17,8 @@ export const CashierContainer = styled.div`
 `;
 export const CashierContent = styled.div`
   display: flex;
-  width: 100%;
-  justify-content: space-around;
+  flex-direction: column;
   gap: 5px;
-  max-height: 850px;
-  border-radius: 7px;
-  padding: 7px;
   @media (max-width: 680px) {
     flex-wrap: wrap;
   }
