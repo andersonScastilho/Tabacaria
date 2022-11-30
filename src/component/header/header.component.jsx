@@ -14,6 +14,7 @@ import { ButtonContainer, HeaderContainer, TitleHeader } from "./header.styles";
 import { useNavigate } from "react-router-dom";
 import { CategoryContext } from "../../contexts/categories.context";
 import { CashierContext } from "../../contexts/cashier.context";
+import { useMemo } from "react";
 
 const Header = (props) => {
   const { isAuthenticated, currentUser } = useContext(UserContext);
@@ -48,11 +49,13 @@ const Header = (props) => {
 
   allProducts.filter((product) => products.push(product));
 
-  const LowerBuscar = busca.toLowerCase();
+  const productsFiltred = useMemo(() => {
+    const LowerBuscar = busca.toLowerCase();
 
-  const productsFiltred = products?.filter((product) =>
-    product.name.toLowerCase().includes(LowerBuscar)
-  );
+    return products.filter((product) =>
+      product.name.toLowerCase().includes(LowerBuscar)
+    );
+  }, [busca]);
 
   const handleAddProductToCashier = (product) => {
     addProductsToPedido(product);

@@ -17,6 +17,7 @@ const RequestContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const countRequest = request.length;
+
   const fetchPedidos = async () => {
     try {
       setIsLoading(true);
@@ -39,9 +40,7 @@ const RequestContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <RequestContext.Provider
-      value={{ request, countRequest, isLoading, fetchPedidos }}
-    >
+    <RequestContext.Provider value={{ request, countRequest, isLoading }}>
       {children}
     </RequestContext.Provider>
   );

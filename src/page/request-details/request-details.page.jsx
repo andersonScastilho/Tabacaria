@@ -29,7 +29,7 @@ import {
 } from "./request-details.style";
 
 const RequestDatilsPage = () => {
-  const { request, fetchPedidos } = useContext(RequestContext);
+  const { request } = useContext(RequestContext);
   const { currentUser } = useContext(UserContext);
   const { id } = useParams();
   const alert = useAlert();
@@ -78,7 +78,6 @@ const RequestDatilsPage = () => {
     } else {
       alert.error("Item ja foi finalizado");
     }
-    fetchPedidos();
   };
   const handleFinalizeRequest = async (data) => {
     const requestRef = doc(db, "Pedidos", id);
@@ -109,7 +108,6 @@ const RequestDatilsPage = () => {
     } else {
       alert.error("Tem item pendente");
     }
-    fetchPedidos();
   };
 
   return (
