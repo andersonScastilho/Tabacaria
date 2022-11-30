@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const DetailsRequestContainer = styled.div`
   display: flex;
   flex: 1 0 auto;
+  min-height: 100%;
   padding: 10px;
   align-items: center;
   justify-content: center;
