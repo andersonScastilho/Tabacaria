@@ -82,13 +82,11 @@ const Header = (props) => {
               value={busca}
               onChange={(event) => setBusca(event.target.value)}
             />
-            {busca === "" && (
-              <p style={{ marginLeft: "-25px", marginTop: "7px" }}>
-                <BsSearch size={20} color="black" />
-              </p>
-            )}
+            <p style={{ marginLeft: "-25px", marginTop: "7px" }}>
+              <BsSearch size={17} color="black" />
+            </p>
           </div>
-          {busca !== "" && (
+          {busca !== "" && productsFiltred.length !== 0 && (
             <div
               style={{
                 position: "absolute",
@@ -104,6 +102,7 @@ const Header = (props) => {
             >
               {productsFiltred.map((product) => (
                 <ProductItemCompoent
+                  mark={true}
                   button={true}
                   product={product}
                   onClick={() => handleAddProductToCashier(product)}
@@ -122,6 +121,7 @@ const Header = (props) => {
               Fechamento
             </CustomButton>
             <CustomButton onClick={() => signOut(auth)}>
+              Sair
               <RiLogoutBoxRLine size={15} />
             </CustomButton>
           </>

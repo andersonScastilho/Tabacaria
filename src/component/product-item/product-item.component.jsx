@@ -8,11 +8,15 @@ import { BsPlus } from "react-icons/bs";
 
 import CustomButton from "../custom-button/custom-button.component";
 
-const ProductItemComponent = ({ product, button, onClick }) => {
+const ProductItemComponent = ({ product, button, onClick, mark }) => {
   return (
     <ProductsContainer>
       <ImageProduct src={product.imageUrl} />
-      <NameProduct>{product.name}</NameProduct>
+      {mark ? (
+        <NameProduct> {`${product.mark} - ${product.name}`}</NameProduct>
+      ) : (
+        <NameProduct>{product.name}</NameProduct>
+      )}
       {product.price && <PriceProduct>{product.price},00</PriceProduct>}
       {button === true ? (
         <CustomButton onClick={onClick}>{<BsPlus />}</CustomButton>

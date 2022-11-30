@@ -142,7 +142,13 @@ const CashierPage = () => {
               <TitlePreview>Produtos</TitlePreview>
               {products.map((item) => (
                 <ProductQuantityContainer key={item.id}>
-                  <ProductName>{item.name}</ProductName>
+                  {item.mark ? (
+                    <ProductName>
+                      {item.mark} - {item.name}
+                    </ProductName>
+                  ) : (
+                    <ProductName>{item.name}</ProductName>
+                  )}
                 </ProductQuantityContainer>
               ))}
             </PreviewItensContent>

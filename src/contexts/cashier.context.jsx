@@ -23,10 +23,17 @@ const CashierContextProvider = ({ children }) => {
         )
       );
     }
-    setProducts((prveState) => [
-      ...prveState,
-      { ...product, status: "pendente", quantity: 1 },
-    ]);
+    if (product.mark) {
+      setProducts((prveState) => [
+        ...prveState,
+        { ...product, mark: product.mark, status: "pendente", quantity: 1 },
+      ]);
+    } else {
+      setProducts((prveState) => [
+        ...prveState,
+        { ...product, status: "pendente", quantity: 1 },
+      ]);
+    }
   };
 
   const decreaseProductQuantity = (productId) => {

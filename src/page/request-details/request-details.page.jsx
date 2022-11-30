@@ -192,7 +192,13 @@ const RequestDatilsPage = () => {
             <RequestProductsContainer>
               {currentRequest[0].products.map((product) => (
                 <RequestProductsContent key={product.id}>
-                  <DataRequestText>Item: {product.name}</DataRequestText>
+                  {product.mark ? (
+                    <DataRequestText>
+                      Item: {product.mark} - {product.name}
+                    </DataRequestText>
+                  ) : (
+                    <DataRequestText>Item: {product.name}</DataRequestText>
+                  )}
                   <DataRequestText>
                     Quantidade: {product.quantity}
                   </DataRequestText>
