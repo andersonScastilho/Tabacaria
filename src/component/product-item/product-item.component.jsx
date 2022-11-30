@@ -13,7 +13,11 @@ const ProductItemComponent = ({ product, button, onClick, mark }) => {
     <ProductsContainer>
       <ImageProduct src={product.imageUrl} />
       {mark ? (
-        <NameProduct> {`${product.mark} - ${product.name}`}</NameProduct>
+        product.mark ? (
+          <NameProduct> {`${product.mark} - ${product.name}`}</NameProduct>
+        ) : (
+          <NameProduct> {`${product.name}`}</NameProduct>
+        )
       ) : (
         <NameProduct>{product.name}</NameProduct>
       )}
