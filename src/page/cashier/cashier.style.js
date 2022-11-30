@@ -24,7 +24,7 @@ export const CashierContent = styled.div`
   border-radius: 7px;
   padding: 7px;
   @media (max-width: 680px) {
-    flex-wrap: wrap-reverse;
+    flex-wrap: wrap;
   }
 `;
 export const LabelInputRequired = styled.label`
