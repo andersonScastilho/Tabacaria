@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const CustomButtonStyle = styled.button`
   border-radius: 5px;
-  font-weight: 600;
   padding: 3px;
+  line-height: 20px;
   justify-content: center;
   color: white;
   display: flex;
