@@ -36,24 +36,24 @@ const Header = (props) => {
   };
   const [busca, setBusca] = useState("");
 
-  const allfrutas = [];
+  const allProducts = [];
 
   categories.map((category) =>
     category.tipeOrMark.map((type) =>
-      type.products.map((product) => allfrutas.push(product))
+      type.products.map((product) => allProducts.push(product))
     )
   );
 
-  const frutas = [];
+  const products = [];
 
-  allfrutas.filter((fruta) => frutas.push(fruta));
+  allProducts.filter((product) => products.push(product));
 
-  console.log(frutas);
   const LowerBuscar = busca.toLowerCase();
 
-  const frutasFiltrada = frutas?.filter((fruta) =>
-    fruta.name.toLowerCase().includes(LowerBuscar)
+  const productsFiltred = products?.filter((product) =>
+    product.name.toLowerCase().includes(LowerBuscar)
   );
+
   const handleAddProductToCashier = (product) => {
     addProductsToPedido(product);
     setBusca("");
@@ -102,11 +102,11 @@ const Header = (props) => {
                 padding: "7px",
               }}
             >
-              {frutasFiltrada.map((produto) => (
+              {productsFiltred.map((product) => (
                 <ProductItemCompoent
                   button={true}
-                  product={produto}
-                  onClick={() => handleAddProductToCashier(produto)}
+                  product={product}
+                  onClick={() => handleAddProductToCashier(product)}
                 />
               ))}
             </div>
