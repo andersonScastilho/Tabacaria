@@ -98,45 +98,54 @@ const CashierPage = () => {
       <Header search={true} />
       <CashierContainer imageUrl="https://cdn.discordapp.com/attachments/929130096177053766/1039629996249071687/702883.jpg">
         <CashierContent>
-          <LabelInputRequired>Nome</LabelInputRequired>
-          <InputRequired
-            hasError={!!errors?.nameClient}
-            {...register("nameClient", { required: true })}
-          />
-          {errors?.nameClient?.type === "required" && (
-            <InputErrorMessage>
-              O nome do cliente é obrigaório
-            </InputErrorMessage>
-          )}
-          <LabelInputRequired>Mesa</LabelInputRequired>
-          <InputRequired
-            style={{ width: "70px", textAlign: "center" }}
-            type="number"
-            min={1}
-            hasError={!!errors?.mesaCliente}
-            {...register("tableClient", { required: true, min: 0 })}
-          />
-          {errors?.tableClient?.type === "required" && (
-            <InputErrorMessage>Informe a mesa do cliente</InputErrorMessage>
-          )}
-          {errors?.tableClient?.type === "min" && (
-            <InputErrorMessage>Mesa invalida</InputErrorMessage>
-          )}
-
-          <LabelInputRequired>Forma de pagamento: </LabelInputRequired>
-          <SelectOfPayment {...register("formOfPayment")}>
-            <OptionOfPayment value="false"></OptionOfPayment>
-            <OptionOfPayment value="dinheiro">Dinheiro</OptionOfPayment>
-            <OptionOfPayment value="cartaoDebito">
-              Cartão - Debito
-            </OptionOfPayment>
-            <OptionOfPayment value="cartaoCredito">
-              Cartao - Credito
-            </OptionOfPayment>
-            <OptionOfPayment value="pix">Pix</OptionOfPayment>
-          </SelectOfPayment>
-          <LabelInputRequired>Observação: </LabelInputRequired>
-          <InputTextArea {...register("observation")} />
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "10px" }}
+          >
+            <LabelInputRequired>Nome</LabelInputRequired>
+            <InputRequired
+              hasError={!!errors?.nameClient}
+              {...register("nameClient", { required: true })}
+            />
+            {errors?.nameClient?.type === "required" && (
+              <InputErrorMessage>
+                O nome do cliente é obrigaório
+              </InputErrorMessage>
+            )}
+            <LabelInputRequired>Mesa</LabelInputRequired>
+            <InputRequired
+              style={{ width: "70px", textAlign: "center" }}
+              type="number"
+              min={1}
+              hasError={!!errors?.mesaCliente}
+              {...register("tableClient", { required: true, min: 0 })}
+            />
+            {errors?.tableClient?.type === "required" && (
+              <InputErrorMessage>Informe a mesa do cliente</InputErrorMessage>
+            )}
+            {errors?.tableClient?.type === "min" && (
+              <InputErrorMessage>Mesa invalida</InputErrorMessage>
+            )}
+            <LabelInputRequired>Forma de pagamento: </LabelInputRequired>
+            <SelectOfPayment {...register("formOfPayment")}>
+              <OptionOfPayment value="false"></OptionOfPayment>
+              <OptionOfPayment value="dinheiro">Dinheiro</OptionOfPayment>
+              <OptionOfPayment value="cartaoDebito">
+                Cartão - Debito
+              </OptionOfPayment>
+              <OptionOfPayment value="cartaoCredito">
+                Cartao - Credito
+              </OptionOfPayment>
+              <OptionOfPayment value="pix">Pix</OptionOfPayment>
+            </SelectOfPayment>
+            <LabelInputRequired>Observação: </LabelInputRequired>
+            <InputTextArea {...register("observation")} />{" "}
+            <ProductTotalPrice>
+              Total: R${productsTotalPrice},00
+            </ProductTotalPrice>
+            <CustomButton onClick={() => handleSubmit(handleSubmitPress)()}>
+              Adicionar pedido
+            </CustomButton>
+          </div>
           <PreviewItensContainer>
             <PreviewItensContent>
               <TitlePreview>Produtos</TitlePreview>
@@ -166,14 +175,7 @@ const CashierPage = () => {
               ))}
             </PreviewItensContent>
           </PreviewItensContainer>
-          <ProductTotalPrice>
-            Total: R${productsTotalPrice},00
-          </ProductTotalPrice>
-          <CustomButton onClick={() => handleSubmit(handleSubmitPress)()}>
-            Adicionar pedido
-          </CustomButton>
         </CashierContent>
-        <MenuComponent button={true} customButton={<BsPlus />} />
       </CashierContainer>
       <Footer />
     </>

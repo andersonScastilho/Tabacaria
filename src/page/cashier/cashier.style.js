@@ -4,9 +4,7 @@ export const CashierContainer = styled.div`
   display: flex;
   flex: 1 0 auto;
   background-color: #282832;
-  /* background-image: ${(props) => `url('${props.imageUrl}')`};
-  background-repeat: no-repeat;
-  background-size: 100% 100%; */
+
   justify-content: center;
   gap: 25px;
   padding: 7px;
@@ -18,9 +16,9 @@ export const CashierContainer = styled.div`
 `;
 export const CashierContent = styled.div`
   display: flex;
-
+  width: 100%;
+  justify-content: space-around;
   gap: 5px;
-  flex-direction: column;
   max-height: 850px;
   border-radius: 7px;
   padding: 7px;
@@ -50,7 +48,7 @@ export const PreviewItensContainer = styled.div`
   grid-template-columns: repeat(2, 1fr);
   background-color: #dee7e7;
   border-radius: 5px;
-  max-height: 450px;
+  max-height: 440px;
   width: 350px;
   overflow: auto;
 `;
