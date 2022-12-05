@@ -1,7 +1,6 @@
 import { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 
-import { UserContext } from "../../contexts/user.context";
 import { RequestContext } from "../../contexts/request.context";
 
 import Header from "../../component/header/header.component";
@@ -23,7 +22,6 @@ import {
 const ClosurePage = () => {
   // const { currentUser, isAuthenticated } = useContext(UserContext);
   const { request } = useContext(RequestContext);
-
   const { register, handleSubmit } = useForm();
 
   const [requesFiltred, setRequestFiltred] = useState();
@@ -52,39 +50,29 @@ const ClosurePage = () => {
   });
 
   const handleSubmitPress = (data) => {
-    let dateInicio = new Date(data.dateInicio); //29/01/2020
+    let dateInicio = new Date(data.dateInicio);
     let horaInicio = `${data.horaInicio}:59`;
     let horaFim = `${data.horaFim}:59`;
     let dateFim = new Date(data.dateFim);
 
-    function adicionaZero(numero) {
+    function formatDate(numero) {
       if (numero <= 9) return "0" + numero;
       else return numero;
     }
 
-    let dataInicioFormatada =
-      adicionaZero(dateInicio.getDate() + 1).toString() +
+    let dateInicioFormatada =
+      formatDate(dateInicio.getDate() + 1).toString() +
       "/" +
-      adicionaZero(dateInicio.getMonth() + 1).toString() +
+      formatDate(dateInicio.getMonth() + 1).toString() +
       "/" +
       dateInicio.getFullYear();
 
-    let dataFimFormatada =
-      adicionaZero(dateFim.getDate() + 1).toString() +
+    let dateFimFormatada =
+      formatDate(dateFim.getDate() + 1).toString() +
       "/" +
-      adicionaZero(dateFim.getMonth() + 1).toString() +
+      formatDate(dateFim.getMonth() + 1).toString() +
       "/" +
       dateFim.getFullYear();
-
-    const requestDateTime = request.filter((request) => {
-      return (
-        request.currentDate >= dataInicioFormatada &&
-        request.currentDate <= dataFimFormatada &&
-        request.currentHors >= horaInicio &&
-        request.currentHors <= horaFim
-      );
-    });
-    setRequestFiltred(requestDateTime);
   };
 
   return (

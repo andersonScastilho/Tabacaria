@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { RequestContext } from "../../contexts/request.context";
@@ -20,7 +20,7 @@ import {
 import LoadingComponent from "../../component/loading/loading.component";
 
 const RequestPage = () => {
-  const { request, isLoading } = useContext(RequestContext);
+  const { request, isLoading, fetchPedidos } = useContext(RequestContext);
 
   const date = new Date();
 

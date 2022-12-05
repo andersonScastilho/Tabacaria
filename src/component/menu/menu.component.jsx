@@ -20,6 +20,7 @@ const MenuComponent = (props) => {
   const handleAddProductToCaixa = (product) => {
     addProductsToPedido(product);
   };
+
   return (
     <MenuContainer>
       {categories.map((category) => (

@@ -1,5 +1,4 @@
 import { collection, getDocs } from "firebase/firestore";
-import { useEffect } from "react";
 import { useState } from "react";
 import { db } from "../config/firebase.config";
 import { createContext } from "react";
@@ -8,15 +7,13 @@ export const RequestContext = createContext({
   request: [],
   countRequest: 0,
   isLoading: false,
-  fetchPedidos: () => {},
+  fetchPedidos: () => Promise.resolve(),
 });
 
 const RequestContextProvider = ({ children }) => {
   const [request, setRequest] = useState([]);
 
   const [isLoading, setIsLoading] = useState(false);
-
-  const countRequest = request.length;
 
   const fetchPedidos = async () => {
     try {
@@ -35,12 +32,8 @@ const RequestContextProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    fetchPedidos();
-  }, []);
-
   return (
-    <RequestContext.Provider value={{ request, countRequest, isLoading }}>
+    <RequestContext.Provider value={{ request, isLoading, fetchPedidos }}>
       {children}
     </RequestContext.Provider>
   );

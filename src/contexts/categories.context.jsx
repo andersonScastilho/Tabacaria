@@ -1,5 +1,4 @@
 import { createContext, useState } from "react";
-import { useEffect } from "react";
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../config/firebase.config";
 
@@ -12,6 +11,7 @@ export const CategoryContext = createContext({
 const CategoryContextProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
   const fetchCategories = async () => {
     try {
       setIsLoading(true);
@@ -29,11 +29,11 @@ const CategoryContextProvider = ({ children }) => {
       setIsLoading(false);
     }
   };
-  useEffect(() => {
-    fetchCategories();
-  }, []);
+
   return (
-    <CategoryContext.Provider value={{ categories, isLoading }}>
+    <CategoryContext.Provider
+      value={{ categories, isLoading, fetchCategories }}
+    >
       {children}
     </CategoryContext.Provider>
   );

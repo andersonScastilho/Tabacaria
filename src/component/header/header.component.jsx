@@ -15,9 +15,8 @@ import { useNavigate } from "react-router-dom";
 import { CategoryContext } from "../../contexts/categories.context";
 import { CashierContext } from "../../contexts/cashier.context";
 import { useMemo } from "react";
-
 const Header = (props) => {
-  const { isAuthenticated, currentUser } = useContext(UserContext);
+  const { isAuthenticated } = useContext(UserContext);
   const { categories } = useContext(CategoryContext);
   const { addProductsToPedido } = useContext(CashierContext);
 

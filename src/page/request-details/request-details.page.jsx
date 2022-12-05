@@ -31,6 +31,7 @@ import {
 const RequestDatilsPage = () => {
   const { request } = useContext(RequestContext);
   const { currentUser } = useContext(UserContext);
+
   const { id } = useParams();
   const alert = useAlert();
 

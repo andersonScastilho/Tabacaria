@@ -1,18 +1,15 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { BsPlus } from "react-icons/bs";
 import { AiOutlineMinus } from "react-icons/ai";
 import { useAlert } from "react-alert";
 import { addDoc, collection } from "firebase/firestore";
 
-import { RequestContext } from "../../contexts/request.context";
 import { CashierContext } from "../../contexts/cashier.context";
 import { db } from "../../config/firebase.config";
 
 import Header from "../../component/header/header.component";
 import Footer from "../../component/footer/footer.component";
 import CustomButton from "../../component/custom-button/custom-button.component";
-import MenuComponent from "../../component/menu/menu.component";
 import InputErrorMessage from "../../component/input-error-messag/input-error.component";
 
 import {
@@ -46,7 +43,6 @@ const CashierPage = () => {
     clearProducts,
     decreaseProductQuantity,
   } = useContext(CashierContext);
-  const { countRequest } = useContext(RequestContext);
 
   const alert = useAlert();
   const date = new Date();
@@ -64,7 +60,6 @@ const CashierPage = () => {
     if (products.length > 0) {
       let dataRequest = {
         ...data,
-        nmrPedido: countRequest + 1,
         status: "em andamento",
         formOfPayment: data.formOfPayment,
         paymentStats,
@@ -81,9 +76,6 @@ const CashierPage = () => {
       await addDoc(collection(db, "Pedidos"), dataRequest);
 
       alert.success("O Pedido foi adicionado");
-      setTimeout(() => {
-        window.location.reload(true);
-      }, 800);
     } else {
       alert.error("Adicione itens ao pedido");
     }
