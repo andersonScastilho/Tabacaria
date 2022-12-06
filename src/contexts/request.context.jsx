@@ -7,7 +7,7 @@ export const RequestContext = createContext({
   request: [],
   countRequest: 0,
   isLoading: false,
-  fetchPedidos: () => Promise.resolve(),
+  fetchRequest: () => Promise.resolve(),
 });
 
 const RequestContextProvider = ({ children }) => {
@@ -15,16 +15,16 @@ const RequestContextProvider = ({ children }) => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const fetchPedidos = async () => {
+  const fetchRequest = async () => {
     try {
       setIsLoading(true);
-      const pedidosFromFirestore = [];
+      const requestFromFirestore = [];
       const querySnapshot = await getDocs(collection(db, "Pedidos"));
       querySnapshot.forEach((doc) => {
         let data = { ...doc.data(), idFromFirestore: doc.id };
-        pedidosFromFirestore.push(data);
+        requestFromFirestore.push(data);
       });
-      setRequest(pedidosFromFirestore);
+      setRequest(requestFromFirestore);
     } catch (error) {
       console.log(error);
     } finally {
@@ -33,7 +33,7 @@ const RequestContextProvider = ({ children }) => {
   };
 
   return (
-    <RequestContext.Provider value={{ request, isLoading, fetchPedidos }}>
+    <RequestContext.Provider value={{ request, isLoading, fetchRequest }}>
       {children}
     </RequestContext.Provider>
   );

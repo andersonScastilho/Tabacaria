@@ -18,7 +18,7 @@ import { useMemo } from "react";
 const Header = (props) => {
   const { isAuthenticated } = useContext(UserContext);
   const { categories } = useContext(CategoryContext);
-  const { addProductsToPedido } = useContext(CashierContext);
+  const { addProductsToRequest } = useContext(CashierContext);
 
   const navigate = useNavigate();
 
@@ -34,7 +34,7 @@ const Header = (props) => {
   const handleFechamentoClick = () => {
     navigate("/fechamento");
   };
-  const [busca, setBusca] = useState("");
+  const [search, setSearch] = useState("");
 
   const allProducts = [];
 
@@ -49,16 +49,16 @@ const Header = (props) => {
   allProducts.filter((product) => products.push(product));
 
   const productsFiltred = useMemo(() => {
-    const LowerBuscar = busca.toLowerCase();
+    const LowerBuscar = search.toLowerCase();
 
     return products.filter((product) =>
       product.name.toLowerCase().includes(LowerBuscar)
     );
-  }, [busca]);
+  }, [search]);
 
   const handleAddProductToCashier = (product) => {
-    addProductsToPedido(product);
-    setBusca("");
+    addProductsToRequest(product);
+    setSearch("");
   };
 
   return (
@@ -81,14 +81,14 @@ const Header = (props) => {
             <input
               style={{ borderRadius: "5px", padding: "4px" }}
               type="text"
-              value={busca}
-              onChange={(event) => setBusca(event.target.value)}
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
             />
             <p style={{ marginLeft: "-25px", marginTop: "7px" }}>
               <BsSearch size={17} color="black" />
             </p>
           </div>
-          {busca !== "" && productsFiltred.length !== 0 && (
+          {search !== "" && productsFiltred.length !== 0 && (
             <div
               style={{
                 position: "absolute",

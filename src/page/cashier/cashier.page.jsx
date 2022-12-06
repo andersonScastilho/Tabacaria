@@ -43,7 +43,6 @@ const CashierPage = () => {
     productsTotalPrice,
     clearProducts,
     decreaseProductQuantity,
-    addProductsToPedido,
   } = useContext(CashierContext);
 
   const alert = useAlert();
@@ -81,9 +80,6 @@ const CashierPage = () => {
     } else {
       alert.error("Adicione itens ao pedido");
     }
-  };
-  const handleAddProductToCashier = (product) => {
-    addProductsToPedido(product);
   };
 
   const handleDecreaseProductsToPedido = (productId) => {

@@ -17,14 +17,14 @@ import { useEffect } from "react";
 
 const MenuComponent = (props) => {
   const { categories, fetchCategories } = useContext(CategoryContext);
-  const { addProductsToPedido } = useContext(CashierContext);
+  const { addProductsToRequest } = useContext(CashierContext);
 
   useEffect(() => {
     fetchCategories();
   }, []);
 
   const handleAddProductToCaixa = (product) => {
-    addProductsToPedido(product);
+    addProductsToRequest(product);
   };
 
   return (

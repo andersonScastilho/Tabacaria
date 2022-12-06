@@ -4,7 +4,7 @@ import { useMemo } from "react";
 
 export const CashierContext = createContext({
   products: [],
-  addProductsToPedido: () => {},
+  addProductsToRequest: () => {},
   decreaseProductQuantity: () => {},
   clearProducts: () => {},
 });
@@ -12,7 +12,7 @@ export const CashierContext = createContext({
 const CashierContextProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
 
-  const addProductsToPedido = (product) => {
+  const addProductsToRequest = (product) => {
     const productAlreadInCart = products.some((item) => item.id === product.id);
     if (productAlreadInCart) {
       return setProducts((prevState) =>
@@ -63,7 +63,7 @@ const CashierContextProvider = ({ children }) => {
       value={{
         products,
         productsTotalPrice,
-        addProductsToPedido,
+        addProductsToRequest,
         clearProducts,
         decreaseProductQuantity,
       }}

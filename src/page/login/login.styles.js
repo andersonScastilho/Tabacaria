@@ -9,7 +9,6 @@ export const LoginContainer = styled.div`
   background-repeat: no-repeat;
   align-items: center;
   justify-content: center;
-  min-height: 100%;
 `;
 
 export const LoginContent = styled.div`
