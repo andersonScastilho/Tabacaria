@@ -3,13 +3,14 @@ import styled from "styled-components";
 export const ProductsContainer = styled.div`
   display: flex;
   gap: 10px;
+  height: 100px;
   justify-content: space-between;
   align-items: center;
   box-shadow: 1px 1px 1px #222;
-  max-width: 350px;
+  width: 290px;
   border-radius: 5px;
   background-color: #dee7e7;
-  padding: 5px;
+  padding: 7px;
 `;
 export const ImageProduct = styled.img`
   height: 50px;

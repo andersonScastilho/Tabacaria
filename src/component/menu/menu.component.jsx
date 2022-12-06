@@ -9,13 +9,19 @@ import {
   MenuContainer,
   MenuContent,
   ProductContainer,
+  ProductContent,
   TipeOrMarkName,
   TitleCategory,
 } from "./menu.styles";
+import { useEffect } from "react";
 
 const MenuComponent = (props) => {
-  const { categories } = useContext(CategoryContext);
+  const { categories, fetchCategories } = useContext(CategoryContext);
   const { addProductsToPedido } = useContext(CashierContext);
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
 
   const handleAddProductToCaixa = (product) => {
     addProductsToPedido(product);
@@ -24,23 +30,27 @@ const MenuComponent = (props) => {
   return (
     <MenuContainer>
       {categories.map((category) => (
-        <MenuContent key={category.id}>
+        <>
           <TitleCategory>{category.name}</TitleCategory>
-          {category.tipeOrMark.map((tipe) => (
-            <ProductContainer>
-              <TipeOrMarkName>{tipe.name}</TipeOrMarkName>
-              {tipe.products.map((product) => (
-                <ProductItemComponent
-                  key={product.id}
-                  product={product}
-                  id={product.name}
-                  button={props.button}
-                  onClick={() => handleAddProductToCaixa(product)}
-                />
-              ))}
-            </ProductContainer>
-          ))}
-        </MenuContent>
+          <MenuContent key={category.id}>
+            {category.tipeOrMark.map((tipe) => (
+              <ProductContainer>
+                <TipeOrMarkName>{tipe.name}</TipeOrMarkName>
+                <ProductContent>
+                  {tipe.products.map((product) => (
+                    <ProductItemComponent
+                      key={product.id}
+                      product={product}
+                      id={product.name}
+                      button={props.button}
+                      onClick={() => handleAddProductToCaixa(product)}
+                    />
+                  ))}
+                </ProductContent>
+              </ProductContainer>
+            ))}
+          </MenuContent>
+        </>
       ))}
     </MenuContainer>
   );
