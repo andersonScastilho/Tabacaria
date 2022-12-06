@@ -77,19 +77,36 @@ const RequestDatilsPage = () => {
     });
 
     if (product.status !== "realizado") {
-      await updateDoc(frankDocRef, {
-        products: [
-          ...dataProductSemCurrentProduct,
-          {
-            id: product.id,
-            imageUrl: product.imageUrl,
-            name: product.name,
-            price: product.price,
-            quantity: product.quantity,
-            status: "realizado",
-          },
-        ],
-      });
+      if (product.mark) {
+        await updateDoc(frankDocRef, {
+          products: [
+            ...dataProductSemCurrentProduct,
+            {
+              id: product.id,
+              imageUrl: product.imageUrl,
+              name: product.name,
+              price: product.price,
+              quantity: product.quantity,
+              status: "realizado",
+              mark: product.mark,
+            },
+          ],
+        });
+      } else {
+        await updateDoc(frankDocRef, {
+          products: [
+            ...dataProductSemCurrentProduct,
+            {
+              id: product.id,
+              imageUrl: product.imageUrl,
+              name: product.name,
+              price: product.price,
+              quantity: product.quantity,
+              status: "realizado",
+            },
+          ],
+        });
+      }
       alert.success("O status do item foi alterado");
     } else {
       alert.error("Item ja foi finalizado");
@@ -209,12 +226,11 @@ const RequestDatilsPage = () => {
           <RequestProductsContainer>
             {currentRequest.products.map((product) => (
               <RequestProductsContent key={product.id}>
+                {console.log(product)}
                 {product.mark ? (
-                  <DataRequestText>
-                    Item: {product.mark} - {product.name}
-                  </DataRequestText>
+                  <DataRequestText>{`item: ${product.mark} - ${product.name}`}</DataRequestText>
                 ) : (
-                  <DataRequestText>Item: {product.name}</DataRequestText>
+                  <DataRequestText>{`item: ${product.name}`}</DataRequestText>
                 )}
                 <DataRequestText>
                   Quantidade: {product.quantity}
