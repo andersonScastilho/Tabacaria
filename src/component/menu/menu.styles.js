@@ -7,6 +7,7 @@ export const MenuContainer = styled.div`
   gap: 7px;
   @media (max-width: 600px) {
     flex-direction: column;
+    justify-content: center;
   }
 `;
 export const MenuContent = styled.div`
