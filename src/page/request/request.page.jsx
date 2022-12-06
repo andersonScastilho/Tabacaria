@@ -20,10 +20,10 @@ import {
 import LoadingComponent from "../../component/loading/loading.component";
 
 const RequestPage = () => {
-  const { request, isLoading, fetchPedidos } = useContext(RequestContext);
+  const { request, isLoading, fetchRequest } = useContext(RequestContext);
 
   useEffect(() => {
-    fetchPedidos();
+    fetchRequest();
   }, []);
   const date = new Date();
 
