@@ -22,6 +22,9 @@ import LoadingComponent from "../../component/loading/loading.component";
 const RequestPage = () => {
   const { request, isLoading, fetchPedidos } = useContext(RequestContext);
 
+  useEffect(() => {
+    fetchPedidos();
+  }, []);
   const date = new Date();
 
   const currentDate = date.toLocaleDateString();
