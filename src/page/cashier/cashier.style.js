@@ -2,11 +2,10 @@ import styled from "styled-components";
 
 export const CashierContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
   flex: 1 0 auto;
-  min-height: 100%;
   background-color: #282832;
-
-  justify-content: center;
   gap: 25px;
   padding: 7px;
 

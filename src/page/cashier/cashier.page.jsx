@@ -11,6 +11,7 @@ import Header from "../../component/header/header.component";
 import Footer from "../../component/footer/footer.component";
 import CustomButton from "../../component/custom-button/custom-button.component";
 import InputErrorMessage from "../../component/input-error-messag/input-error.component";
+import MenuComponent from "../../component/menu/menu.component";
 
 import {
   LabelInputRequired,
@@ -42,6 +43,7 @@ const CashierPage = () => {
     productsTotalPrice,
     clearProducts,
     decreaseProductQuantity,
+    addProductsToPedido,
   } = useContext(CashierContext);
 
   const alert = useAlert();
@@ -79,6 +81,9 @@ const CashierPage = () => {
     } else {
       alert.error("Adicione itens ao pedido");
     }
+  };
+  const handleAddProductToCashier = (product) => {
+    addProductsToPedido(product);
   };
 
   const handleDecreaseProductsToPedido = (productId) => {
@@ -164,6 +169,7 @@ const CashierPage = () => {
             ))}
           </PreviewItensContent>
         </PreviewItensContainer>
+        <MenuComponent button={true} />
       </CashierContainer>
       <Footer />
     </>
