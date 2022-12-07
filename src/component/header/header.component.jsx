@@ -10,7 +10,15 @@ import CustomButton from "../custom-button/custom-button.component";
 import MaximusImage from "../../assets/Maximus_Image.jpeg";
 import ProductItemCompoent from "../product-item/product-item.component";
 
-import { ButtonContainer, HeaderContainer, TitleHeader } from "./header.styles";
+import {
+  ButtonContainer,
+  HeaderContainer,
+  InputSearch,
+  SearchContainer,
+  SearchContent,
+  TitleHeader,
+  SearchProductContainer,
+} from "./header.styles";
 import { useNavigate } from "react-router-dom";
 import { CategoryContext } from "../../contexts/categories.context";
 import { CashierContext } from "../../contexts/cashier.context";
@@ -64,44 +72,23 @@ const Header = (props) => {
   return (
     <HeaderContainer imageUrl={MaximusImage}>
       <GiMagicHat
-        style={{ cursor: "pointer" }}
+        cursor="pointer"
         color="#fff"
         size={50}
         onClick={() => navigate("/")}
       />
       <TitleHeader>Em densenvolvimento</TitleHeader>
       {props.search && (
-        <div>
-          <div
-            style={{
-              display: "flex",
-              padding: "3px",
-            }}
-          >
-            <input
-              style={{ borderRadius: "5px", padding: "4px" }}
+        <SearchContainer>
+          <SearchContent>
+            <InputSearch
               type="text"
               value={search}
               onChange={(event) => setSearch(event.target.value)}
             />
-            <p style={{ marginLeft: "-25px", marginTop: "7px" }}>
-              <BsSearch size={17} color="black" />
-            </p>
-          </div>
+          </SearchContent>
           {search !== "" && productsFiltred.length !== 0 && (
-            <div
-              style={{
-                position: "absolute",
-                background: "white",
-                display: "flex",
-                flexDirection: "column",
-                gap: "7px",
-                maxHeight: "400px",
-                overflow: "auto ",
-                backgroundColor: "darkgray",
-                padding: "7px",
-              }}
-            >
+            <SearchProductContainer>
               {productsFiltred.map((product) => (
                 <ProductItemCompoent
                   mark={true}
@@ -110,9 +97,9 @@ const Header = (props) => {
                   onClick={() => handleAddProductToCashier(product)}
                 />
               ))}
-            </div>
+            </SearchProductContainer>
           )}
-        </div>
+        </SearchContainer>
       )}
       <ButtonContainer>
         {isAuthenticated && (
