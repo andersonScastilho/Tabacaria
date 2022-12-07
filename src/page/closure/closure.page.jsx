@@ -30,28 +30,28 @@ const ClosurePage = () => {
     fetchRequest();
   }, []);
 
-  const [requesFiltred, setRequestFiltred] = useState();
+  const [requestFiltred, setRequestFiltred] = useState();
 
-  const TotalRequest = requesFiltred?.reduce((acc) => {
+  const TotalRequest = requestFiltred?.reduce((acc) => {
     return acc + 1;
   }, 0);
 
-  const PriceTotalRequest = requesFiltred?.reduce((acc, item) => {
+  const PriceTotalRequest = requestFiltred?.reduce((acc, item) => {
     return acc + item.priceTotal;
   }, 0);
 
-  const PaymentInDinheiro = requesFiltred?.filter((item) => {
+  const PaymentInDinheiro = requestFiltred?.filter((item) => {
     return item.formOfPayment === "dinheiro";
   });
-  const PaymentInCreditCard = requesFiltred?.filter((item) => {
+  const PaymentInCreditCard = requestFiltred?.filter((item) => {
     return item.formOfPayment === "cartaoCredito";
   });
 
-  const PaymentInDebitCard = requesFiltred?.filter((item) => {
+  const PaymentInDebitCard = requestFiltred?.filter((item) => {
     return item.formOfPayment === "cartaoDebito";
   });
 
-  const PaymentInPix = requesFiltred?.filter((item) => {
+  const PaymentInPix = requestFiltred?.filter((item) => {
     return item.formOfPayment === "pix";
   });
 
@@ -59,7 +59,7 @@ const ClosurePage = () => {
     const dateInicio = data.dateInicio.split("-").reverse().join("/");
     const dateFim = data.dateFim.split("-").reverse().join("/");
 
-    const requestTeste = request.filter((request) => {
+    const requestsFromDate = request.filter((request) => {
       return (
         request.currentDate >= dateInicio &&
         request.currentDate <= dateFim &&
@@ -67,7 +67,7 @@ const ClosurePage = () => {
         request.currentHors <= data.horaFim
       );
     });
-    console.log(requestTeste);
+    setRequestFiltred(requestsFromDate);
   };
 
   return (
@@ -141,7 +141,7 @@ const ClosurePage = () => {
             <InfoNameText>Lucro Total:</InfoNameText>
             <InfoText>
               {PriceTotalRequest !== undefined
-                ? `R$${PriceTotalRequest}`
+                ? `R$${PriceTotalRequest},00`
                 : null}
             </InfoText>
           </FechamentoItemContent>

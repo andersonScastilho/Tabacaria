@@ -7,6 +7,7 @@ export const FechamentoContainer = styled.div`
   padding: 10px;
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  gap: 15px;
 `;
 export const FechamentoFilterContainer = styled.div`
   display: flex;
