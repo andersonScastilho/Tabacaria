@@ -18,11 +18,17 @@ import {
   LabelFilterFechamento,
   TitleFechamento,
 } from "./closure.styles";
+import { useEffect } from "react";
 
 const ClosurePage = () => {
   // const { currentUser, isAuthenticated } = useContext(UserContext);
-  const { request } = useContext(RequestContext);
+  const { request, fetchRequest } = useContext(RequestContext);
+
   const { register, handleSubmit } = useForm();
+
+  useEffect(() => {
+    fetchRequest();
+  }, []);
 
   const [requesFiltred, setRequestFiltred] = useState();
 
@@ -50,29 +56,18 @@ const ClosurePage = () => {
   });
 
   const handleSubmitPress = (data) => {
-    let dateInicio = new Date(data.dateInicio);
-    let horaInicio = `${data.horaInicio}:59`;
-    let horaFim = `${data.horaFim}:59`;
-    let dateFim = new Date(data.dateFim);
+    const dateInicio = data.dateInicio.split("-").reverse().join("/");
+    const dateFim = data.dateFim.split("-").reverse().join("/");
 
-    function formatDate(numero) {
-      if (numero <= 9) return "0" + numero;
-      else return numero;
-    }
-
-    let dateInicioFormatada =
-      formatDate(dateInicio.getDate() + 1).toString() +
-      "/" +
-      formatDate(dateInicio.getMonth() + 1).toString() +
-      "/" +
-      dateInicio.getFullYear();
-
-    let dateFimFormatada =
-      formatDate(dateFim.getDate() + 1).toString() +
-      "/" +
-      formatDate(dateFim.getMonth() + 1).toString() +
-      "/" +
-      dateFim.getFullYear();
+    const requestTeste = request.filter((request) => {
+      return (
+        request.currentDate >= dateInicio &&
+        request.currentDate <= dateFim &&
+        request.currentHors >= data.horaInicio &&
+        request.currentHors <= data.horaFim
+      );
+    });
+    console.log(requestTeste);
   };
 
   return (
