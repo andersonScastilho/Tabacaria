@@ -3,17 +3,17 @@ import styled from "styled-components";
 export const MenuContainer = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 5px;
   gap: 7px;
   @media (max-width: 600px) {
     flex-direction: column;
   }
 `;
 export const MenuContent = styled.div`
-  padding: 5px;
   flex-wrap: wrap;
+  border-radius: 5px;
   display: flex;
-  justify-content: space-around;
-  gap: 10px;
+  justify-content: center;
 
   &:nth-child(2) {
     background-color: darkgrey;
@@ -31,16 +31,13 @@ export const TitleCategory = styled.h2`
 export const ProductContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 5px;
-  border: 2px solid black;
-  width: 320px;
-  border-radius: 7px;
+  gap: 10px;
+  padding: 7px;
 `;
 export const ProductContent = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  padding: 5px;
   gap: 7px;
   border-radius: 5px;
   overflow: hidden;
