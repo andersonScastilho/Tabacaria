@@ -27,7 +27,6 @@ import {
   OptionOfPayment,
 } from "./request-details.style";
 import { useState } from "react";
-import { useEffect } from "react";
 
 const RequestDatilsPage = () => {
   const { currentUser } = useContext(UserContext);
@@ -50,18 +49,9 @@ const RequestDatilsPage = () => {
     tableClient: "",
   });
 
-  const fetchCurrentRequest = async () => {
-    try {
-      onSnapshot(doc(db, "Pedidos", id), (doc) => {
-        setCurrentRequest(doc.data());
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    fetchCurrentRequest();
-  }, []);
+  // onSnapshot(doc(db, "Pedidos", id), (doc) => {
+  //   setCurrentRequest(doc.data());
+  // });
 
   const allProductOfRequest = currentRequest?.products.every((item) => {
     return item.status === "realizado";
