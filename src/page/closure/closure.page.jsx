@@ -25,7 +25,7 @@ const ClosurePage = () => {
   const { request, fetchRequest } = useContext(RequestContext);
 
   const { register, handleSubmit } = useForm();
-
+fetchRequest();
 
   const [requestFiltred, setRequestFiltred] = useState();
 
@@ -53,7 +53,7 @@ const ClosurePage = () => {
   });
 
   const handleSubmitPress = (data) => {
-fetchRequest();
+
     const dateInicio = data.dateInicio.split("-").reverse().join("/");
     const dateFim = data.dateFim.split("-").reverse().join("/");
 
