@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useAlert } from "react-alert";
 import { useParams } from "react-router-dom";
 import { BsFillPersonFill, BsEyeSlashFill } from "react-icons/bs";
@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { db } from "../../config/firebase.config";
 import { doc, onSnapshot, updateDoc } from "firebase/firestore";
 import { UserContext } from "../../contexts/user.context";
+import { RequestContext } from "../../contexts/request.context";
 
 import Header from "../../component/header/header.component";
 import Footer from "../../component/footer/footer.component";
@@ -26,33 +27,39 @@ import {
   SelectOfPayment,
   OptionOfPayment,
 } from "./request-details.style";
-import { useState } from "react";
+import { useEffect } from "react";
+import { useMemo } from "react";
 
 const RequestDatilsPage = () => {
   const { currentUser } = useContext(UserContext);
+  const { request, fetchRequest } = useContext(RequestContext);
 
+  useEffect(() => {
+    fetchRequest();
+  }, []);
   const { id } = useParams();
   const alert = useAlert();
 
   const { register, handleSubmit } = useForm();
 
-  const [currentRequest, setCurrentRequest] = useState({
-    currentDate: "",
-    currentHOrs: "",
-    formOfPayment: "",
-    nameClient: "",
-    observation: "",
-    paymentStats: "",
-    priceTotal: "",
-    products: [],
-    status: "",
-    tableClient: "",
+  let currentRequest;
+
+  const requestFiltred = request.filter((request) => {
+    return request.idFromFirestore === id;
+  });
+  requestFiltred.forEach((request) => {
+    currentRequest = request;
   });
 
-  // onSnapshot(doc(db, "Pedidos", id), (doc) => {
-  //   setCurrentRequest(doc.data());
-  // });
+  const [requestInRealTime, setRequestInRealTime] = useState();
+  if (requestInRealTime !== currentRequest) {
+    currentRequest = requestInRealTime;
+  }
 
+  const unsub = onSnapshot(doc(db, "Pedidos", id), (doc) => {
+    setRequestInRealTime(doc.data());
+  });
+  console.log(requestInRealTime);
   const allProductOfRequest = currentRequest?.products.every((item) => {
     return item.status === "realizado";
   });
@@ -60,7 +67,7 @@ const RequestDatilsPage = () => {
   const handleFinalizeItem = async (product) => {
     const frankDocRef = doc(db, "Pedidos", id);
 
-    let dataProducts = [...currentRequest.products];
+    let dataProducts = [...currentRequest?.products];
 
     let dataProductSemCurrentProduct = dataProducts.filter((item) => {
       return item.id !== product.id;
@@ -107,15 +114,15 @@ const RequestDatilsPage = () => {
 
     if (allProductOfRequest === true) {
       if (
-        currentRequest.formOfPayment !== "false" &&
-        currentRequest.paymentStats === "realizado"
+        currentRequest?.formOfPayment !== "false" &&
+        currentRequest?.paymentStats === "realizado"
       ) {
         await updateDoc(requestRef, {
           status: "finalizado",
         });
         alert.success("O status do pedido foi alterado");
       } else if (
-        currentRequest.formOfPayment === "false" &&
+        currentRequest?.formOfPayment === "false" &&
         data.formOfPayment !== "false"
       ) {
         await updateDoc(requestRef, {
@@ -143,23 +150,23 @@ const RequestDatilsPage = () => {
               <BsFillPersonFill color="black" size={25} />
             </DataRequestText>
             <DataRequestText>Cliente:</DataRequestText>
-            <DataRequestText>{currentRequest.nameClient}</DataRequestText>
+            <DataRequestText>{currentRequest?.nameClient}</DataRequestText>
           </DataRequestContainer>
           <DataRequestContainer>
             <DataRequestText>
               <GiTable color="black" size={29} />
             </DataRequestText>
             <DataRequestText>Mesa:</DataRequestText>
-            <DataRequestText>{currentRequest.tableClient}</DataRequestText>
+            <DataRequestText>{currentRequest?.tableClient}</DataRequestText>
           </DataRequestContainer>
           <DataRequestContainer>
             <DataRequestText>
               <BsEyeSlashFill />
             </DataRequestText>
             <DataRequestText>Observação:</DataRequestText>
-            <DataRequestText>{currentRequest.observation}</DataRequestText>
+            <DataRequestText>{currentRequest?.observation}</DataRequestText>
           </DataRequestContainer>
-          {currentRequest.paymentStats === "pendente" ? (
+          {currentRequest?.paymentStats === "pendente" ? (
             <>
               <SelectOfPayment
                 {...register("formOfPayment", {
@@ -180,10 +187,10 @@ const RequestDatilsPage = () => {
           ) : null}
           <DataRequestContainer>
             <DataRequestText>Pagamento</DataRequestText>
-            <StatusText status={currentRequest.paymentStats}>
-              {currentRequest.paymentStats}
+            <StatusText status={currentRequest?.paymentStats}>
+              {currentRequest?.paymentStats}
             </StatusText>
-            {currentRequest.paymentStats === "pendente" ? (
+            {currentRequest?.paymentStats === "pendente" ? (
               <DataRequestContainer>
                 <DataRequestText style={{ position: "relative", top: "5px" }}>
                   <BiX size={25} color="red" />
@@ -197,10 +204,10 @@ const RequestDatilsPage = () => {
           </DataRequestContainer>
           <DataRequestContainer>
             <DataRequestText>Status Pedido</DataRequestText>
-            <StatusText status={currentRequest.status}>
-              {currentRequest.status}
+            <StatusText status={currentRequest?.status}>
+              {currentRequest?.status}
             </StatusText>
-            {currentRequest.status === "em andamento" ? (
+            {currentRequest?.status === "em andamento" ? (
               <DataRequestContainer>
                 <DataRequestText style={{ position: "relative", top: "5px" }}>
                   <BiX size={25} color="red" />
@@ -214,7 +221,7 @@ const RequestDatilsPage = () => {
           </DataRequestContainer>
           <TitleProductText>Produtos</TitleProductText>
           <RequestProductsContainer>
-            {currentRequest.products.map((product) => (
+            {currentRequest?.products.map((product) => (
               <RequestProductsContent key={product.id}>
                 {product.mark ? (
                   <DataRequestText>{`item: ${product.mark} - ${product.name}`}</DataRequestText>
@@ -236,7 +243,7 @@ const RequestDatilsPage = () => {
               </RequestProductsContent>
             ))}
           </RequestProductsContainer>
-          Total Pedido: ${currentRequest.priceTotal}
+          Total Pedido: ${currentRequest?.priceTotal}
           {currentUser.email === "userteste@gmail.com" ? (
             <CustomButton onClick={() => handleSubmit(handleFinalizeRequest)()}>
               Finalizar Pedido
