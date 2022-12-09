@@ -62,7 +62,7 @@ const ClosurePage = () => {
     const horaFim = data.horaFim;
     const horaInicio = data.horaInicio;
 
-    const requestEd = request.filter((request) => {
+    const requestFiltredDateHors = request.filter((request) => {
       const dateRequest = moment(`${request.currentDate}`);
 
       const horaRequest = moment(`${request.currentHors}`);
@@ -72,8 +72,7 @@ const ClosurePage = () => {
         (horaRequest._i >= horaInicio && horaRequest._i <= horaFim)
       );
     });
-
-    console.log(requestEd);
+    setRequestFiltred(requestFiltredDateHors);
   };
 
   return (
