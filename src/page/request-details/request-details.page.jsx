@@ -28,7 +28,6 @@ import {
   OptionOfPayment,
 } from "./request-details.style";
 import { useEffect } from "react";
-import { useMemo } from "react";
 
 const RequestDatilsPage = () => {
   const { currentUser } = useContext(UserContext);
@@ -37,6 +36,7 @@ const RequestDatilsPage = () => {
   useEffect(() => {
     fetchRequest();
   }, []);
+
   const { id } = useParams();
   const alert = useAlert();
 
@@ -47,6 +47,7 @@ const RequestDatilsPage = () => {
   const requestFiltred = request.filter((request) => {
     return request.idFromFirestore === id;
   });
+
   requestFiltred.forEach((request) => {
     currentRequest = request;
   });
@@ -59,7 +60,7 @@ const RequestDatilsPage = () => {
   const unsub = onSnapshot(doc(db, "Pedidos", id), (doc) => {
     setRequestInRealTime(doc.data());
   });
-  console.log(requestInRealTime);
+
   const allProductOfRequest = currentRequest?.products.every((item) => {
     return item.status === "realizado";
   });
@@ -109,6 +110,7 @@ const RequestDatilsPage = () => {
       alert.error("Item ja foi finalizado");
     }
   };
+
   const handleFinalizeRequest = async (data) => {
     const requestRef = doc(db, "Pedidos", id);
 
