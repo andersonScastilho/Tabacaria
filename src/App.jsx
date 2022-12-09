@@ -15,6 +15,7 @@ import CashierPage from "./page/cashier/cashier.page";
 import RequestPage from "./page/request/request.page";
 import ProductDetailPage from "./page/product-details/product-details.page";
 import ClosurePage from "./page/closure/closure.page";
+import CategoryDetailsPage from "./page/category-details/category-details.page";
 
 const App = () => {
   const [isInitialize, setIsInitialize] = useState(true);
@@ -67,7 +68,7 @@ const App = () => {
           }
         />
         <Route
-          path="/produto/detalhes/:categoryId/:typeormarkId/:produtoId"
+          path="/produto/detalhes"
           element={
             <AuthenticationGuard>
               <ProductDetailPage />
@@ -79,6 +80,14 @@ const App = () => {
           element={
             <AuthenticationGuard>
               <ClosurePage />
+            </AuthenticationGuard>
+          }
+        />
+        <Route
+          path="/category/detalhes/:id"
+          element={
+            <AuthenticationGuard>
+              <CategoryDetailsPage />
             </AuthenticationGuard>
           }
         />

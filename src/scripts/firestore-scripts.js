@@ -25,6 +25,8 @@ const Categories = [
       {
         id: "6265fdf55548df4h812j54j",
         name: "Zomo",
+        imageUrl:
+          " https://img.freepik.com/free-photo/selection-various-cocktails-table_140725-2909.jpg?w=2000",
         products: [
           {
             id: "6228fc8bb7e6cb904bbe014s",
@@ -67,6 +69,8 @@ const Categories = [
       {
         id: "6265fdf55548df4h812j54d",
         name: "Ziggi",
+        imageUrl:
+          " https://img.freepik.com/free-photo/selection-various-cocktails-table_140725-2909.jpg?w=2000",
         products: [
           {
             id: "6228fc8bb7e6cb904bbe01d5",
@@ -173,6 +177,8 @@ const Categories = [
       {
         id: "6265fdf55548df4h8dyige5",
         name: "Pimp",
+        imageUrl:
+          " https://img.freepik.com/free-photo/selection-various-cocktails-table_140725-2909.jpg?w=2000",
         products: [
           {
             id: "6228fc8bb7e6cb904bad5e4f5",
@@ -214,6 +220,8 @@ const Categories = [
       {
         id: "6265fdf558ev054h8dyi5ez",
         name: "Nay",
+        imageUrl:
+          " https://img.freepik.com/free-photo/selection-various-cocktails-table_140725-2909.jpg?w=2000",
         products: [
           {
             id: "6228fc8bb7e6cb9041dsee4f5",
@@ -283,6 +291,8 @@ const Categories = [
       {
         id: "6265fdf55548df4h8dyi5ef",
         name: "Onix",
+        imageUrl:
+          " https://img.freepik.com/free-photo/selection-various-cocktails-table_140725-2909.jpg?w=2000",
         products: [
           {
             id: "6228fc8fvdfdsb9048de54dev",
@@ -324,6 +334,8 @@ const Categories = [
       {
         id: "6265fdf558ev054h8dy8der",
         name: "Maximu's",
+        imageUrl:
+          " https://img.freepik.com/free-photo/selection-various-cocktails-table_140725-2909.jpg?w=2000",
         products: [
           {
             id: "6228fc8bb7e6cb9akd5e4vnb4",
@@ -395,6 +407,8 @@ const Categories = [
       {
         id: "21dfas1f515fdsf58mnjd",
         name: "Drinks",
+        imageUrl:
+          " https://img.freepik.com/free-photo/selection-various-cocktails-table_140725-2909.jpg?w=2000",
         products: [
           {
             id: "6228fc8bb7e6cb904bbe014c",
@@ -467,6 +481,8 @@ const Categories = [
       {
         id: "6dfsf1d5fs5f15dsf15f5s15f1",
         name: "Cervejas",
+        imageUrl:
+          " https://img.freepik.com/free-photo/selection-various-cocktails-table_140725-2909.jpg?w=2000",
         products: [
           {
             id: "d5dsaf4ddd8f5sd4f85dsfa0",
@@ -541,6 +557,8 @@ const Categories = [
       {
         id: "6dfsf1d5fs5f15dsf15eif834b",
         name: "Whisk",
+        imageUrl:
+          " https://img.freepik.com/free-photo/selection-various-cocktails-table_140725-2909.jpg?w=2000",
         products: [
           {
             id: "d5dsaf4ddd8f5sd4f88e3fdf",
@@ -619,6 +637,8 @@ const Categories = [
       {
         id: "6dfsf1d5fs5f15dsfs5f1",
         name: "Chop Germania Pilsen",
+        imageUrl:
+          "https://img.freepik.com/free-photo/selection-various-cocktails-table_140725-2909.jpg?w=2000",
         products: [
           {
             id: "d5dsaf4ddd8f5sd4f88evpss",
@@ -643,6 +663,8 @@ const Categories = [
       {
         id: "6dfsf1d5fs5f158evf5s15f1",
         name: "Torre de Caipirinha",
+        imageUrl:
+          "https://img.freepik.com/free-photo/selection-various-cocktails-table_140725-2909.jpg?w=2000",
         products: [
           {
             id: "d5dsaf4ddd8f8dpvf85ds12d",
@@ -667,6 +689,8 @@ const Categories = [
       {
         id: "6dfsf1d5fs5f15dsfidpvs15f1",
         name: "Outros",
+        imageUrl:
+          " https://img.freepik.com/free-photo/selection-various-cocktails-table_140725-2909.jpg?w=2000",
         products: [
           {
             id: "d5dsaf4ddd88dvd4f85dsfa0",
