@@ -29,6 +29,7 @@ import {
   OptionOfPayment,
   InputTextArea,
 } from "./cashier.style";
+import moment from "moment/moment";
 
 const CashierPage = () => {
   const {
@@ -46,10 +47,9 @@ const CashierPage = () => {
   } = useContext(CashierContext);
 
   const alert = useAlert();
-  const date = new Date();
 
-  const currentDate = date.toLocaleDateString();
-  const currentHors = date.toLocaleTimeString();
+  const currentDate = moment().format("DD/MM/YYYY");
+  const currentHors = moment().format("HH:mm");
 
   let paymentStats;
   const handleSubmitPress = async (data) => {

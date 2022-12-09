@@ -19,13 +19,17 @@ import {
   TitleFechamento,
 } from "./closure.styles";
 import { useEffect } from "react";
+import moment from "moment/moment";
 
 const ClosurePage = () => {
   // const { currentUser, isAuthenticated } = useContext(UserContext);
   const { request, fetchRequest } = useContext(RequestContext);
 
   const { register, handleSubmit } = useForm();
-fetchRequest();
+
+  useEffect(() => {
+    fetchRequest();
+  }, []);
 
   const [requestFiltred, setRequestFiltred] = useState();
 
@@ -51,21 +55,25 @@ fetchRequest();
   const PaymentInPix = requestFiltred?.filter((item) => {
     return item.formOfPayment === "pix";
   });
-
   const handleSubmitPress = (data) => {
+    const dateInicio = moment(data.dateInicio).format("DD/MM/YYYY");
+    const dateFim = moment(data.dateFim).format("DD/MM/YYYY");
 
-    const dateInicio = data.dateInicio.split("-").reverse().join("/");
-    const dateFim = data.dateFim.split("-").reverse().join("/");
+    const horaFim = data.horaFim;
+    const horaInicio = data.horaInicio;
 
-    const requestsFromDate = request.filter((request) => {
+    const requestEd = request.filter((request) => {
+      const dateRequest = moment(`${request.currentDate}`);
+
+      const horaRequest = moment(`${request.currentHors}`);
+
       return (
-        request.currentDate >= dateInicio &&
-        request.currentDate <= dateFim &&
-        request.currentHors >= data.horaInicio &&
-        request.currentHors <= data.horaFim
+        (dateRequest._i >= dateInicio && dateRequest._i <= dateFim) ||
+        (horaRequest._i >= horaInicio && horaRequest._i <= horaFim)
       );
     });
-    setRequestFiltred(requestsFromDate);
+
+    console.log(requestEd);
   };
 
   return (
