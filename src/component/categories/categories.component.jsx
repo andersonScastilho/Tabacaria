@@ -7,10 +7,9 @@ import { CategoriesContainer, CategoriesContent } from "./categories.styles";
 const Categories = () => {
   const { categories, fetchCategories } = useContext(CategoryContext);
 
-  useEffect(() => {
+  if(categorias.lenght === 0){
     fetchCategories();
-  }, []);
-
+}
   return (
     <CategoriesContainer>
       <CategoriesContent>
