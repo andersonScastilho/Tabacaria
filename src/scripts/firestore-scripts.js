@@ -26,7 +26,7 @@ const Categories = [
         id: "6265fdf55548df4h812j54j",
         name: "Zomo",
         imageUrl:
-          " https://img.freepik.com/free-photo/selection-various-cocktails-table_140725-2909.jpg?w=2000",
+          "https://shishahut.com.br/wp-content/uploads/2021/05/essencia_zomo_para_narguile_varios_sabores_50g_217_1_471f8731ba30fd977a3dc9244bf5f8d4.jpg",
         products: [
           {
             id: "6228fc8bb7e6cb904bbe014s",
@@ -70,7 +70,7 @@ const Categories = [
         id: "6265fdf55548df4h812j54d",
         name: "Ziggi",
         imageUrl:
-          " https://img.freepik.com/free-photo/selection-various-cocktails-table_140725-2909.jpg?w=2000",
+          "https://shishahut.com.br/wp-content/uploads/2021/12/pack-1.png",
         products: [
           {
             id: "6228fc8bb7e6cb904bbe01d5",
@@ -178,7 +178,7 @@ const Categories = [
         id: "6265fdf55548df4h8dyige5",
         name: "Pimp",
         imageUrl:
-          " https://img.freepik.com/free-photo/selection-various-cocktails-table_140725-2909.jpg?w=2000",
+          "https://cdn.entrypoint.directory/assets/54229/produtos/1976/todas_pimp.jpg",
         products: [
           {
             id: "6228fc8bb7e6cb904bad5e4f5",
@@ -221,7 +221,7 @@ const Categories = [
         id: "6265fdf558ev054h8dyi5ez",
         name: "Nay",
         imageUrl:
-          " https://img.freepik.com/free-photo/selection-various-cocktails-table_140725-2909.jpg?w=2000",
+          "https://cdn.awsli.com.br/1373/1373609/produto/54420898/7777144e5e.jpg",
         products: [
           {
             id: "6228fc8bb7e6cb9041dsee4f5",
@@ -292,7 +292,7 @@ const Categories = [
         id: "6265fdf55548df4h8dyi5ef",
         name: "Onix",
         imageUrl:
-          " https://img.freepik.com/free-photo/selection-various-cocktails-table_140725-2909.jpg?w=2000",
+          "https://cdn.awsli.com.br/600x450/1373/1373609/produto/126887686/26b5a3716a.jpg",
         products: [
           {
             id: "6228fc8fvdfdsb9048de54dev",
@@ -408,7 +408,7 @@ const Categories = [
         id: "21dfas1f515fdsf58mnjd",
         name: "Drinks",
         imageUrl:
-          " https://img.freepik.com/free-photo/selection-various-cocktails-table_140725-2909.jpg?w=2000",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3_kMI6Sp_Lhyjww_3a2ZU1Ru7X5FxX5mUJw&usqp=CAU",
         products: [
           {
             id: "6228fc8bb7e6cb904bbe014c",
@@ -482,7 +482,7 @@ const Categories = [
         id: "6dfsf1d5fs5f15dsf15f5s15f1",
         name: "Cervejas",
         imageUrl:
-          " https://img.freepik.com/free-photo/selection-various-cocktails-table_140725-2909.jpg?w=2000",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCAvnp8L-blGp7J3pZ5gF-WkG1ELMeFwjSlQ&usqp=CAU",
         products: [
           {
             id: "d5dsaf4ddd8f5sd4f85dsfa0",
@@ -558,7 +558,7 @@ const Categories = [
         id: "6dfsf1d5fs5f15dsf15eif834b",
         name: "Whisk",
         imageUrl:
-          " https://img.freepik.com/free-photo/selection-various-cocktails-table_140725-2909.jpg?w=2000",
+          " https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJ2JOqQT7CewCjl1--OPjdLkfSnJpYP0wVeQ&usqp=CAU",
         products: [
           {
             id: "d5dsaf4ddd8f5sd4f88e3fdf",
@@ -638,7 +638,7 @@ const Categories = [
         id: "6dfsf1d5fs5f15dsfs5f1",
         name: "Chop Germania Pilsen",
         imageUrl:
-          "https://img.freepik.com/free-photo/selection-various-cocktails-table_140725-2909.jpg?w=2000",
+          "https://choppgermaniabarueri.com.br/wp-content/uploads/banner-slider-03.jpg",
         products: [
           {
             id: "d5dsaf4ddd8f5sd4f88evpss",
@@ -664,7 +664,7 @@ const Categories = [
         id: "6dfsf1d5fs5f158evf5s15f1",
         name: "Torre de Caipirinha",
         imageUrl:
-          "https://img.freepik.com/free-photo/selection-various-cocktails-table_140725-2909.jpg?w=2000",
+          "https://media-cdn.tripadvisor.com/media/photo-s/0f/9e/96/aa/torre-de-caipiroska.jpg",
         products: [
           {
             id: "d5dsaf4ddd8f8dpvf85ds12d",
@@ -690,7 +690,7 @@ const Categories = [
         id: "6dfsf1d5fs5f15dsfidpvs15f1",
         name: "Outros",
         imageUrl:
-          " https://img.freepik.com/free-photo/selection-various-cocktails-table_140725-2909.jpg?w=2000",
+          "https://qph.cf2.quoracdn.net/main-qimg-d84ff8b95b3935fd13849d279d3828c3-pjlq",
         products: [
           {
             id: "d5dsaf4ddd88dvd4f85dsfa0",
