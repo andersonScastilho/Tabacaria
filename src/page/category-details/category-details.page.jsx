@@ -13,20 +13,26 @@ import {
 } from "./category-details.style";
 
 const CategoryDetailsPage = () => {
-  const { id } = useParams();
+  const { categoryId, subCategoryId } = useParams();
   const { categories, fetchCategories } = useContext(CategoryContext);
 
   useEffect(() => {
     fetchCategories();
   }, []);
 
-  let currentCategory;
+  const currentCategory = [];
 
-  categories.forEach((category) => {
-    category.tipeOrMark.forEach((subCategory) => {
-      if (subCategory.id === id) {
-        currentCategory = subCategory;
-      }
+  const category = categories?.filter((category) => {
+    return category.id === categoryId;
+  });
+
+  category.filter((subCategory) => {
+    subCategory.tipeOrMark.forEach((subCategory) => {
+      subCategory.id === subCategoryId ? (
+        currentCategory.push(subCategory)
+      ) : (
+        <></>
+      );
     });
   });
 
@@ -34,9 +40,9 @@ const CategoryDetailsPage = () => {
     <>
       <Header />
       <CategoryDetailsContainer>
-        <p>{currentCategory?.name}</p>
+        <p>{currentCategory[0]?.name}</p>
         <CategoryDetailsContent>
-          {currentCategory.products.map((product) => (
+          {currentCategory[0]?.products.map((product) => (
             <ProductMenu product={product} />
           ))}
         </CategoryDetailsContent>

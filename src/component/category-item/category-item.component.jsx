@@ -1,17 +1,19 @@
 import { CategoryContainer, CategoryName } from "./category-item.styles";
 import { useNavigate } from "react-router-dom";
 
-const CategoryItem = ({ category }) => {
+const CategoryItem = ({ category, subCategory }) => {
   const navigate = useNavigate();
 
-  const handleExploreClick = (id) => {
-    navigate(`/category/detalhes/${id}`);
+  const handleExploreClick = (categoryId, subCategoryId) => {
+    navigate(`/category/detalhes/${categoryId}/${subCategoryId}`);
   };
 
   return (
-    <CategoryContainer backgroundimage={category.imageUrl}>
-      <CategoryName onClick={() => handleExploreClick(category.id)}>
-        <p>{category.name}</p>
+    <CategoryContainer backgroundimage={subCategory.imageUrl}>
+      <CategoryName
+        onClick={() => handleExploreClick(category.id, subCategory.id)}
+      >
+        <p>{subCategory.name}</p>
         <p>Explorar</p>
       </CategoryName>
     </CategoryContainer>

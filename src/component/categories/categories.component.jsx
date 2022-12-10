@@ -7,16 +7,17 @@ import { CategoriesContainer, CategoriesContent } from "./categories.styles";
 const Categories = () => {
   const { categories, fetchCategories } = useContext(CategoryContext);
 
-  if(categorias.lenght === 0){
+  useEffect(() => {
     fetchCategories();
-}
+  }, []);
+
   return (
     <CategoriesContainer>
       <CategoriesContent>
-        {categories.map((category) =>
-          category.tipeOrMark.map((category) => (
-            <div key={category.id}>
-              <CategoryItem category={category} />
+        {categories.map((categories) =>
+          categories.tipeOrMark.map((subCategory) => (
+            <div key={subCategory.id}>
+              <CategoryItem category={categories} subCategory={subCategory} />
             </div>
           ))
         )}
