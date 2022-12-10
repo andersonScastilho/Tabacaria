@@ -77,7 +77,7 @@ const Header = (props) => {
         size={50}
         onClick={() => navigate("/")}
       />
-      <TitleHeader>Em densenvolvimento</TitleHeader>
+      <TitleHeader>Maximu's Lounge Bar</TitleHeader>
       {props.search && (
         <SearchContainer>
           <SearchContent>
@@ -86,11 +86,21 @@ const Header = (props) => {
               value={search}
               onChange={(event) => setSearch(event.target.value)}
             />
+            <p
+              style={{
+                position: " relative",
+                left: "-30px",
+                top: "4px",
+              }}
+            >
+              {<BsSearch size={22} />}
+            </p>
           </SearchContent>
           {search !== "" && productsFiltred.length !== 0 && (
             <SearchProductContainer>
               {productsFiltred.map((product) => (
                 <ProductItemCompoent
+                  key={product.id}
                   mark={true}
                   button={true}
                   product={product}
