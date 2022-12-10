@@ -84,12 +84,8 @@ const App = () => {
           }
         />
         <Route
-          path="/category/detalhes/:id"
-          element={
-            <AuthenticationGuard>
-              <CategoryDetailsPage />
-            </AuthenticationGuard>
-          }
+          path="/category/detalhes/:categoryId/:subCategoryId"
+          element={<CategoryDetailsPage />}
         />
       </Routes>
     </BrowserRouter>
