@@ -5,7 +5,7 @@ export const CategoryContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 180px;
+  height: 100%;
   background-color: red;
   grid-gap: 15px;
   background-size: cover;

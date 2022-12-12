@@ -1,17 +1,30 @@
 import styled from "styled-components";
 
-export const CategoryDetailsContainer = styled.div`
-  flex: 1 0 auto;
-  align-items: center;
-  min-height: 100%;
-  padding: 5px;
-  background-color: chocolate;
-  display: flex;
-  flex-direction: column;
+export const Container = styled.div`
+  padding: 0px 40px 20px 40px;
 `;
-export const CategoryDetailsContent = styled.div`
+
+export const CategoryTitle = styled.div`
   display: flex;
-  gap: 15px;
+  align-items: center;
+  margin-top: 20px;
+  p {
+    font-size: 21px;
+    font-weight: 500;
+  }
+`;
+
+export const ProductsContainer = styled.div`
+  display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  gap: 7px;
+  justify-items: start;
+  margin-top: 5px;
+  grid-row-gap: 20px;
+
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
 `;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CategoriesContainer = styled.div`
-  flex: 1 0 auto;
+  height: 100%;
   background-color: coral;
   display: flex;
   justify-content: center;
