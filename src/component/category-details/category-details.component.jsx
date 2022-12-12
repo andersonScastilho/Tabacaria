@@ -20,8 +20,7 @@ const CategoryDetails = ({ categoryId, subCategoryId }) => {
   const category = categories?.filter((category) => {
     return category.id === categoryId;
   });
-
-  category.filter((subCategory) => {
+  category.forEach((subCategory) => {
     subCategory.tipeOrMark.forEach((subCategory) => {
       subCategory.id === subCategoryId ? (
         currentCategory.push(subCategory)
