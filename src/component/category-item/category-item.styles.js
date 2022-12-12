@@ -8,7 +8,7 @@ export const CategoryContainer = styled.div`
   height: 180px;
   background-color: red;
   grid-gap: 15px;
-  background-size: cover;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 10px;

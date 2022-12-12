@@ -7,7 +7,6 @@ import { auth } from "../../config/firebase.config";
 import { RiLogoutBoxRLine } from "react-icons/ri";
 
 import CustomButton from "../custom-button/custom-button.component";
-import MaximusImage from "../../assets/Maximus_Image.jpeg";
 import ProductItemCompoent from "../product-item/product-item.component";
 
 import {
@@ -70,7 +69,7 @@ const Header = (props) => {
   };
 
   return (
-    <HeaderContainer imageUrl={MaximusImage}>
+    <HeaderContainer>
       <GiMagicHat
         cursor="pointer"
         color="#fff"
