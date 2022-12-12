@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CategoriesContainer = styled.div`
-  height: 100%;
+  min-height: 100%;
   background-color: coral;
   width: 100%;
   display: flex;
