@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const CategoriesContainer = styled.div`
-  min-height: 100%;
+  height: 100%;
+  flex: 1 0 auto;
   background-color: coral;
-  width: 100%;
   display: flex;
   justify-content: center;
   & div:nth-child(1) {
