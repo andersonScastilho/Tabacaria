@@ -16,7 +16,6 @@ export const CategoryTitle = styled.div`
 
 export const ProductsContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
   gap: 7px;
   justify-items: start;
   margin-top: 5px;
