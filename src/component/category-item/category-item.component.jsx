@@ -4,14 +4,14 @@ import { useNavigate } from "react-router-dom";
 const CategoryItem = ({ category, subCategory }) => {
   const navigate = useNavigate();
 
-  const handleExploreClick = (categoryId, subCategoryId) => {
-    navigate(`/category/detalhes/${categoryId}/${subCategoryId}`);
+  const handleExploreClick = () => {
+    navigate(`/category/detalhes/${category.id}/${subCategory.id}`);
   };
 
   return (
     <CategoryContainer backgroundimage={subCategory.imageUrl}>
       <CategoryName
-        onClick={handleExploreClick(category.id, subCategory.id)}
+        onClick={handleExploreClick}
       >
         <p>{subCategory.name}</p>
         <p>Explorar</p>
