@@ -15,8 +15,8 @@ export const CategoryTitle = styled.div`
 `;
 
 export const ProductsContainer = styled.div`
-  display: flex;
-  gap: 7px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   justify-items: start;
   margin-top: 5px;
   grid-row-gap: 20px;
