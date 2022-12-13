@@ -75,5 +75,23 @@ export const CategoriesContent = styled.div`
     & div:nth-child(5) {
       flex: 1;
     }
+    & div:nth-child(6) {
+      flex: 1;
+    }
+    & div:nth-child(7) {
+      flex: 1;
+    }
+    & div:nth-child(8) {
+      flex: 1;
+    }
+    & div:nth-child(10) {
+      flex: 1;
+    }
+    & div:nth-child(11) {
+      flex: 1;
+    }
+    & div:nth-child(12) {
+      flex: 1;
+    }
   }
 `;
