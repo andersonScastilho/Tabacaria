@@ -27,9 +27,6 @@ const ClosurePage = () => {
 
   const { register, handleSubmit } = useForm();
 
-  useEffect(() => {
-    fetchRequest();
-  }, []);
 
   const [requestFiltred, setRequestFiltred] = useState();
 
@@ -55,24 +52,27 @@ const ClosurePage = () => {
   const PaymentInPix = requestFiltred?.filter((item) => {
     return item.formOfPayment === "pix";
   });
-  const handleSubmitPress = (data) => {
+  const handleSubmitPress = (data) => {    
+    fetchRequest();
+
     const dateInicio = moment(data.dateInicio).format("DD/MM/YYYY");
     const dateFim = moment(data.dateFim).format("DD/MM/YYYY");
 
-    const horaFim = data.horaFim;
+
     const horaInicio = data.horaInicio;
+    const horaFim = data.horaFim;
 
-    const requestFiltredDateHors = request.filter((request) => {
-      const dateRequest = moment(`${request.currentDate}`);
-
-      const horaRequest = moment(`${request.currentHors}`);
-
+    const requestFiltredDate = request.filter((request) => {
       return (
-        (dateRequest._i >= dateInicio && dateRequest._i <= dateFim) ||
-        (horaRequest._i >= horaInicio && horaRequest._i <= horaFim)
-      );
+        request.currentDate >= dateInicio  && request.currentDate <= dateFim
+        );
     });
-    setRequestFiltred(requestFiltredDateHors);
+
+    const requestFiltredDateAndHors = requestFiltredDate.filter((request) => {
+      return request.currentHors >= horaInicio && request.currentHors <= horaFim
+    })
+
+    setRequestFiltred(requestFiltredDateAndHors);
   };
 
   return (
