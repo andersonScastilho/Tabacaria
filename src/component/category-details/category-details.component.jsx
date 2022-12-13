@@ -1,18 +1,38 @@
 import ProductMenu from "../menu-product/product-menu.component";
-import { useContext, useEffect } from "react";
-import { CategoryContext } from "../../contexts/categories.context";
+import { useEffect } from "react";
 
 import {
   CategoryTitle,
   Container,
   ProductsContainer,
 } from "./category-details.style";
+import LoadingComponent from "../../component/loading/loading.component";
+import { useState } from "react";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../config/firebase.config";
 
 const CategoryDetails = ({ categoryId, subCategoryId }) => {
-  const { categories, fetchCategories } = useContext(CategoryContext);
+  const [categories, setCategories] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const fetchCategorie = async () => {
+    try {
+      setIsLoading(true);
+      const categoriesFromFirestore = [];
+
+      const docRef = doc(db, "Categories", categoryId);
+      const docSnap = await getDoc(docRef);
+      categoriesFromFirestore.push(docSnap.data());
+      setCategories(categoriesFromFirestore);
+    } catch (error) {
+      console.log({ error });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
-    fetchCategories();
+    fetchCategorie();
   }, []);
 
   const currentCategory = [];
@@ -20,6 +40,7 @@ const CategoryDetails = ({ categoryId, subCategoryId }) => {
   const category = categories?.filter((category) => {
     return category.id === categoryId;
   });
+
   category.forEach((subCategory) => {
     subCategory.tipeOrMark.forEach((subCategory) => {
       subCategory.id === subCategoryId ? (
@@ -29,8 +50,10 @@ const CategoryDetails = ({ categoryId, subCategoryId }) => {
       );
     });
   });
+
   return (
     <Container>
+      {isLoading && <LoadingComponent />}
       <CategoryTitle>
         <p>{currentCategory[0]?.name}</p>
       </CategoryTitle>
