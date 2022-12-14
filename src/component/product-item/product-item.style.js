@@ -16,10 +16,6 @@ export const ImageProduct = styled.img`
   height: 50px;
   width: 50px;
   border-radius: 5px;
-  transition: 600ms 200ms;
-  &:hover {
-    transform: scale(3.1);
-  }
 `;
 export const NameProduct = styled.p`
   color: #282832;
