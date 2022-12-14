@@ -72,17 +72,19 @@ const ClosurePage = () => {
           <InputFilterFechamento
             type="date"
             {...register("dateInicio", {
-              required: true,
+              required: true, min:'2022-01-01', max: '2026-12-31'
             })}
           />
           <LabelFilterFechamento htmlFor="">Hora inicio:</LabelFilterFechamento>
-          <InputFilterFechamento type="time" {...register("horaInicio")} />
+          <InputFilterFechamento type="time" {...register("horaInicio", {
+            required: true,
+          })} />
 
           <LabelFilterFechamento htmlFor="">Data fim: </LabelFilterFechamento>
           <InputFilterFechamento
             type="date"
             {...register("dateFim", {
-              required: true,
+              required: true, min:'2022-01-01', max:'2026-12-31'
             })}
           />
           <LabelFilterFechamento htmlFor="">Hora fim: </LabelFilterFechamento>
