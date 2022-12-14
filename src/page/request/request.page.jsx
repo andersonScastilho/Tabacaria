@@ -25,23 +25,16 @@ const RequestPage = () => {
   useEffect(() => {
     fetchRequest();
   }, []);
-  const date = new Date();
-
-  const currentDate = date.toLocaleDateString();
 
   const requestPendente = request.filter((request) => {
-    return (
-      request.status === "em andamento" && request.currentDate === currentDate
-    );
+    return request.status === "em andamento";
   });
   const requestAllToday = request.filter((request) => {
-    return request.currentDate === currentDate;
+    return request.currentDate;
   });
 
   const requestRealizado = request.filter((request) => {
-    return (
-      request.status === "finalizado" && request.currentDate === currentDate
-    );
+    return request.status === "finalizado";
   });
 
   const [area, setArea] = useState("value1");

@@ -22,11 +22,12 @@ import { useEffect } from "react";
 import moment from "moment/moment";
 
 const ClosurePage = () => {
-  // const { currentUser, isAuthenticated } = useContext(UserContext);
   const { request, fetchRequest } = useContext(RequestContext);
+  useEffect(() => {
+    fetchRequest();
+  }, []);
 
   const { register, handleSubmit } = useForm();
-
 
   const [requestFiltred, setRequestFiltred] = useState();
 
@@ -52,27 +53,20 @@ const ClosurePage = () => {
   const PaymentInPix = requestFiltred?.filter((item) => {
     return item.formOfPayment === "pix";
   });
-  const handleSubmitPress = (data) => {    
-    fetchRequest();
-
-    const dateInicio = moment(data.dateInicio).format("DD/MM/YYYY");
-    const dateFim = moment(data.dateFim).format("DD/MM/YYYY");
-
-
-    const horaInicio = data.horaInicio;
-    const horaFim = data.horaFim;
-
+  const handleSubmitPress = (data) => {
+    const dateInicio = moment(`${data.dateInicio} ${data.horaInicio}`).format(
+      "YYYY/MM/DD HH:mm:ss"
+    );
+    const dateFim = moment(`${data.dateFim} ${data.horaFim} `).format(
+      "YYYY/MM/DD HH:mm:ss"
+    );
+    console.log(dateInicio);
+    console.log(dateFim);
     const requestFiltredDate = request.filter((request) => {
-      return (
-        request.currentDate >= dateInicio  && request.currentDate <= dateFim
-        );
+      console.log(request.currentDate);
     });
 
-    const requestFiltredDateAndHors = requestFiltredDate.filter((request) => {
-      return request.currentHors >= horaInicio && request.currentHors <= horaFim
-    })
-
-    setRequestFiltred(requestFiltredDateAndHors);
+    setRequestFiltred(requestFiltredDate);
   };
 
   return (

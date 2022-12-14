@@ -48,8 +48,7 @@ const CashierPage = () => {
 
   const alert = useAlert();
 
-  const currentDate = moment().format("DD/MM/YYYY");
-  const currentHors = moment().format("HH:mm");
+  const currentDate = moment().format("DD/MM/YYYY HH:mm:ss");
 
   let paymentStats;
   const handleSubmitPress = async (data) => {
@@ -66,7 +65,6 @@ const CashierPage = () => {
         paymentStats,
         products,
         priceTotal: productsTotalPrice,
-        currentHors,
         currentDate,
       };
 
