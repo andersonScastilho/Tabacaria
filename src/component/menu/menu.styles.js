@@ -1,27 +1,45 @@
 import styled from "styled-components";
 
 export const MenuContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-  @media (max-width: 600px) {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  padding: 10px;
+  justify-content: center;
+
+  @media (max-width: 1400px) {
+    display: flex;
+  }
+  @media (max-width: 1050px) {
+    display: flex;
     flex-direction: column;
+    align-items: center;
+  }
+
+  @media (max-width: 710px) {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
   }
 `;
 export const MenuContent = styled.div`
-  padding: 5px;
-  flex-wrap: wrap;
-  display: flex;
-  justify-content: space-around;
-  gap: 10px;
+  display: grid;
+  grid-auto-rows: 125px;
+  grid-template-columns: 2fr 2fr;
 
-  &:nth-child(2) {
-    background-color: darkgrey;
+  @media (max-width: 1200px) {
+    grid-auto-rows: 145px;
   }
-  &:nth-child(4) {
-    background-color: darkgray;
+
+  @media (max-width: 710px) {
+    display: flex;
+    grid-auto-rows: 150px;
+    flex-direction: column;
+    flex-wrap: wrap;
   }
 `;
+
 export const TitleCategory = styled.h2`
   color: #fff;
   border-radius: 3px;

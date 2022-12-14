@@ -31,24 +31,18 @@ const MenuComponent = (props) => {
     <MenuContainer>
       {categories.map((category) => (
         <>
-          <TitleCategory>{category.name}</TitleCategory>
           <MenuContent key={category.id}>
-            {category.tipeOrMark.map((tipe) => (
-              <ProductContainer>
-                <TipeOrMarkName>{tipe.name}</TipeOrMarkName>
-                <ProductContent>
-                  {tipe.products.map((product) => (
-                    <ProductItemComponent
-                      key={product.id}
-                      product={product}
-                      id={product.name}
-                      button={props.button}
-                      onClick={() => handleAddProductToCaixa(product)}
-                    />
-                  ))}
-                </ProductContent>
-              </ProductContainer>
-            ))}
+            {category.tipeOrMark.map((tipe) =>
+              tipe.products.map((product) => (
+                <ProductItemComponent
+                  key={product.id}
+                  product={product}
+                  id={product.name}
+                  button={props.button}
+                  onClick={() => handleAddProductToCaixa(product)}
+                />
+              ))
+            )}
           </MenuContent>
         </>
       ))}
