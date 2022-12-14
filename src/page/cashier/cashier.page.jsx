@@ -48,8 +48,9 @@ const CashierPage = () => {
 
   const alert = useAlert();
 
-  const currentDate = moment().format("DD/MM/YYYY HH:mm:ss");
+  const currentDate = new Date().getTime();
 
+  
   let paymentStats;
   const handleSubmitPress = async (data) => {
     if (data.formOfPayment === "false") {
