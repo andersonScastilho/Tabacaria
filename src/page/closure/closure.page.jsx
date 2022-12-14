@@ -19,7 +19,6 @@ import {
   TitleFechamento,
 } from "./closure.styles";
 import { useEffect } from "react";
-import moment from "moment/moment";
 
 const ClosurePage = () => {
   const { request, fetchRequest } = useContext(RequestContext);
@@ -54,16 +53,11 @@ const ClosurePage = () => {
     return item.formOfPayment === "pix";
   });
   const handleSubmitPress = (data) => {
-    const dateInicio = moment(`${data.dateInicio} ${data.horaInicio}`).format(
-      "YYYY/MM/DD HH:mm:ss"
-    );
-    const dateFim = moment(`${data.dateFim} ${data.horaFim} `).format(
-      "YYYY/MM/DD HH:mm:ss"
-    );
-    console.log(dateInicio);
-    console.log(dateFim);
+    const dateInicio = new Date (`${data.dateInicio} ${data.horaInicio}`).getTime()
+    const dateFim = new Date (`${data.dateFim} ${data.horaFim}`).getTime()
+
     const requestFiltredDate = request.filter((request) => {
-      console.log(request.currentDate);
+      return request.currentDate >= dateInicio && request.currentDate <= dateFim
     });
 
     setRequestFiltred(requestFiltredDate);
