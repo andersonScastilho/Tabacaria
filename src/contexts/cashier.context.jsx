@@ -18,7 +18,7 @@ const CashierContextProvider = ({ children }) => {
       return setProducts((prevState) =>
         prevState.map((item) =>
           item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
+            ? { ...item, solicitedQuantity: item.solicitedQuantity  + 1 }
             : item
         )
       );
@@ -26,12 +26,12 @@ const CashierContextProvider = ({ children }) => {
     if (product.mark) {
       setProducts((prveState) => [
         ...prveState,
-        { ...product, mark: product.mark, status: "pendente", quantity: 1 },
+        { ...product, mark: product.mark, servedQuantity:0, solicitedQuantity: 1},
       ]);
     } else {
       setProducts((prveState) => [
         ...prveState,
-        { ...product, status: "pendente", quantity: 1 },
+        { ...product, servedQuantity: 0 , solicitedQuantity: 1 },
       ]);
     }
   };
@@ -41,16 +41,16 @@ const CashierContextProvider = ({ children }) => {
       products
         .map((product) =>
           product.id === productId
-            ? { ...product, quantity: product.quantity - 1 }
+            ? { ...product, solicitedQuantity: product.solicitedQuantity - 1 }
             : product
         )
-        .filter((product) => product.quantity > 0)
+        .filter((product) => product.solicitedQuantity > 0)
     );
   };
 
   const productsTotalPrice = useMemo(() => {
     return products.reduce((acc, currentProduct) => {
-      return acc + currentProduct.price * currentProduct.quantity;
+      return acc + currentProduct.price * currentProduct.solicitedQuantity;
     }, 0);
   }, [products]);
 

@@ -29,7 +29,6 @@ import {
   OptionOfPayment,
   InputTextArea,
 } from "./cashier.style";
-import moment from "moment/moment";
 
 const CashierPage = () => {
   const {
@@ -52,12 +51,14 @@ const CashierPage = () => {
 
   
   let paymentStats;
+
   const handleSubmitPress = async (data) => {
     if (data.formOfPayment === "false") {
       paymentStats = "pendente";
     } else {
       paymentStats = "realizado";
     }
+
     if (products.length > 0) {
       let dataRequest = {
         ...data,
@@ -154,7 +155,7 @@ const CashierPage = () => {
             <TitlePreview>Quantidade</TitlePreview>
             {products.map((item) => (
               <ProductQuantityContainer key={item.id}>
-                <ProductQuantity>{item.quantity} un</ProductQuantity>
+                <ProductQuantity>{item.solicitedQuantity} un</ProductQuantity>
                 <CustomButton
                   onClick={() => handleDecreaseProductsToPedido(item.id)}
                 >

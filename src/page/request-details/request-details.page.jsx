@@ -57,12 +57,12 @@ const RequestDatilsPage = () => {
     currentRequest = requestInRealTime;
   }
 
-  const unsub = onSnapshot(doc(db, "Pedidos", id), (doc) => {
+  onSnapshot(doc(db, "Pedidos", id), (doc) => {
     setRequestInRealTime(doc.data());
   });
 
   const allProductOfRequest = currentRequest?.products.every((item) => {
-    return item.status === "realizado";
+    return item.servedQuantity === item.solicitedQuantity;
   });
 
   const handleFinalizeItem = async (product) => {
@@ -74,8 +74,10 @@ const RequestDatilsPage = () => {
       return item.id !== product.id;
     });
 
-    if (product.status !== "realizado") {
+
+    if (product.status !== "realizado" && product.servedQuantity !== product.solicitedQuantity) {
       if (product.mark) {
+
         await updateDoc(frankDocRef, {
           products: [
             ...dataProductSemCurrentProduct,
@@ -84,13 +86,14 @@ const RequestDatilsPage = () => {
               imageUrl: product.imageUrl,
               name: product.name,
               price: product.price,
-              quantity: product.quantity,
-              status: "realizado",
+              solicitedQuantity: product.solicitedQuantity,
+              servedQuantity: product.servedQuantity +1,
               mark: product.mark,
             },
           ],
         });
       } else {
+
         await updateDoc(frankDocRef, {
           products: [
             ...dataProductSemCurrentProduct,
@@ -99,14 +102,16 @@ const RequestDatilsPage = () => {
               imageUrl: product.imageUrl,
               name: product.name,
               price: product.price,
-              quantity: product.quantity,
-              status: "realizado",
+              solicitedQuantity: product.solicitedQuantity,
+              servedQuantity: product.servedQuantity +1,
             },
           ],
         });
       }
+
       alert.success("O status do item foi alterado");
     } else {
+
       alert.error("Item ja foi finalizado");
     }
   };
@@ -231,13 +236,17 @@ const RequestDatilsPage = () => {
                   <DataRequestText>{`item: ${product.name}`}</DataRequestText>
                 )}
                 <DataRequestText>
-                  Quantidade: {product.quantity}
+                  Quantidade Solicitada: {product.solicitedQuantity}
                 </DataRequestText>
+                  <DataRequestText>Quantidade Atendida: {product.servedQuantity}</DataRequestText>
                 <DataRequestContainer>
                   <DataRequestText>Status:</DataRequestText>
-                  <StatusText status={product.status}>
-                    {product.status}
-                  </StatusText>
+                  {product.servedQuantity === product.solicitedQuantity ? (
+                    <StatusText status={"Realizado"}>Realizado</StatusText>
+                  ):<StatusText status={"em andamento"}>
+                    Em andamento
+                  </StatusText> }
+
                 </DataRequestContainer>
                 <CustomButton onClick={() => handleFinalizeItem(product)}>
                   Finalizar item
