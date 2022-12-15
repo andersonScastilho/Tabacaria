@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useContext, useState,useMemo } from "react";
+import { useContext, useState, useMemo } from "react";
 
 import { GiMagicHat } from "react-icons/gi";
 import { BsSearch } from "react-icons/bs";
@@ -21,13 +21,18 @@ import {
   SearchContent,
   TitleHeader,
   SearchProductContainer,
+  IconeHeader,
 } from "./header.styles";
+import { useEffect } from "react";
 
-
-const Header = (props) => {
+const Header = ({ searchProducts }) => {
   const { isAuthenticated } = useContext(UserContext);
-  const { categories } = useContext(CategoryContext);
+  const { categories, fetchCategories } = useContext(CategoryContext);
   const { addProductsToRequest } = useContext(CashierContext);
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
 
   const navigate = useNavigate();
 
@@ -59,9 +64,11 @@ const Header = (props) => {
 
   const productsFiltred = useMemo(() => {
     const LowerBuscar = search.toLowerCase();
-
     return products.filter((product) =>
-      product.name.toLowerCase().includes(LowerBuscar)
+      product.mark
+        ? product.mark.toLowerCase().includes(LowerBuscar) ||
+          product.name.toLowerCase().includes(LowerBuscar)
+        : product.name.toLowerCase().includes(LowerBuscar)
     );
   }, [search]);
 
@@ -72,14 +79,16 @@ const Header = (props) => {
 
   return (
     <HeaderContainer>
-      <GiMagicHat
-        cursor="pointer"
-        color="#fff"
-        size={50}
-        onClick={() => navigate("/")}
-      />
+      <IconeHeader>
+        <GiMagicHat
+          cursor="pointer"
+          color="#fff"
+          size={50}
+          onClick={() => navigate("/")}
+        />
+      </IconeHeader>
       <TitleHeader>Maximu's Lounge Bar</TitleHeader>
-      {props.search && (
+      {searchProducts && (
         <SearchContainer>
           <SearchContent>
             <InputSearch

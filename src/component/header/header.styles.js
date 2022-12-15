@@ -4,17 +4,26 @@ export const HeaderContainer = styled.header`
   text-align: center;
   display: flex;
   align-items: center;
-  padding: 10px;
-  flex-wrap: wrap;
+  gap: 10px;
   justify-content: space-between;
   background-color: #222;
+
+  @media (max-width: 700px) {
+    justify-content: center;
+  }
 `;
+export const IconeHeader = styled.div``;
 export const TitleHeader = styled.h1`
   color: #fff;
 `;
 export const ButtonContainer = styled.div`
   display: flex;
   gap: 15px;
+  @media (max-width: 700px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
 `;
 export const SearchContainer = styled.div``;
 export const InputSearch = styled.input`
