@@ -26,9 +26,14 @@ const RequestPage = () => {
     fetchRequest();
   }, []);
 
-  const requestPendente = request.filter((request) => {
+  const requestAllPendente = request.filter((request) => {
     return request.status === "Pendente";
   });
+
+  const requestPendente = requestAllPendente.sort((a, b) => {
+    return a.tableClient - b.tableClient;
+  });
+
   const requestAllToday = request.filter((request) => {
     return request.currentDate;
   });
