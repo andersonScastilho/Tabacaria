@@ -11,7 +11,6 @@ import Header from "../../component/header/header.component";
 import Footer from "../../component/footer/footer.component";
 import CustomButton from "../../component/custom-button/custom-button.component";
 import InputErrorMessage from "../../component/input-error-messag/input-error.component";
-import MenuComponent from "../../component/menu/menu.component";
 
 import {
   LabelInputRequired,
@@ -87,7 +86,7 @@ const CashierPage = () => {
 
   return (
     <>
-      <Header search={true} />
+      <Header searchProducts={true} />
       <CashierContainer imageUrl="https://cdn.discordapp.com/attachments/929130096177053766/1039629996249071687/702883.jpg">
         <CashierContent>
           <LabelInputRequired>Nome</LabelInputRequired>
@@ -164,7 +163,6 @@ const CashierPage = () => {
             ))}
           </PreviewItensContent>
         </PreviewItensContainer>
-        <MenuComponent button={true} />
       </CashierContainer>
       <Footer />
     </>
