@@ -47,8 +47,8 @@ export const PreviewItensContainer = styled.div`
   grid-template-columns: repeat(2, 1fr);
   background-color: #dee7e7;
   border-radius: 5px;
-  max-height: 440px;
-  width: 350px;
+  height: 440px;
+  width: 400px;
   overflow: auto;
 `;
 export const PreviewItensContent = styled.div`
@@ -56,6 +56,10 @@ export const PreviewItensContent = styled.div`
   display: flex;
   flex-direction: column;
   padding: 3px;
+  gap: 5px;
+  &:nth-child(1) {
+    border-right: 2px solid black;
+  }
 `;
 export const ProductName = styled.p`
   font-size: 15px;

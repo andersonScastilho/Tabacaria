@@ -1,14 +1,16 @@
 import styled from "styled-components";
 
 export const CustomButtonStyle = styled.button`
-  border-radius: 5px;
+  height: 25px;
   padding: 3px;
+  border: 1px solid #777;
+  border-radius: 3px;
   line-height: 20px;
   justify-content: center;
-  color: white;
+  color: black;
   display: flex;
   align-items: center;
-  background-color: #777;
+  background-color: #fff;
   max-width: 250px;
   box-shadow: -2px 2px 0 #222, -2px 2px 0 #000;
   &:hover {
