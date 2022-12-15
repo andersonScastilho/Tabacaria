@@ -1,17 +1,6 @@
 import styled from "styled-components";
 
-export const MenuContainer = styled.div`
-  width: 100%;
-  display: grid;
-  grid-template-columns: 2fr 2fr;
-  justify-content: center;
-
-  @media (max-width: 480px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-`;
+export const MenuContainer = styled.div``;
 
 export const MenuContent = styled.div`
   display: grid;

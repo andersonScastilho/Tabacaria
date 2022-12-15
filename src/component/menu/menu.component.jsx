@@ -1,16 +1,11 @@
 import { useContext, useEffect } from "react";
 
-
 import { CategoryContext } from "../../contexts/categories.context";
 import { CashierContext } from "../../contexts/cashier.context";
 
 import ProductItemComponent from "../product-item/product-item.component";
 
-import {
-  MenuContainer,
-  MenuContent,
-
-} from "./menu.styles";
+import { MenuContainer, MenuContent } from "./menu.styles";
 
 const MenuComponent = (props) => {
   const { categories, fetchCategories } = useContext(CategoryContext);
@@ -26,23 +21,19 @@ const MenuComponent = (props) => {
 
   return (
     <MenuContainer>
-      {categories.map((category) => (
-        <>
-          <MenuContent key={category.id}>
-            {category.tipeOrMark.map((tipe) =>
-              tipe.products.map((product) => (
-                <ProductItemComponent
-                  key={product.id}
-                  product={product}
-                  id={product.name}
-                  button={props.button}
-                  onClick={() => handleAddProductToCaixa(product)}
-                />
-              ))
-            )}
-          </MenuContent>
-        </>
-      ))}
+      {categories.map((category) =>
+        category.tipeOrMark.map((tipe) =>
+          tipe.products.map((product) => (
+            <ProductItemComponent
+              key={product.id}
+              product={product}
+              id={product.name}
+              button={props.button}
+              onClick={() => handleAddProductToCaixa(product)}
+            />
+          ))
+        )
+      )}
     </MenuContainer>
   );
 };
