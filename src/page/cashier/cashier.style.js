@@ -10,8 +10,8 @@ export const CashierContainer = styled.div`
   padding: 7px;
 
   @media (max-width: 600px) {
-    justify-content: start;
     flex-direction: column;
+    align-items: center;
   }
 `;
 export const CashierContent = styled.div`

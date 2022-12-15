@@ -11,6 +11,9 @@ export const ProductsContainer = styled.div`
   margin: 5px;
   background-color: #dee7e7;
   padding: 5px;
+  @media (max-width: 680px) {
+    width: 400px;
+  }
 `;
 export const ImageProduct = styled.img`
   height: 50px;
