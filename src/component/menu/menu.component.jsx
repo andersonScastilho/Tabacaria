@@ -1,19 +1,16 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
-import ProductItemComponent from "../product-item/product-item.component";
 
 import { CategoryContext } from "../../contexts/categories.context";
 import { CashierContext } from "../../contexts/cashier.context";
 
+import ProductItemComponent from "../product-item/product-item.component";
+
 import {
   MenuContainer,
   MenuContent,
-  ProductContainer,
-  ProductContent,
-  TipeOrMarkName,
-  TitleCategory,
+
 } from "./menu.styles";
-import { useEffect } from "react";
 
 const MenuComponent = (props) => {
   const { categories, fetchCategories } = useContext(CategoryContext);

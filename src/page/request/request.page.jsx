@@ -6,6 +6,7 @@ import { RequestContext } from "../../contexts/request.context";
 import Header from "../../component/header/header.component";
 import Footer from "../../component/footer/footer.component";
 import CustomButton from "../../component/custom-button/custom-button.component";
+import LoadingComponent from "../../component/loading/loading.component";
 
 import {
   FilterSelect,
@@ -17,7 +18,6 @@ import {
   RequestsContent,
   SpanDescription,
 } from "./request.style";
-import LoadingComponent from "../../component/loading/loading.component";
 
 const RequestPage = () => {
   const { request, isLoading, fetchRequest } = useContext(RequestContext);
@@ -27,14 +27,14 @@ const RequestPage = () => {
   }, []);
 
   const requestPendente = request.filter((request) => {
-    return request.status === "em andamento";
+    return request.status === "Pendente";
   });
   const requestAllToday = request.filter((request) => {
     return request.currentDate;
   });
 
   const requestRealizado = request.filter((request) => {
-    return request.status === "finalizado";
+    return request.status === "Finalizado";
   });
 
   const [area, setArea] = useState("value1");

@@ -1,6 +1,4 @@
-import { useState } from "react";
-import { createContext } from "react";
-import { useMemo } from "react";
+import { useState, createContext, useMemo } from "react";
 
 export const CashierContext = createContext({
   products: [],

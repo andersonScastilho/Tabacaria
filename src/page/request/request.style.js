@@ -31,8 +31,9 @@ export const OptionSelect = styled.option`
 `;
 export const RequestsContent = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 15px;
+
   @media (max-width: 579px) {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -46,22 +47,23 @@ export const RequestContent = styled.div`
   border-radius: 5px;
   padding: 10px;
   cursor: pointer;
+
   &:hover {
     transform: scale(1.01);
   }
 `;
+
 export const RequestText = styled.p`
   font-size: 18px;
   font-weight: 500;
 `;
+
 export const RequestStatus = styled.p`
-  color: ${(props) =>
-    props.status === "pendente" || props.status === "em andamento"
-      ? "red"
-      : "green"};
+  color: ${(props) => (props.status === "Pendente" ? "red" : "green")};
   font-size: 18px;
   font-weight: 450;
 `;
+
 export const SpanDescription = styled.span`
   color: black;
   font-size: 18px;

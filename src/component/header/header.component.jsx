@@ -1,10 +1,14 @@
-import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useContext, useState,useMemo } from "react";
+
 import { GiMagicHat } from "react-icons/gi";
 import { BsSearch } from "react-icons/bs";
 import { UserContext } from "../../contexts/user.context";
 import { signOut } from "firebase/auth";
 import { auth } from "../../config/firebase.config";
 import { RiLogoutBoxRLine } from "react-icons/ri";
+import { CategoryContext } from "../../contexts/categories.context";
+import { CashierContext } from "../../contexts/cashier.context";
 
 import CustomButton from "../custom-button/custom-button.component";
 import ProductItemCompoent from "../product-item/product-item.component";
@@ -18,10 +22,8 @@ import {
   TitleHeader,
   SearchProductContainer,
 } from "./header.styles";
-import { useNavigate } from "react-router-dom";
-import { CategoryContext } from "../../contexts/categories.context";
-import { CashierContext } from "../../contexts/cashier.context";
-import { useMemo } from "react";
+
+
 const Header = (props) => {
   const { isAuthenticated } = useContext(UserContext);
   const { categories } = useContext(CategoryContext);

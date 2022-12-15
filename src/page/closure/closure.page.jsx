@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 import { RequestContext } from "../../contexts/request.context";
@@ -18,7 +18,6 @@ import {
   LabelFilterFechamento,
   TitleFechamento,
 } from "./closure.styles";
-import { useEffect } from "react";
 
 const ClosurePage = () => {
   const { request, fetchRequest } = useContext(RequestContext);

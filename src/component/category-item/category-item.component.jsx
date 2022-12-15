@@ -1,5 +1,6 @@
-import { CategoryContainer, CategoryName } from "./category-item.styles";
 import { useNavigate } from "react-router-dom";
+
+import { CategoryContainer, CategoryName } from "./category-item.styles";
 
 const CategoryItem = ({ category, subCategory }) => {
   const navigate = useNavigate();

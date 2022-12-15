@@ -85,6 +85,7 @@ export const ProductTotalPrice = styled.p`
   background-color: #008000;
   border-radius: 3px;
   color: #fff;
+  max-width: 250px;
 `;
 export const TitlePreviewContainer = styled.div`
   background-color: #5e9188;

@@ -74,10 +74,11 @@ const RequestDatilsPage = () => {
       return item.id !== product.id;
     });
 
-
-    if (product.status !== "realizado" && product.servedQuantity !== product.solicitedQuantity) {
+    if (
+      product.status !== "Realizado" &&
+      product.servedQuantity !== product.solicitedQuantity
+    ) {
       if (product.mark) {
-
         await updateDoc(frankDocRef, {
           products: [
             ...dataProductSemCurrentProduct,
@@ -87,13 +88,12 @@ const RequestDatilsPage = () => {
               name: product.name,
               price: product.price,
               solicitedQuantity: product.solicitedQuantity,
-              servedQuantity: product.servedQuantity +1,
+              servedQuantity: product.servedQuantity + 1,
               mark: product.mark,
             },
           ],
         });
       } else {
-
         await updateDoc(frankDocRef, {
           products: [
             ...dataProductSemCurrentProduct,
@@ -103,7 +103,7 @@ const RequestDatilsPage = () => {
               name: product.name,
               price: product.price,
               solicitedQuantity: product.solicitedQuantity,
-              servedQuantity: product.servedQuantity +1,
+              servedQuantity: product.servedQuantity + 1,
             },
           ],
         });
@@ -111,7 +111,6 @@ const RequestDatilsPage = () => {
 
       alert.success("O status do item foi alterado");
     } else {
-
       alert.error("Item ja foi finalizado");
     }
   };
@@ -122,10 +121,10 @@ const RequestDatilsPage = () => {
     if (allProductOfRequest === true) {
       if (
         currentRequest?.formOfPayment !== "false" &&
-        currentRequest?.paymentStats === "realizado"
+        currentRequest?.paymentStats === "Realizado"
       ) {
         await updateDoc(requestRef, {
-          status: "finalizado",
+          status: "Finalizado",
         });
         alert.success("O status do pedido foi alterado");
       } else if (
@@ -133,9 +132,9 @@ const RequestDatilsPage = () => {
         data.formOfPayment !== "false"
       ) {
         await updateDoc(requestRef, {
-          status: "finalizado",
+          status: "Finalizado",
           formOfPayment: data.formOfPayment,
-          paymentStats: "realizado",
+          paymentStats: "Realizado",
         });
 
         alert.success("O status do pedido foi alterado");
@@ -173,7 +172,7 @@ const RequestDatilsPage = () => {
             <DataRequestText>Observação:</DataRequestText>
             <DataRequestText>{currentRequest?.observation}</DataRequestText>
           </DataRequestContainer>
-          {currentRequest?.paymentStats === "pendente" ? (
+          {currentRequest?.paymentStats === "Pendente" ? (
             <>
               <SelectOfPayment
                 {...register("formOfPayment", {
@@ -197,7 +196,7 @@ const RequestDatilsPage = () => {
             <StatusText status={currentRequest?.paymentStats}>
               {currentRequest?.paymentStats}
             </StatusText>
-            {currentRequest?.paymentStats === "pendente" ? (
+            {currentRequest?.paymentStats === "Pendente" ? (
               <DataRequestContainer>
                 <DataRequestText style={{ position: "relative", top: "5px" }}>
                   <BiX size={25} color="red" />
@@ -214,7 +213,7 @@ const RequestDatilsPage = () => {
             <StatusText status={currentRequest?.status}>
               {currentRequest?.status}
             </StatusText>
-            {currentRequest?.status === "em andamento" ? (
+            {currentRequest?.status === "Pendente" ? (
               <DataRequestContainer>
                 <DataRequestText style={{ position: "relative", top: "5px" }}>
                   <BiX size={25} color="red" />
@@ -238,15 +237,16 @@ const RequestDatilsPage = () => {
                 <DataRequestText>
                   Quantidade Solicitada: {product.solicitedQuantity}
                 </DataRequestText>
-                  <DataRequestText>Quantidade Atendida: {product.servedQuantity}</DataRequestText>
+                <DataRequestText>
+                  Quantidade Atendida: {product.servedQuantity}
+                </DataRequestText>
                 <DataRequestContainer>
                   <DataRequestText>Status:</DataRequestText>
                   {product.servedQuantity === product.solicitedQuantity ? (
                     <StatusText status={"Realizado"}>Realizado</StatusText>
-                  ):<StatusText status={"em andamento"}>
-                    Em andamento
-                  </StatusText> }
-
+                  ) : (
+                    <StatusText status={"Pendente"}>Em andamento</StatusText>
+                  )}
                 </DataRequestContainer>
                 <CustomButton onClick={() => handleFinalizeItem(product)}>
                   Finalizar item

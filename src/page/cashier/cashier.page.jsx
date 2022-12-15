@@ -1,9 +1,9 @@
 import { useContext } from "react";
+
 import { useForm } from "react-hook-form";
 import { AiOutlineMinus } from "react-icons/ai";
 import { useAlert } from "react-alert";
 import { addDoc, collection } from "firebase/firestore";
-
 import { CashierContext } from "../../contexts/cashier.context";
 import { db } from "../../config/firebase.config";
 
@@ -49,20 +49,19 @@ const CashierPage = () => {
 
   const currentDate = new Date().getTime();
 
-  
   let paymentStats;
 
   const handleSubmitPress = async (data) => {
     if (data.formOfPayment === "false") {
-      paymentStats = "pendente";
+      paymentStats = "Pendente";
     } else {
-      paymentStats = "realizado";
+      paymentStats = "Realizado";
     }
 
     if (products.length > 0) {
       let dataRequest = {
         ...data,
-        status: "em andamento",
+        status: "Pendente",
         formOfPayment: data.formOfPayment,
         paymentStats,
         products,

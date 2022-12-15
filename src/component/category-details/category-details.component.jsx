@@ -1,15 +1,17 @@
+import { useEffect,useState } from "react";
+
 import ProductMenu from "../menu-product/product-menu.component";
-import { useEffect } from "react";
+import LoadingComponent from "../../component/loading/loading.component";
+
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../config/firebase.config";
 
 import {
   CategoryTitle,
   Container,
   ProductsContainer,
 } from "./category-details.style";
-import LoadingComponent from "../../component/loading/loading.component";
-import { useState } from "react";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "../../config/firebase.config";
+
 
 const CategoryDetails = ({ categoryId, subCategoryId }) => {
   const [categories, setCategories] = useState([]);

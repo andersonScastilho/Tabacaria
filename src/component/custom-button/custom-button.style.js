@@ -9,6 +9,7 @@ export const CustomButtonStyle = styled.button`
   display: flex;
   align-items: center;
   background-color: #777;
+  max-width: 250px;
   box-shadow: -2px 2px 0 #222, -2px 2px 0 #000;
   &:hover {
     cursor: pointer;
