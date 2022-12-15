@@ -72,9 +72,6 @@ const RequestDatilsPage = () => {
       status: "Entregue",
     });
   };
-  if (allProductOfRequest === true) {
-    changeStatusRequest();
-  }
 
   const handleFinalizeItem = async (product) => {
     const frankDocRef = doc(db, "Pedidos", id);
@@ -117,6 +114,9 @@ const RequestDatilsPage = () => {
             },
           ],
         });
+      }
+      if (allProductOfRequest === true) {
+        changeStatusRequest();
       }
 
       alert.success("O status do item foi alterado");
