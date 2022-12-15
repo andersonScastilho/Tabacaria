@@ -53,6 +53,7 @@ const RequestDatilsPage = () => {
   });
 
   const [requestInRealTime, setRequestInRealTime] = useState();
+
   if (requestInRealTime !== currentRequest) {
     currentRequest = requestInRealTime;
   }
@@ -65,6 +66,16 @@ const RequestDatilsPage = () => {
     return item.servedQuantity === item.solicitedQuantity;
   });
 
+  const changeStatusRequest = async () => {
+    const requestRef = doc(db, "Pedidos", id);
+    await updateDoc(requestRef, {
+      status: "Entregue",
+    });
+  };
+  if (allProductOfRequest === true) {
+    changeStatusRequest();
+  }
+
   const handleFinalizeItem = async (product) => {
     const frankDocRef = doc(db, "Pedidos", id);
 
@@ -73,7 +84,6 @@ const RequestDatilsPage = () => {
     let dataProductSemCurrentProduct = dataProducts.filter((item) => {
       return item.id !== product.id;
     });
-
     if (
       product.status !== "Realizado" &&
       product.servedQuantity !== product.solicitedQuantity

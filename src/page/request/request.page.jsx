@@ -27,7 +27,7 @@ const RequestPage = () => {
   }, []);
 
   const requestAllPendente = request.filter((request) => {
-    return request.status === "Pendente";
+    return request.status !== "Finalizado";
   });
 
   const requestPendente = requestAllPendente.sort((a, b) => {
