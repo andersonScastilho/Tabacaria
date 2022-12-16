@@ -53,7 +53,7 @@ const Header = ({ searchProducts }) => {
   const allProducts = [];
 
   categories.map((category) =>
-    category.tipeOrMark.map((type) =>
+    category.subCategories.map((type) =>
       type.products.map((product) => allProducts.push(product))
     )
   );

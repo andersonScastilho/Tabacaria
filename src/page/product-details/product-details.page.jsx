@@ -35,7 +35,7 @@ const ProductDetailsPage = () => {
         category.id === categoryId ? (
           <DetailsProductContent key={category.id}>
             <h3 style={{ margin: "0 auto" }}>Produto</h3>
-            {category.tipeOrMark.map((tipe) =>
+            {category.subCategories.map((tipe) =>
               tipe.id === typeormarkId
                 ? tipe.products.map((product) =>
                     product.id === produtoId ? (

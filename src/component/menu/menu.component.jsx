@@ -22,7 +22,7 @@ const MenuComponent = (props) => {
   return (
     <MenuContainer>
       {categories.map((category) =>
-        category.tipeOrMark.map((tipe) =>
+        category.subCategories.map((tipe) =>
           tipe.products.map((product) => (
             <ProductItemComponent
               key={product.id}

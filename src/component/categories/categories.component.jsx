@@ -17,7 +17,7 @@ const Categories = () => {
     <CategoriesContainer>
       <CategoriesContent>
         {categories.map((categories) =>
-          categories.tipeOrMark.map((subCategory) => (
+          categories.subCategories.map((subCategory) => (
             <div key={subCategory.id}>
               <CategoryItem category={categories} subCategory={subCategory} />
             </div>

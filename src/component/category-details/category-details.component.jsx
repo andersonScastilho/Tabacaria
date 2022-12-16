@@ -1,4 +1,4 @@
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 
 import ProductMenu from "../menu-product/product-menu.component";
 import LoadingComponent from "../../component/loading/loading.component";
@@ -11,7 +11,6 @@ import {
   Container,
   ProductsContainer,
 } from "./category-details.style";
-
 
 const CategoryDetails = ({ categoryId, subCategoryId }) => {
   const [categories, setCategories] = useState([]);
@@ -44,7 +43,7 @@ const CategoryDetails = ({ categoryId, subCategoryId }) => {
   });
 
   category.forEach((subCategory) => {
-    subCategory.tipeOrMark.forEach((subCategory) => {
+    subCategory.subCategories.forEach((subCategory) => {
       subCategory.id === subCategoryId ? (
         currentCategory.push(subCategory)
       ) : (
