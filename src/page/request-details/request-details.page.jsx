@@ -28,6 +28,7 @@ import {
   OptionOfPayment,
 } from "./request-details.style";
 import { useEffect } from "react";
+import { useMemo } from "react";
 
 const RequestDatilsPage = () => {
   const { currentUser } = useContext(UserContext);
@@ -48,29 +49,22 @@ const RequestDatilsPage = () => {
   const [currentRequest, setCurrentRequest] = useState();
 
   useEffect(() => {
-    setCurrentRequest(requestFiltred[0]);
-  }, [requestFiltred]);
+    if (currentRequest === undefined) {
+      setCurrentRequest(requestFiltred[0]);
+    } else {
+      setCurrentRequest(requestInRealTime);
+    }
+  });
 
   const [requestInRealTime, setRequestInRealTime] = useState();
 
-  const unsub = onSnapshot(doc(db, "Pedidos", id), (doc) => {
+  onSnapshot(doc(db, "Pedidos", id), (doc) => {
     setRequestInRealTime(doc.data());
   });
 
   const allProductOfRequest = currentRequest?.products.every((item) => {
     return item.servedQuantity === item.solicitedQuantity;
   });
-
-  const changeStatusRequest = async () => {
-    const requestRef = doc(db, "Pedidos", id);
-    await updateDoc(requestRef, {
-      status: "Entregue",
-    });
-  };
-
-  // if (allProductOfRequest === true && currentRequest?.status !== "Finalizado") {
-  //   changeStatusRequest();
-  // }
 
   const handleFinalizeItem = async (product) => {
     const frankDocRef = doc(db, "Pedidos", id);
