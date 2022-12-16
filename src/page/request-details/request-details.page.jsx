@@ -42,13 +42,12 @@ const RequestDatilsPage = () => {
 
   const { register, handleSubmit } = useForm();
 
-  let currentRequest;
-
   const requestFiltred = request.filter((request) => {
     return request.idFromFirestore === id;
   });
+  const [currentRequest, setCurrentRequest] = useState();
 
-  currentRequest = requestFiltred[0];
+  setCurrentRequest(requestFiltred[0]);
 
   const [requestInRealTime, setRequestInRealTime] = useState();
 
@@ -67,9 +66,9 @@ const RequestDatilsPage = () => {
     });
   };
 
-  if (allProductOfRequest === true && currentRequest?.status !== "Finalizado") {
-    changeStatusRequest();
-  }
+  // if (allProductOfRequest === true && currentRequest?.status !== "Finalizado") {
+  //   changeStatusRequest();
+  // }
 
   const handleFinalizeItem = async (product) => {
     const frankDocRef = doc(db, "Pedidos", id);
