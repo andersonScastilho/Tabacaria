@@ -48,9 +48,7 @@ const RequestDatilsPage = () => {
     return request.idFromFirestore === id;
   });
 
-  requestFiltred.forEach((request) => {
-    currentRequest = request;
-  });
+  currentRequest = requestFiltred[0];
 
   const [requestInRealTime, setRequestInRealTime] = useState();
 
