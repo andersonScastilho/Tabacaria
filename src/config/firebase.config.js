@@ -1,13 +1,14 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
+
 const firebaseConfig = {
-  apiKey: "AIzaSyBwixB4NgQvnWc3HuqkX8-Q-ntquxq3Y4w",
-  authDomain: "maximus-a1103.firebaseapp.com",
-  projectId: "maximus-a1103",
-  storageBucket: "maximus-a1103.appspot.com",
-  messagingSenderId: "1032599396180",
-  appId: "1:1032599396180:web:1b2ae760db97bd1bf532c1",
+  apiKey: "AIzaSyCpf6KKXMYdBDzDyGixlInVhl0ESDDFz_U",
+  authDomain: "dev-maximus.firebaseapp.com",
+  projectId: "dev-maximus",
+  storageBucket: "dev-maximus.appspot.com",
+  messagingSenderId: "809247765875",
+  appId: "1:809247765875:web:6e89efe279ed0008934106",
 };
 
 // Initialize Firebase
