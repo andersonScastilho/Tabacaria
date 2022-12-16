@@ -52,10 +52,6 @@ const RequestDatilsPage = () => {
 
   const [requestInRealTime, setRequestInRealTime] = useState();
 
-  if (requestInRealTime !== currentRequest) {
-    currentRequest = requestInRealTime;
-  }
-
   const unsub = onSnapshot(doc(db, "Pedidos", id), (doc) => {
     setRequestInRealTime(doc.data());
   });
