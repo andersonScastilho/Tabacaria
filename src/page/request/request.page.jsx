@@ -26,20 +26,20 @@ const RequestPage = () => {
     fetchRequest();
   }, []);
 
-  const requestAllPendente = request.filter((request) => {
+  const allRequestPendenteFiltredToStats = request.filter((request) => {
     return request.status !== "Finalizado";
   });
 
-  const requestPendente = requestAllPendente.sort((a, b) => {
+  const requestsPendente = allRequestPendenteFiltredToStats.sort((a, b) => {
     return a.tableClient - b.tableClient;
-  });
-
-  const requestAllToday = request.filter((request) => {
-    return request.currentDate;
   });
 
   const requestRealizado = request.filter((request) => {
     return request.status === "Finalizado";
+  });
+
+  const requestAllToday = request.filter((request) => {
+    return request.currentDate;
   });
 
   const [area, setArea] = useState("value1");
@@ -66,7 +66,7 @@ const RequestPage = () => {
         </FilterSelect>
         <RequestsContent>
           {area === "value1"
-            ? requestPendente.map((request) => (
+            ? requestsPendente.map((request) => (
                 <RequestContent key={request.idFromFirestore}>
                   <RequestText>Cliente: {request.nameClient}</RequestText>
                   <RequestText>Mesa: {request.tableClient}</RequestText>

@@ -16,14 +16,16 @@ const CategoryDetails = ({ categoryId, subCategoryId }) => {
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const fetchCategorie = async () => {
+  const fetchCategory = async () => {
     try {
       setIsLoading(true);
       const categoriesFromFirestore = [];
 
       const docRef = doc(db, "Categories", categoryId);
       const docSnap = await getDoc(docRef);
+
       categoriesFromFirestore.push(docSnap.data());
+
       setCategories(categoriesFromFirestore);
     } catch (error) {
       console.log({ error });
@@ -33,7 +35,7 @@ const CategoryDetails = ({ categoryId, subCategoryId }) => {
   };
 
   useEffect(() => {
-    fetchCategorie();
+    fetchCategory();
   }, []);
 
   const currentCategory = [];

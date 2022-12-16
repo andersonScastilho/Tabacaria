@@ -33,11 +33,11 @@ const ClosurePage = () => {
     return acc + 1;
   }, 0);
 
-  const PriceTotalRequest = requestFiltred?.reduce((acc, item) => {
+  const totalPrice = requestFiltred?.reduce((acc, item) => {
     return acc + item.priceTotal;
   }, 0);
 
-  const PaymentInDinheiro = requestFiltred?.filter((item) => {
+  const PaymentInCash = requestFiltred?.filter((item) => {
     return item.formOfPayment === "dinheiro";
   });
   const PaymentInCreditCard = requestFiltred?.filter((item) => {
@@ -51,12 +51,13 @@ const ClosurePage = () => {
   const PaymentInPix = requestFiltred?.filter((item) => {
     return item.formOfPayment === "pix";
   });
+
   const handleSubmitPress = (data) => {
-    const dateInicio = new Date (`${data.dateInicio} ${data.horaInicio}`).getTime()
-    const dateFim = new Date (`${data.dateFim} ${data.horaFim}`).getTime()
+    const startDate = new Date(`${data.startDate} ${data.starTime}`).getTime();
+    const endDate = new Date(`${data.endDate} ${data.endTime}`).getTime();
 
     const requestFiltredDate = request.filter((request) => {
-      return request.currentDate >= dateInicio && request.currentDate <= dateFim
+      return request.currentDate >= startDate && request.currentDate <= endDate;
     });
 
     setRequestFiltred(requestFiltredDate);
@@ -70,24 +71,31 @@ const ClosurePage = () => {
           <LabelFilterFechamento>Data inicio: </LabelFilterFechamento>
           <InputFilterFechamento
             type="date"
-            {...register("dateInicio", {
-              required: true, min:'2022-01-01', max: '2026-12-31'
+            {...register("startDate", {
+              required: true,
+              min: "2022-01-01",
+              max: "2026-12-31",
             })}
           />
           <LabelFilterFechamento htmlFor="">Hora inicio:</LabelFilterFechamento>
-          <InputFilterFechamento type="time" {...register("horaInicio", {
-            required: true,
-          })} />
+          <InputFilterFechamento
+            type="time"
+            {...register("starTime", {
+              required: true,
+            })}
+          />
 
           <LabelFilterFechamento htmlFor="">Data fim: </LabelFilterFechamento>
           <InputFilterFechamento
             type="date"
-            {...register("dateFim", {
-              required: true, min:'2022-01-01', max:'2026-12-31'
+            {...register("endDate", {
+              required: true,
+              min: "2022-01-01",
+              max: "2026-12-31",
             })}
           />
           <LabelFilterFechamento htmlFor="">Hora fim: </LabelFilterFechamento>
-          <InputFilterFechamento type="time" {...register("horaFim")} />
+          <InputFilterFechamento type="time" {...register("endTime")} />
 
           <CustomButton onClick={() => handleSubmit(handleSubmitPress)()}>
             consultar fechamento
@@ -104,9 +112,7 @@ const ClosurePage = () => {
           <FechamentoItemContent>
             <InfoNameText>Pagamento em dinheiro: </InfoNameText>
             <InfoText>
-              {PaymentInDinheiro !== undefined
-                ? `${PaymentInDinheiro?.length}`
-                : null}
+              {PaymentInCash !== undefined ? `${PaymentInCash?.length}` : null}
             </InfoText>
           </FechamentoItemContent>
           <FechamentoItemContent>
@@ -134,9 +140,7 @@ const ClosurePage = () => {
           <FechamentoItemContent>
             <InfoNameText>Lucro Total:</InfoNameText>
             <InfoText>
-              {PriceTotalRequest !== undefined
-                ? `R$${PriceTotalRequest},00`
-                : null}
+              {totalPrice !== undefined ? `R$${totalPrice}` : null}
             </InfoText>
           </FechamentoItemContent>
         </FechamentoContent>

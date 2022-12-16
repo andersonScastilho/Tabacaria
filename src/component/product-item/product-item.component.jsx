@@ -24,7 +24,7 @@ const ProductItemComponent = ({ product, button, onClick, mark }) => {
       ) : (
         <NameProduct>{product.name}</NameProduct>
       )}
-      {product.price && <PriceProduct>{product.price},00</PriceProduct>}
+      {product.price && <PriceProduct>{product.price}</PriceProduct>}
       {button === true ? (
         <CustomButton onClick={onClick}>{<BsPlus />}</CustomButton>
       ) : null}

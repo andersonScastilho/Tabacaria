@@ -104,7 +104,7 @@ const CashierPage = () => {
             style={{ width: "70px", textAlign: "center" }}
             type="number"
             min={1}
-            hasError={!!errors?.mesaCliente}
+            hasError={!!errors?.tableClient}
             {...register("tableClient", { required: true, min: 0 })}
           />
           {errors?.tableClient?.type === "required" && (
@@ -126,10 +126,8 @@ const CashierPage = () => {
             <OptionOfPayment value="pix">Pix</OptionOfPayment>
           </SelectOfPayment>
           <LabelInputRequired>Observação: </LabelInputRequired>
-          <InputTextArea {...register("observation")} />{" "}
-          <ProductTotalPrice>
-            Total: R${productsTotalPrice},00
-          </ProductTotalPrice>
+          <InputTextArea {...register("observation")} />
+          <ProductTotalPrice>Total: R${productsTotalPrice}</ProductTotalPrice>
           <CustomButton onClick={() => handleSubmit(handleSubmitPress)()}>
             Adicionar pedido
           </CustomButton>
