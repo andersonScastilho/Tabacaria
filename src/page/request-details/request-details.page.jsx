@@ -261,11 +261,9 @@ const RequestDatilsPage = () => {
             ))}
           </RequestProductsContainer>
           Total Pedido: ${currentRequest?.priceTotal}
-          {currentUser.email === "userteste@gmail.com" ? (
-            <CustomButton onClick={() => handleSubmit(handleFinalizeRequest)()}>
-              Finalizar Pedido
-            </CustomButton>
-          ) : null}
+          <CustomButton onClick={() => handleSubmit(handleFinalizeRequest)()}>
+            Finalizar Pedido
+          </CustomButton>
         </DetailsRequestContent>
       </DetailsRequestContainer>
       <Footer />
