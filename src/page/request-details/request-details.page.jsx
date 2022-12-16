@@ -47,7 +47,9 @@ const RequestDatilsPage = () => {
   });
   const [currentRequest, setCurrentRequest] = useState();
 
-  setCurrentRequest(requestFiltred[0]);
+  useEffect(() => {
+    setCurrentRequest(requestFiltred[0]);
+  }, [requestFiltred]);
 
   const [requestInRealTime, setRequestInRealTime] = useState();
 
