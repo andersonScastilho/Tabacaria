@@ -18,27 +18,34 @@ import {
   RequestsContent,
   SpanDescription,
 } from "./request.style";
+import { db } from "../../config/firebase.config";
+import { collection, onSnapshot, query } from "firebase/firestore";
 
 const RequestPage = () => {
-  const { request, isLoading, fetchRequest } = useContext(RequestContext);
+  const [request, setRequest] = useState();
+  const q = query(collection(db, "Pedidos"));
 
-  useEffect(() => {
-    fetchRequest();
-  }, []);
-
-  const allRequestPendenteFiltredToStats = request.filter((request) => {
-    return request.status !== "Finalizado";
+  const unsubscribe = onSnapshot(q, (querySnapshot) => {
+    const requests = [];
+    querySnapshot.forEach((doc) => {
+      let data = { ...doc.data(), idFromFirestore: doc.id };
+      requests.push(data);
+    });
+    setRequest(requests);
   });
 
-  const requestsPendente = allRequestPendenteFiltredToStats.sort((a, b) => {
+  const allRequestPendenteFiltredToStats = request?.filter((request) => {
+    return request.status !== "Finalizado";
+  });
+  const requestsPendente = allRequestPendenteFiltredToStats?.sort((a, b) => {
     return a.tableClient - b.tableClient;
   });
 
-  const requestRealizado = request.filter((request) => {
+  const requestRealizado = request?.filter((request) => {
     return request.status === "Finalizado";
   });
 
-  const requestAllToday = request.filter((request) => {
+  const requestAllToday = request?.filter((request) => {
     return request.currentDate;
   });
 
@@ -52,7 +59,6 @@ const RequestPage = () => {
 
   return (
     <>
-      {isLoading && <LoadingComponent />}
       <Header />
       <RequestContainer>
         <FilterSelect
@@ -66,7 +72,7 @@ const RequestPage = () => {
         </FilterSelect>
         <RequestsContent>
           {area === "value1"
-            ? requestsPendente.map((request) => (
+            ? requestsPendente?.map((request) => (
                 <RequestContent key={request.idFromFirestore}>
                   <RequestText>Cliente: {request.nameClient}</RequestText>
                   <RequestText>Mesa: {request.tableClient}</RequestText>
@@ -87,7 +93,7 @@ const RequestPage = () => {
                 </RequestContent>
               ))
             : area === "value2"
-            ? requestRealizado.map((request) => (
+            ? requestRealizado?.map((request) => (
                 <RequestContent key={request.idFromFirestore}>
                   <RequestText>Nome: {request.nameClient}</RequestText>
                   <RequestText>Mesa: {request.tableClient}</RequestText>
