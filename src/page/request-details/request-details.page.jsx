@@ -65,6 +65,22 @@ const RequestDatilsPage = () => {
   const allProductOfRequest = currentRequest?.products.every((item) => {
     return item.servedQuantity === item.solicitedQuantity;
   });
+  const changeRequestStatusToEntregueAuto = async () => {
+    const requestRef = doc(db, "Pedidos", id);
+    await updateDoc(requestRef, {
+      status: "Entregue",
+    });
+  };
+  if (
+    allProductOfRequest === true &&
+    request.formOfPayment !== "pendente" &&
+    currentRequest.status !== "Entregue" &&
+    currentRequest.status !== "Finalizado"
+  ) {
+    if (allProductOfRequest === true) {
+      changeRequestStatusToEntregueAuto();
+    }
+  }
 
   const handleFinalizeItem = async (product) => {
     const frankDocRef = doc(db, "Pedidos", id);
