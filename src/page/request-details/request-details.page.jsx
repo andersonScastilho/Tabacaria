@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useAlert } from "react-alert";
 import { useParams } from "react-router-dom";
 import { BsFillPersonFill, BsEyeSlashFill } from "react-icons/bs";
@@ -26,7 +26,6 @@ import {
   SelectOfPayment,
   OptionOfPayment,
 } from "./request-details.style";
-import { useEffect } from "react";
 
 const RequestDatilsPage = () => {
   const { request, fetchRequest } = useContext(RequestContext);
@@ -51,7 +50,7 @@ const RequestDatilsPage = () => {
     } else {
       setCurrentRequest(requestInRealTime);
     }
-  });
+  }, [requestFiltred]);
 
   const [requestInRealTime, setRequestInRealTime] = useState();
 
