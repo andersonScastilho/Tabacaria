@@ -82,6 +82,7 @@ export const MenuContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-y: scroll;
   @media (max-width: 768px) {
     min-width: 70%;
   }
@@ -93,7 +94,7 @@ export const MenuTitle = styled.p`
 `;
 export const ButtonMenu = styled.div`
   width: 100%;
-  flex: 1 0 auto;
+  height: 100%;
   background-color: #222;
   display: flex;
   border: none;
