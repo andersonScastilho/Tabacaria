@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useContext, useState, useMemo } from "react";
+import { Spin as Hamburger, Spin } from "hamburger-react";
 
 import { GiMagicHat } from "react-icons/gi";
 import { BsSearch } from "react-icons/bs";
@@ -22,6 +23,11 @@ import {
   TitleHeader,
   SearchProductContainer,
   IconeHeader,
+  SpinMenu,
+  MenuContainer,
+  MenuContent,
+  MenuTitle,
+  ButtonMenu,
 } from "./header.styles";
 import { useEffect } from "react";
 
@@ -48,6 +54,16 @@ const Header = ({ searchProducts }) => {
   const handleFechamentoClick = () => {
     navigate("/fechamento");
   };
+  const [isVisible, setIsVisible] = useState(false);
+
+  const handleChangeVisiblit = () => {
+    if (isVisible === true) {
+      setIsVisible(false);
+    } else {
+      setIsVisible(true);
+    }
+  };
+
   const [search, setSearch] = useState("");
 
   const allProducts = [];
@@ -79,6 +95,27 @@ const Header = ({ searchProducts }) => {
 
   return (
     <HeaderContainer>
+      <MenuContainer isVisible={isVisible}>
+        <MenuContent>
+          <MenuTitle>Menu</MenuTitle>
+          {isAuthenticated && (
+            <>
+              <ButtonMenu onClick={handleCaixaClick}>Caixa</ButtonMenu>
+              <ButtonMenu onClick={handleRequestClick}>Pedidos</ButtonMenu>
+              <ButtonMenu onClick={handleFechamentoClick}>
+                Fechamento
+              </ButtonMenu>
+              <ButtonMenu onClick={() => signOut(auth)}>
+                Sair
+                <RiLogoutBoxRLine size={15} />
+              </ButtonMenu>
+            </>
+          )}
+          {!isAuthenticated && (
+            <ButtonMenu onClick={handleLoginClick}>Login</ButtonMenu>
+          )}
+        </MenuContent>
+      </MenuContainer>
       <IconeHeader>
         <GiMagicHat
           cursor="pointer"
@@ -139,6 +176,9 @@ const Header = ({ searchProducts }) => {
           <CustomButton onClick={handleLoginClick}>Login</CustomButton>
         )}
       </ButtonContainer>
+      <SpinMenu onClick={handleChangeVisiblit}>
+        <Spin />
+      </SpinMenu>
     </HeaderContainer>
   );
 };
