@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const DetailsRequestContainer = styled.div`
   display: flex;
+  min-height: 100%;
   flex: 1 0 auto;
   padding: 10px;
   align-items: center;

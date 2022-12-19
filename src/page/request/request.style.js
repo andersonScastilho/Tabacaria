@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const RequestContainer = styled.div`
+  min-height: 100%;
   background-image: url("https://wallpaperaccess.com/full/1975322.jpg");
   display: flex;
   background-size: 100% 100%;
