@@ -1,13 +1,9 @@
-import { useState, useContext, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-import { RequestContext } from "../../contexts/request.context";
 
 import Header from "../../component/header/header.component";
 import Footer from "../../component/footer/footer.component";
 import CustomButton from "../../component/custom-button/custom-button.component";
-import LoadingComponent from "../../component/loading/loading.component";
-
 import {
   FilterSelect,
   RequestContainer,
@@ -20,10 +16,13 @@ import {
 } from "./request.style";
 import { db } from "../../config/firebase.config";
 import { collection, onSnapshot, query } from "firebase/firestore";
+import moment from "moment/moment";
 
 const RequestPage = () => {
   const [request, setRequest] = useState();
   const q = query(collection(db, "Pedidos"));
+
+  const currentDate = moment().format("DD/MM/YYYY");
 
   const unsubscribe = onSnapshot(q, (querySnapshot) => {
     const requests = [];
@@ -37,16 +36,20 @@ const RequestPage = () => {
   const allRequestPendenteFiltredToStats = request?.filter((request) => {
     return request.status !== "Finalizado";
   });
+
   const requestsPendente = allRequestPendenteFiltredToStats?.sort((a, b) => {
-    return a.tableClient - b.tableClient;
+    const date = moment(request.currentDate).format("DD/MM/YYYY");
+    return a.tableClient - b.tableClient && date === currentDate;
   });
 
   const requestRealizado = request?.filter((request) => {
-    return request.status === "Finalizado";
+    const date = moment(request.currentDate).format("DD/MM/YYYY");
+    return request.status === "Finalizado" && date === currentDate;
   });
 
   const requestAllToday = request?.filter((request) => {
-    return request.currentDate;
+    const date = moment(request.currentDate).format("DD/MM/YYYY");
+    return request.currentDate && date === currentDate;
   });
 
   const [area, setArea] = useState("value1");

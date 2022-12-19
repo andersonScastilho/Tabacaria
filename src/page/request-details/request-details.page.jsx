@@ -8,7 +8,6 @@ import { useForm } from "react-hook-form";
 
 import { db } from "../../config/firebase.config";
 import { doc, onSnapshot, updateDoc } from "firebase/firestore";
-import { UserContext } from "../../contexts/user.context";
 import { RequestContext } from "../../contexts/request.context";
 
 import Header from "../../component/header/header.component";
@@ -28,10 +27,8 @@ import {
   OptionOfPayment,
 } from "./request-details.style";
 import { useEffect } from "react";
-import { useMemo } from "react";
 
 const RequestDatilsPage = () => {
-  const { currentUser } = useContext(UserContext);
   const { request, fetchRequest } = useContext(RequestContext);
 
   useEffect(() => {
@@ -65,6 +62,7 @@ const RequestDatilsPage = () => {
   const allProductOfRequest = currentRequest?.products.every((item) => {
     return item.servedQuantity === item.solicitedQuantity;
   });
+
   const changeRequestStatusToEntregueAuto = async () => {
     const requestRef = doc(db, "Pedidos", id);
     await updateDoc(requestRef, {
