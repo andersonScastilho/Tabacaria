@@ -102,7 +102,6 @@ export const ButtonMenu = styled.div`
   justify-content: center;
   color: #fff;
   font-size: 35px;
-  line-height: 25px;
   &:hover {
     cursor: pointer;
   }
