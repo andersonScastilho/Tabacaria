@@ -2,8 +2,7 @@ import styled from "styled-components";
 
 export const FechamentoContainer = styled.div`
   display: flex;
-  min-height: 100%;
-  flex: 1 0 auto;
+  height: 100%;
   background-image: url("https://i0.wp.com/heroisx.com/wp-content/uploads/2019/10/Jiraiya-de-naruto-escritor.jpeg?fit=760%2C398&ssl=1");
   padding: 10px;
   background-repeat: no-repeat;

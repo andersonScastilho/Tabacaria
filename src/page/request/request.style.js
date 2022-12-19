@@ -1,12 +1,11 @@
 import styled from "styled-components";
 
 export const RequestContainer = styled.div`
-  min-height: 100%;
+  height: 100%;
   background-image: url("https://wallpaperaccess.com/full/1975322.jpg");
   display: flex;
   background-size: 100% 100%;
   flex-direction: column;
-  flex: 1 0 auto;
   gap: 7px;
   padding: 10px;
 `;

@@ -40,15 +40,14 @@ export const SearchContent = styled.div`
   display: flex;
   padding: 3px;
 `;
-export const SpinMenu = styled.div`
+export const SpinHeader = styled.div`
   display: none;
   color: red;
   &:hover {
     cursor: pointer;
   }
   @media (max-width: 750px) {
-    z-index: 2;
-    display: flex;
+    display: ${(props) => (props.oculto ? "none" : "flex")};
   }
 `;
 export const MenuContainer = styled.div`
@@ -72,8 +71,9 @@ export const MenuContainer = styled.div`
     display: none;
   }
 `;
-export const MenuEscapeArea = styled.div`
-  width: 100%;
+export const HeaderMenu = styled.div`
+  display: flex;
+  align-items: center;
 `;
 export const MenuContent = styled.div`
   height: 100%;
@@ -90,19 +90,30 @@ export const MenuContent = styled.div`
 export const MenuTitle = styled.p`
   font-size: 1.325rem;
   font-weight: 600;
-  margin-bottom: 25px;
+  text-align: center;
 `;
 export const ButtonMenu = styled.div`
   width: 100%;
-  height: 100%;
+  height: 80%;
+  border-top: 1px solid #fff;
   background-color: #222;
   display: flex;
-  border: none;
   align-items: center;
   justify-content: center;
   color: #fff;
   font-size: 25px;
   &:hover {
     cursor: pointer;
+  }
+`;
+export const SpinMenu = styled.div`
+  display: none;
+  color: red;
+  margin-left: 70%;
+  &:hover {
+    cursor: pointer;
+  }
+  @media (max-width: 750px) {
+    display: flex;
   }
 `;

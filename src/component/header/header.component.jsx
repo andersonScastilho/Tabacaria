@@ -28,6 +28,8 @@ import {
   MenuContent,
   MenuTitle,
   ButtonMenu,
+  HeaderMenu,
+  SpinHeader,
 } from "./header.styles";
 import { useEffect } from "react";
 
@@ -98,7 +100,12 @@ const Header = ({ searchProducts }) => {
     <HeaderContainer>
       <MenuContainer isVisible={isVisible}>
         <MenuContent>
-          <MenuTitle>Menu</MenuTitle>
+          <HeaderMenu>
+            <MenuTitle>Menu</MenuTitle>
+            <SpinMenu onClick={handleChangeVisiblit}>
+              <Spin toggled={isVisible} />
+            </SpinMenu>
+          </HeaderMenu>
           {isAuthenticated && (
             <>
               <ButtonMenu onClick={handleCaixaClick}>Caixa</ButtonMenu>
@@ -177,9 +184,9 @@ const Header = ({ searchProducts }) => {
           <CustomButton onClick={handleLoginClick}>Login</CustomButton>
         )}
       </ButtonContainer>
-      <SpinMenu onClick={handleChangeVisiblit}>
-        <Spin />
-      </SpinMenu>
+      <SpinHeader oculto={isVisible} onClick={handleChangeVisiblit}>
+        <Spin toggled={isVisible} />
+      </SpinHeader>
     </HeaderContainer>
   );
 };

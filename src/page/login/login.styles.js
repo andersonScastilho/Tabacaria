@@ -5,8 +5,7 @@ export const LoginContainer = styled.div`
   background-image: ${(props) => `url('${props.imageUrl}')`};
   flex-direction: column;
   background-size: 100% 100%;
-  min-height: 100%;
-  flex: 1 0 auto;
+  height: 100%;
   background-repeat: no-repeat;
   align-items: center;
   justify-content: center;
