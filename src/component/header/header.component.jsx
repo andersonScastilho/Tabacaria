@@ -37,9 +37,10 @@ const Header = ({ searchProducts }) => {
   const { addProductsToRequest } = useContext(CashierContext);
 
   useEffect(() => {
-    fetchCategories();
+    if (categories.length === 0) {
+      fetchCategories();
+    }
   }, []);
-
   const navigate = useNavigate();
 
   const handleRequestClick = () => {
