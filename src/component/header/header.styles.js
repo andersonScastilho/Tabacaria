@@ -90,7 +90,6 @@ export const MenuTitle = styled.p`
   font-size: 1.325rem;
   font-weight: 600;
   margin-bottom: 25px;
-  margin-top: 20px;
 `;
 export const ButtonMenu = styled.div`
   width: 100%;
@@ -101,7 +100,7 @@ export const ButtonMenu = styled.div`
   align-items: center;
   justify-content: center;
   color: #fff;
-  font-size: 35px;
+  font-size: 25px;
   &:hover {
     cursor: pointer;
   }
