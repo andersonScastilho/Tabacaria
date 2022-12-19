@@ -6,6 +6,7 @@ import { auth } from "./config/firebase.config";
 import { UserContext } from "./contexts/user.context";
 import { onAuthStateChanged } from "firebase/auth";
 
+import AuthenticationGuardCashier from "./guards/authenticationCashier.component";
 import AuthenticationGuard from "./guards/authentication.component";
 
 import HomePage from "./page/home/home.page";
@@ -46,9 +47,9 @@ const App = () => {
         <Route
           path="/caixa"
           element={
-            <AuthenticationGuard>
+            <AuthenticationGuardCashier>
               <CashierPage />
-            </AuthenticationGuard>
+            </AuthenticationGuardCashier>
           }
         />
         <Route
