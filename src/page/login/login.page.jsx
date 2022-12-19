@@ -49,7 +49,7 @@ const LoginPage = () => {
     <>
       <Header />
       <LoginContainer imageUrl="http://s2.glbimg.com/04fnCkkSVc12JLItOwOvVzWQILA=/620x430/e.glbimg.com/og/ed/f/original/2017/12/01/darth-vader-star-wars.jpg">
-        <LoginContent>
+        <LoginContent onClick={(event) => event.preventDefault()}>
           <BiUser size={40} color="white" />
           <CustomInput
             hasError={!!errors?.email}
@@ -67,6 +67,7 @@ const LoginPage = () => {
             hasError={!!errors?.password}
             type="password"
             placeholder="Senha"
+            autoComplete="true"
             {...register("password", { required: true })}
           />
           {errors?.password?.type === "required" && (

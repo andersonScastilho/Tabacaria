@@ -11,7 +11,7 @@ export const LoginContainer = styled.div`
   justify-content: center;
 `;
 
-export const LoginContent = styled.div`
+export const LoginContent = styled.form`
   display: flex;
   padding: 5px;
   justify-content: center;
