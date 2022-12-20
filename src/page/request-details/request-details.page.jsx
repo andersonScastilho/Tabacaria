@@ -28,35 +28,38 @@ import {
 } from "./request-details.style";
 
 const RequestDatilsPage = () => {
-  const { request, fetchRequest } = useContext(RequestContext);
-
   const toast = useToast();
-  useEffect(() => {
-    fetchRequest();
-  }, []);
-
   const { id } = useParams();
-
   const { register, handleSubmit } = useForm();
 
-  const requestFiltred = request.filter((request) => {
-    return request.idFromFirestore === id;
-  });
-  const [currentRequest, setCurrentRequest] = useState();
-
-  useEffect(() => {
-    if (currentRequest === undefined) {
-      setCurrentRequest(requestFiltred[0]);
-    } else {
-      setCurrentRequest(requestInRealTime);
-    }
-  }, [requestFiltred]);
-
-  const [requestInRealTime, setRequestInRealTime] = useState();
-
-  onSnapshot(doc(db, "Pedidos", id), (doc) => {
+  const unsub = onSnapshot(doc(db, "Pedidos", id), (doc) => {
     setRequestInRealTime(doc.data());
   });
+
+  useEffect(() => {
+    setCurrentRequest(requestInRealTime);
+  }, []);
+
+  const [currentRequest, setCurrentRequest] = useState();
+  const [requestInRealTime, setRequestInRealTime] = useState();
+
+  const currentRequestServed = currentRequest?.products.reduce((acc, item) => {
+    return acc + item.servedQuantity;
+  }, 0);
+
+  const requestInRealTimeServed = requestInRealTime?.products.reduce(
+    (acc, item) => {
+      return acc + item.servedQuantity;
+    },
+    0
+  );
+
+  if (
+    currentRequest?.status !== requestInRealTime?.status ||
+    currentRequestServed !== requestInRealTimeServed
+  ) {
+    setCurrentRequest(requestInRealTime);
+  }
 
   const allProductOfRequest = currentRequest?.products.every((item) => {
     return item.servedQuantity === item.solicitedQuantity;
@@ -68,15 +71,14 @@ const RequestDatilsPage = () => {
       status: "Entregue",
     });
   };
+
   if (
     allProductOfRequest === true &&
-    request.formOfPayment !== "pendente" &&
-    currentRequest?.status !== "Entregue" &&
-    currentRequest?.status !== "Finalizado"
+    currentRequest.formOfPayment !== "Pendente" &&
+    currentRequest.status === "Pendente" &&
+    allProductOfRequest === true
   ) {
-    if (allProductOfRequest === true) {
-      changeRequestStatusToEntregueAuto();
-    }
+    changeRequestStatusToEntregueAuto();
   }
 
   const handleFinalizeItem = async (product) => {
