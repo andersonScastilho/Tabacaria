@@ -5,14 +5,11 @@ export const CashierContainer = styled.div`
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-  height: 100%;
+  min-height: 70%;
+  flex: 1 0 auto;
+  gap: 10px;
   background-color: #282832;
   padding: 7px;
-
-  @media (max-width: 600px) {
-    flex-direction: column;
-    align-items: center;
-  }
 `;
 export const CashierContent = styled.div`
   display: flex;
