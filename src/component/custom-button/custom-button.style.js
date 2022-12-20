@@ -4,7 +4,7 @@ export const CustomButtonStyle = styled.button`
   padding: 3px;
   border: 1px solid #777;
   border-radius: 3px;
-  line-height: 20px;
+  line-height: 15px;
   justify-content: center;
   color: black;
   display: flex;

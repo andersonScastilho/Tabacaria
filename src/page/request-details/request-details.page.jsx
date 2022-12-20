@@ -1,9 +1,9 @@
 import { useContext, useState, useEffect } from "react";
-import { useAlert } from "react-alert";
 import { useParams } from "react-router-dom";
 import { BsFillPersonFill, BsEyeSlashFill } from "react-icons/bs";
 import { BiX, BiCheck } from "react-icons/bi";
 import { GiTable } from "react-icons/gi";
+import { useToast } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 
 import { db } from "../../config/firebase.config";
@@ -30,12 +30,12 @@ import {
 const RequestDatilsPage = () => {
   const { request, fetchRequest } = useContext(RequestContext);
 
+  const toast = useToast();
   useEffect(() => {
     fetchRequest();
   }, []);
 
   const { id } = useParams();
-  const alert = useAlert();
 
   const { register, handleSubmit } = useForm();
 
@@ -71,8 +71,8 @@ const RequestDatilsPage = () => {
   if (
     allProductOfRequest === true &&
     request.formOfPayment !== "pendente" &&
-    currentRequest.status !== "Entregue" &&
-    currentRequest.status !== "Finalizado"
+    currentRequest?.status !== "Entregue" &&
+    currentRequest?.status !== "Finalizado"
   ) {
     if (allProductOfRequest === true) {
       changeRequestStatusToEntregueAuto();
@@ -122,9 +122,23 @@ const RequestDatilsPage = () => {
         });
       }
 
-      alert.success("O status do item foi alterado");
+      toast({
+        title: "Status Item.",
+        description: "Status foi alterado!",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+        position: "top-left",
+      });
     } else {
-      alert.error("Item ja foi finalizado");
+      toast({
+        title: "Não foi possivel",
+        description: "Item ja foi finalizado",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+        position: "top-left",
+      });
     }
   };
 
@@ -139,7 +153,14 @@ const RequestDatilsPage = () => {
         await updateDoc(requestRef, {
           status: "Finalizado",
         });
-        alert.success("O status do pedido foi alterado");
+        toast({
+          title: "Status Pedido",
+          description: "Status do pedido foi alterado",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+          position: "top-left",
+        });
       } else if (
         currentRequest?.formOfPayment === "false" &&
         data.formOfPayment !== "false"
@@ -150,12 +171,33 @@ const RequestDatilsPage = () => {
           paymentStats: "Realizado",
         });
 
-        alert.success("O status do pedido foi alterado");
+        toast({
+          title: "Status Pedido",
+          description: "Status do pedido foi alterado",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+          position: "top-left",
+        });
       } else {
-        alert.error("Informe a forma de pagamento");
+        toast({
+          title: "Forma de Pagamento",
+          description: "Forma de pagamento invalida",
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+          position: "top-left",
+        });
       }
     } else {
-      alert.error("Tem item pendente");
+      toast({
+        title: "Finalizar Pedido",
+        description: "Finalize todos os itens primeiro",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+        position: "top-left",
+      });
     }
   };
 

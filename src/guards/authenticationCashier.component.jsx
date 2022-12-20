@@ -9,13 +9,13 @@ const AuthenticationGuardCashier = ({ children }) => {
   const { currentUser } = useContext(UserContext);
   const navigate = useNavigate();
   useEffect(() => {
-    if (currentUser !== "userTeste@gmail.com") {
+    if (currentUser === "userTeste@gmail.com") {
       setTimeout(() => {
         navigate("/");
       }, 3000);
     }
   }, []);
-  if (currentUser !== "userTeste@gmail.com") {
+  if (currentUser === "userTeste@gmail.com") {
     return (
       <>
         <Header />

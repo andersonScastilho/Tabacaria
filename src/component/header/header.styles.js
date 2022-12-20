@@ -11,6 +11,7 @@ export const HeaderContainer = styled.header`
 `;
 export const IconeHeader = styled.div``;
 export const TitleHeader = styled.h1`
+  font-size: 25px;
   color: #fff;
 `;
 export const ButtonContainer = styled.div`

@@ -1,21 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+import { ChakraProvider } from "@chakra-ui/react";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import CategoryContextProvider from "./contexts/categories.context";
 import UserContextProvider from "./contexts/user.context";
-import { positions, transitions, Provider as AlertProvider } from "react-alert";
-import AlertTemplate from "react-alert-template-basic";
 import CashierContextProvider from "./contexts/cashier.context";
 import RequestContextProvider from "./contexts/request.context";
-
-const options = {
-  position: positions.TOP_LEFT,
-  timeout: 2500,
-  transition: transitions.SCALE,
-};
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -23,9 +15,9 @@ root.render(
       <UserContextProvider>
         <CashierContextProvider>
           <RequestContextProvider>
-            <AlertProvider template={AlertTemplate} {...options}>
+            <ChakraProvider>
               <App />
-            </AlertProvider>
+            </ChakraProvider>
           </RequestContextProvider>
         </CashierContextProvider>
       </UserContextProvider>

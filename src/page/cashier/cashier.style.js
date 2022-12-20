@@ -4,9 +4,9 @@ export const CashierContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  align-items: center;
   height: 100%;
   background-color: #282832;
-  gap: 25px;
   padding: 7px;
 
   @media (max-width: 600px) {
@@ -47,7 +47,7 @@ export const PreviewItensContainer = styled.div`
   grid-template-columns: repeat(2, 1fr);
   background-color: #dee7e7;
   border-radius: 5px;
-  height: 440px;
+  height: 400px;
   width: 400px;
   overflow: auto;
 `;

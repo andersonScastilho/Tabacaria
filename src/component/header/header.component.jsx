@@ -98,32 +98,6 @@ const Header = ({ searchProducts }) => {
 
   return (
     <HeaderContainer>
-      <MenuContainer isVisible={isVisible}>
-        <MenuContent>
-          <HeaderMenu>
-            <MenuTitle>Menu</MenuTitle>
-            <SpinMenu onClick={handleChangeVisiblit}>
-              <Spin toggled={isVisible} />
-            </SpinMenu>
-          </HeaderMenu>
-          {isAuthenticated && (
-            <>
-              <ButtonMenu onClick={handleCaixaClick}>Caixa</ButtonMenu>
-              <ButtonMenu onClick={handleRequestClick}>Pedidos</ButtonMenu>
-              <ButtonMenu onClick={handleFechamentoClick}>
-                Fechamento
-              </ButtonMenu>
-              <ButtonMenu onClick={() => signOut(auth)}>
-                Sair
-                <RiLogoutBoxRLine size={15} />
-              </ButtonMenu>
-            </>
-          )}
-          {!isAuthenticated && (
-            <ButtonMenu onClick={handleLoginClick}>Login</ButtonMenu>
-          )}
-        </MenuContent>
-      </MenuContainer>
       <IconeHeader>
         <GiMagicHat
           cursor="pointer"
@@ -186,7 +160,33 @@ const Header = ({ searchProducts }) => {
       </ButtonContainer>
       <SpinHeader oculto={isVisible} onClick={handleChangeVisiblit}>
         <Spin toggled={isVisible} />
-      </SpinHeader>
+      </SpinHeader>{" "}
+      <MenuContainer isVisible={isVisible}>
+        <MenuContent>
+          <HeaderMenu>
+            <MenuTitle>Menu</MenuTitle>
+            <SpinMenu onClick={handleChangeVisiblit}>
+              <Spin toggled={isVisible} />
+            </SpinMenu>
+          </HeaderMenu>
+          {isAuthenticated && (
+            <>
+              <ButtonMenu onClick={handleCaixaClick}>Caixa</ButtonMenu>
+              <ButtonMenu onClick={handleRequestClick}>Pedidos</ButtonMenu>
+              <ButtonMenu onClick={handleFechamentoClick}>
+                Fechamento
+              </ButtonMenu>
+              <ButtonMenu onClick={() => signOut(auth)}>
+                Sair
+                <RiLogoutBoxRLine size={15} />
+              </ButtonMenu>
+            </>
+          )}
+          {!isAuthenticated && (
+            <ButtonMenu onClick={handleLoginClick}>Login</ButtonMenu>
+          )}
+        </MenuContent>
+      </MenuContainer>
     </HeaderContainer>
   );
 };

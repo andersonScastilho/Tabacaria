@@ -1,8 +1,8 @@
 import { useContext } from "react";
+import { useToast } from "@chakra-ui/react";
 
 import { useForm } from "react-hook-form";
 import { AiOutlineMinus } from "react-icons/ai";
-import { useAlert } from "react-alert";
 import { addDoc, collection } from "firebase/firestore";
 import { CashierContext } from "../../contexts/cashier.context";
 import { db } from "../../config/firebase.config";
@@ -36,7 +36,6 @@ const CashierPage = () => {
     setValue,
     formState: { errors },
   } = useForm();
-
   const {
     products,
     productsTotalPrice,
@@ -44,7 +43,7 @@ const CashierPage = () => {
     decreaseProductQuantity,
   } = useContext(CashierContext);
 
-  const alert = useAlert();
+  const toast = useToast();
 
   const currentDate = new Date().getTime();
 
@@ -73,10 +72,23 @@ const CashierPage = () => {
       setValue("tableClient", "");
 
       await addDoc(collection(db, "Pedidos"), dataRequest);
-
-      alert.success("O Pedido foi adicionado");
+      toast({
+        title: "Pedido foi adicionado.",
+        description: "Adicionamos o pedido na fila",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+        position: "top-left",
+      });
     } else {
-      alert.error("Adicione itens ao pedido");
+      toast({
+        title: "Não foi possivel adicionar o pedido",
+        description: "Verifique se adicionou itens ao pedido",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+        position: "top-left",
+      });
     }
   };
 
