@@ -1,13 +1,15 @@
 import styled from "styled-components";
 
 export const RequestContainer = styled.div`
-  height: 100%;
+  min-height: 80%;
+  flex-wrap: wrap;
   background-image: url("https://wallpaperaccess.com/full/1975322.jpg");
   display: flex;
   background-size: 100% 100%;
   flex-direction: column;
   gap: 7px;
   padding: 10px;
+  flex: 1 0 auto;
 `;
 export const FilterSelect = styled.select`
   width: 100px;
@@ -34,6 +36,9 @@ export const RequestsContent = styled.div`
   grid-template-columns: repeat(4, 1fr);
   gap: 15px;
 
+  @media (max-width: 790px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
   @media (max-width: 579px) {
     grid-template-columns: repeat(2, 1fr);
   }
