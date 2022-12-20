@@ -76,28 +76,38 @@ export const MenuContainer = styled.div`
 export const HeaderMenu = styled.div`
   display: flex;
   align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
 `;
 export const MenuContent = styled.div`
   height: 100%;
+  background-color: #222;
+  padding: 7px;
   min-width: 350px;
-  background-color: white;
+  justify-content: space-around;
+  background-color: #fff;
+  opacity: 0.9;
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow-y: scroll;
+  border-radius: 7px;
   @media (max-width: 768px) {
     min-width: 70%;
   }
 `;
-export const MenuTitle = styled.p`
-  font-size: 1.325rem;
-  font-weight: 600;
+export const MenuTitle = styled.h1`
+  font-size: 30px;
+  color: #222;
   text-align: center;
 `;
 export const ButtonMenu = styled.div`
   width: 100%;
-  height: 80%;
+  border-radius: 15px;
+  min-height: 10%;
   border-top: 1px solid #fff;
+  border: 1px solid white;
   background-color: #222;
   display: flex;
   align-items: center;
@@ -111,7 +121,6 @@ export const ButtonMenu = styled.div`
 export const SpinMenu = styled.div`
   display: none;
   color: red;
-  margin-left: 70%;
   &:hover {
     cursor: pointer;
   }
