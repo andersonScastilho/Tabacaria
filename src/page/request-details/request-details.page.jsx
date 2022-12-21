@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { BsFillPersonFill, BsEyeSlashFill } from "react-icons/bs";
 import { BiX, BiCheck } from "react-icons/bi";
@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { db } from "../../config/firebase.config";
 import { doc, onSnapshot, updateDoc } from "firebase/firestore";
 
+import LoadingComponent from "../../component/loading/loading.component";
 import Header from "../../component/header/header.component";
 import Footer from "../../component/footer/footer.component";
 import CustomButton from "../../component/custom-button/custom-button.component";
@@ -34,15 +35,11 @@ const RequestDatilsPage = () => {
 
   const [currentRequest, setCurrentRequest] = useState();
   const [requestInRealTime, setRequestInRealTime] = useState();
-
-  const requestINTime = useMemo(() => {
+  console.log(currentRequest);
+  useMemo(() => {
     const unsub = onSnapshot(doc(db, "Pedidos", id), (doc) => {
       setRequestInRealTime(doc.data());
     });
-  }, []);
-
-  useEffect(() => {
-    setCurrentRequest(requestInRealTime);
   }, []);
 
   const currentRequestServed = currentRequest?.products.reduce((acc, item) => {
@@ -56,12 +53,14 @@ const RequestDatilsPage = () => {
     0
   );
 
-  if (
-    currentRequest?.status !== requestInRealTime?.status ||
-    currentRequestServed !== requestInRealTimeServed
-  ) {
-    setCurrentRequest(requestInRealTime);
-  }
+  setTimeout(() => {
+    if (
+      currentRequest?.status !== requestInRealTime?.status ||
+      currentRequestServed !== requestInRealTimeServed
+    ) {
+      setCurrentRequest(requestInRealTime);
+    }
+  }, 5000);
 
   const allProductOfRequest = currentRequest?.products.every((item) => {
     return item.servedQuantity === item.solicitedQuantity;
@@ -74,14 +73,16 @@ const RequestDatilsPage = () => {
     });
   };
 
-  if (
-    allProductOfRequest === true &&
-    currentRequest.formOfPayment !== "Pendente" &&
-    currentRequest.status === "Pendente" &&
-    allProductOfRequest === true
-  ) {
-    changeRequestStatusToEntregueAuto();
-  }
+  setTimeout(() => {
+    if (
+      allProductOfRequest === true &&
+      currentRequest.formOfPayment !== "Pendente" &&
+      currentRequest.status === "Pendente" &&
+      allProductOfRequest === true
+    ) {
+      changeRequestStatusToEntregueAuto();
+    }
+  }, 5000);
 
   const handleFinalizeItem = async (product) => {
     const frankDocRef = doc(db, "Pedidos", id);
@@ -207,6 +208,7 @@ const RequestDatilsPage = () => {
 
   return (
     <>
+      {currentRequest === undefined && <LoadingComponent />}
       <Header />
       <DetailsRequestContainer>
         <DetailsRequestContent>
