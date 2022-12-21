@@ -54,7 +54,7 @@ export const SpinHeader = styled.div`
 `;
 export const MenuContainer = styled.div`
   position: fixed;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   right: 0;
   bottom: 0;
