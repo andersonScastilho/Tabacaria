@@ -8,7 +8,6 @@ import { useForm } from "react-hook-form";
 
 import { db } from "../../config/firebase.config";
 import { doc, onSnapshot, updateDoc } from "firebase/firestore";
-import { RequestContext } from "../../contexts/request.context";
 
 import Header from "../../component/header/header.component";
 import Footer from "../../component/footer/footer.component";
@@ -26,23 +25,29 @@ import {
   SelectOfPayment,
   OptionOfPayment,
 } from "./request-details.style";
+import { useMemo } from "react";
 
 const RequestDatilsPage = () => {
   const toast = useToast();
   const { id } = useParams();
   const { register, handleSubmit } = useForm();
 
-  const unsub = onSnapshot(doc(db, "Pedidos", id), (doc) => {
-    setRequestInRealTime(doc.data());
-  });
+  const [currentRequest, setCurrentRequest] = useState();
+  const [requestInRealTime, setRequestInRealTime] = useState();
+
+  const requestINTime = useMemo(() => {
+    const unsub = onSnapshot(doc(db, "Pedidos", id), (doc) => {
+      setRequestInRealTime(doc.data());
+    });
+  }, []);
 
   useEffect(() => {
     setCurrentRequest(requestInRealTime);
   }, []);
 
-  const [currentRequest, setCurrentRequest] = useState();
-  const [requestInRealTime, setRequestInRealTime] = useState();
-
+  setTimeout(() => {
+    console.log(requestInRealTime);
+  }, 5000);
   const currentRequestServed = currentRequest?.products.reduce((acc, item) => {
     return acc + item.servedQuantity;
   }, 0);
@@ -128,7 +133,7 @@ const RequestDatilsPage = () => {
         title: "Status Item.",
         description: "Status foi alterado!",
         status: "success",
-        duration: 9000,
+        duration: 5000,
         isClosable: true,
         position: "top-left",
       });
@@ -137,7 +142,7 @@ const RequestDatilsPage = () => {
         title: "Não foi possivel",
         description: "Item ja foi finalizado",
         status: "error",
-        duration: 9000,
+        duration: 5000,
         isClosable: true,
         position: "top-left",
       });
@@ -159,7 +164,7 @@ const RequestDatilsPage = () => {
           title: "Status Pedido",
           description: "Status do pedido foi alterado",
           status: "success",
-          duration: 9000,
+          duration: 5000,
           isClosable: true,
           position: "top-left",
         });
@@ -177,7 +182,7 @@ const RequestDatilsPage = () => {
           title: "Status Pedido",
           description: "Status do pedido foi alterado",
           status: "success",
-          duration: 9000,
+          duration: 5000,
           isClosable: true,
           position: "top-left",
         });
@@ -186,7 +191,7 @@ const RequestDatilsPage = () => {
           title: "Forma de Pagamento",
           description: "Forma de pagamento invalida",
           status: "error",
-          duration: 9000,
+          duration: 5000,
           isClosable: true,
           position: "top-left",
         });
@@ -196,7 +201,7 @@ const RequestDatilsPage = () => {
         title: "Finalizar Pedido",
         description: "Finalize todos os itens primeiro",
         status: "error",
-        duration: 9000,
+        duration: 5000,
         isClosable: true,
         position: "top-left",
       });
