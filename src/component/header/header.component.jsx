@@ -31,18 +31,12 @@ import {
   HeaderMenu,
   SpinHeader,
 } from "./header.styles";
-import { useEffect } from "react";
 
 const Header = ({ searchProducts }) => {
   const { isAuthenticated } = useContext(UserContext);
-  const { categories, fetchCategories } = useContext(CategoryContext);
+  const { categories } = useContext(CategoryContext);
   const { addProductsToRequest } = useContext(CashierContext);
 
-  useEffect(() => {
-    if (categories.length === 0) {
-      fetchCategories();
-    }
-  }, []);
   const navigate = useNavigate();
 
   const handleRequestClick = () => {
