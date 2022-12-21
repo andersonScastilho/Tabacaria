@@ -45,9 +45,6 @@ const RequestDatilsPage = () => {
     setCurrentRequest(requestInRealTime);
   }, []);
 
-  setTimeout(() => {
-    console.log(requestInRealTime);
-  }, 5000);
   const currentRequestServed = currentRequest?.products.reduce((acc, item) => {
     return acc + item.servedQuantity;
   }, 0);
@@ -133,7 +130,7 @@ const RequestDatilsPage = () => {
         title: "Status Item.",
         description: "Status foi alterado!",
         status: "success",
-        duration: 5000,
+        duration: 3000,
         isClosable: true,
         position: "top-left",
       });
@@ -142,7 +139,7 @@ const RequestDatilsPage = () => {
         title: "Não foi possivel",
         description: "Item ja foi finalizado",
         status: "error",
-        duration: 5000,
+        duration: 3000,
         isClosable: true,
         position: "top-left",
       });
@@ -164,7 +161,7 @@ const RequestDatilsPage = () => {
           title: "Status Pedido",
           description: "Status do pedido foi alterado",
           status: "success",
-          duration: 5000,
+          duration: 3000,
           isClosable: true,
           position: "top-left",
         });
@@ -182,7 +179,7 @@ const RequestDatilsPage = () => {
           title: "Status Pedido",
           description: "Status do pedido foi alterado",
           status: "success",
-          duration: 5000,
+          duration: 3000,
           isClosable: true,
           position: "top-left",
         });
@@ -191,7 +188,7 @@ const RequestDatilsPage = () => {
           title: "Forma de Pagamento",
           description: "Forma de pagamento invalida",
           status: "error",
-          duration: 5000,
+          duration: 3000,
           isClosable: true,
           position: "top-left",
         });
@@ -201,7 +198,7 @@ const RequestDatilsPage = () => {
         title: "Finalizar Pedido",
         description: "Finalize todos os itens primeiro",
         status: "error",
-        duration: 5000,
+        duration: 3000,
         isClosable: true,
         position: "top-left",
       });
