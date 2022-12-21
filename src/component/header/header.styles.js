@@ -4,7 +4,6 @@ export const HeaderContainer = styled.header`
   text-align: center;
   display: flex;
   padding: 5px;
-  flex-wrap: wrap;
   align-items: center;
   gap: 10px;
   justify-content: space-between;
@@ -13,6 +12,7 @@ export const HeaderContainer = styled.header`
 export const IconeHeader = styled.div``;
 export const TitleHeader = styled.h1`
   font-size: 25px;
+  flex-wrap: wrap;
   color: #fff;
 `;
 export const ButtonContainer = styled.div`

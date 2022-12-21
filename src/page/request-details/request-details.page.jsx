@@ -35,7 +35,7 @@ const RequestDatilsPage = () => {
 
   const [currentRequest, setCurrentRequest] = useState();
   const [requestInRealTime, setRequestInRealTime] = useState();
-  console.log(currentRequest);
+
   useMemo(() => {
     const unsub = onSnapshot(doc(db, "Pedidos", id), (doc) => {
       setRequestInRealTime(doc.data());

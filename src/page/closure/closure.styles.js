@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const FechamentoContainer = styled.div`
   display: flex;
   height: 100%;
-  background-image: url("https://i0.wp.com/heroisx.com/wp-content/uploads/2019/10/Jiraiya-de-naruto-escritor.jpeg?fit=760%2C398&ssl=1");
+  align-items: center;
+  background-color: #5f6944;
   padding: 10px;
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -12,6 +13,7 @@ export const FechamentoContainer = styled.div`
 export const FechamentoFilterContainer = styled.div`
   display: flex;
   flex-direction: column;
+  height: 500px;
   border: 2px solid black;
   padding: 5px;
   border-radius: 5px;
@@ -21,6 +23,7 @@ export const FechamentoFilterContainer = styled.div`
 `;
 export const LabelFilterFechamento = styled.label``;
 export const InputFilterFechamento = styled.input``;
+
 export const InfoText = styled.p`
   font-size: 18px;
   color: #fff;

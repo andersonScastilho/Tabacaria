@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const RequestContainer = styled.div`
   min-height: 80%;
   flex-wrap: wrap;
-  background-image: url("https://wallpaperaccess.com/full/1975322.jpg");
+  background-color: #261329;
   display: flex;
   background-size: 100% 100%;
   flex-direction: column;

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { HiChevronLeft } from "react-icons/hi";
 
 import ProductMenu from "../menu-product/product-menu.component";
 import LoadingComponent from "../../component/loading/loading.component";
@@ -7,10 +8,12 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../config/firebase.config";
 
 import {
+  ButtonReturn,
   CategoryTitle,
   Container,
   ProductsContainer,
 } from "./category-details.style";
+import { useNavigate } from "react-router-dom";
 
 const CategoryDetails = ({ categoryId, subCategoryId }) => {
   const [categories, setCategories] = useState([]);
@@ -38,6 +41,12 @@ const CategoryDetails = ({ categoryId, subCategoryId }) => {
     fetchCategory();
   }, []);
 
+  const navigate = useNavigate();
+
+  const returnToHome = () => {
+    navigate("/");
+  };
+
   const currentCategory = [];
 
   const category = categories?.filter((category) => {
@@ -58,6 +67,9 @@ const CategoryDetails = ({ categoryId, subCategoryId }) => {
     <Container>
       {isLoading && <LoadingComponent />}
       <CategoryTitle>
+        <ButtonReturn onClick={returnToHome}>
+          <HiChevronLeft size={35} />
+        </ButtonReturn>
         <p>{currentCategory[0]?.name}</p>
       </CategoryTitle>
       <ProductsContainer>
