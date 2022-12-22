@@ -28,6 +28,8 @@ import {
   OptionOfPayment,
   InputTextArea,
 } from "./cashier.style";
+import { useEffect } from "react";
+import { CategoryContext } from "../../contexts/categories.context";
 
 const CashierPage = () => {
   const {
@@ -42,7 +44,10 @@ const CashierPage = () => {
     clearProducts,
     decreaseProductQuantity,
   } = useContext(CashierContext);
-
+  const { fetchCategories } = useContext(CategoryContext);
+  useEffect(() => {
+    fetchCategories();
+  }, []);
   const toast = useToast();
 
   const currentDate = new Date().getTime();
