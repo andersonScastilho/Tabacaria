@@ -155,9 +155,14 @@ const RequestDatilsPage = () => {
         currentRequest?.formOfPayment !== "false" &&
         currentRequest?.paymentStats === "Realizado"
       ) {
-        await updateDoc(requestRef, {
-          status: "Finalizado",
-        });
+        try {
+          await updateDoc(requestRef, {
+            status: "Finalizado",
+          });
+        } catch (error) {
+          console.log(error);
+        }
+
         toast({
           title: "Status Pedido",
           description: "Status do pedido foi alterado",
@@ -170,11 +175,15 @@ const RequestDatilsPage = () => {
         currentRequest?.formOfPayment === "false" &&
         data.formOfPayment !== "false"
       ) {
-        await updateDoc(requestRef, {
-          status: "Finalizado",
-          formOfPayment: data.formOfPayment,
-          paymentStats: "Realizado",
-        });
+        try {
+          await updateDoc(requestRef, {
+            status: "Finalizado",
+            formOfPayment: data.formOfPayment,
+            paymentStats: "Realizado",
+          });
+        } catch (error) {
+          console.log(error);
+        }
 
         toast({
           title: "Status Pedido",
