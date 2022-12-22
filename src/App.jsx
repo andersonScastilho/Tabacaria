@@ -13,7 +13,6 @@ import LoginPage from "./page/login/login.page";
 import RequestDetailsPage from "./page/request-details/request-details.page";
 import CashierPage from "./page/cashier/cashier.page";
 import RequestPage from "./page/request/request.page";
-import ProductDetailPage from "./page/product-details/product-details.page";
 import ClosurePage from "./page/closure/closure.page";
 import CategoryDetailsPage from "../src/page/category-details/category-details.page";
 
@@ -64,14 +63,6 @@ const App = () => {
           element={
             <AuthenticationGuard>
               <RequestDetailsPage />
-            </AuthenticationGuard>
-          }
-        />
-        <Route
-          path="/produto/detalhes"
-          element={
-            <AuthenticationGuard>
-              <ProductDetailPage />
             </AuthenticationGuard>
           }
         />
