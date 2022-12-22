@@ -150,7 +150,7 @@ const RequestDatilsPage = () => {
   const handleFinalizeRequest = async (data) => {
     const requestRef = doc(db, "Pedidos", id);
 
-    if (allProductOfRequest === true) {
+    if (currentRequest.status === "Entregue") {
       if (
         currentRequest?.formOfPayment !== "false" &&
         currentRequest?.paymentStats === "Realizado"
