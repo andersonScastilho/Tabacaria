@@ -76,7 +76,7 @@ const CashierPage = () => {
         title: "Pedido foi adicionado.",
         description: "Adicionamos o pedido na fila",
         status: "success",
-        duration: 9000,
+        duration: 3000,
         isClosable: true,
         position: "top-left",
       });
@@ -85,7 +85,7 @@ const CashierPage = () => {
         title: "Não foi possivel adicionar o pedido",
         description: "Verifique se adicionou itens ao pedido",
         status: "error",
-        duration: 9000,
+        duration: 3000,
         isClosable: true,
         position: "top-left",
       });
