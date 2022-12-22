@@ -53,14 +53,12 @@ const RequestDatilsPage = () => {
     0
   );
 
-  setTimeout(() => {
-    if (
-      currentRequest?.status !== requestInRealTime?.status ||
-      currentRequestServed !== requestInRealTimeServed
-    ) {
-      setCurrentRequest(requestInRealTime);
-    }
-  }, 5000);
+  if (
+    currentRequest?.status !== requestInRealTime?.status ||
+    currentRequestServed !== requestInRealTimeServed
+  ) {
+    setCurrentRequest(requestInRealTime);
+  }
 
   const allProductOfRequest = currentRequest?.products.every((item) => {
     return item.servedQuantity === item.solicitedQuantity;
