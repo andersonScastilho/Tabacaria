@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useToast } from "@chakra-ui/react";
 
 import { useForm } from "react-hook-form";
-import { AiOutlineMinus } from "react-icons/ai";
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { addDoc, collection } from "firebase/firestore";
 import { CashierContext } from "../../contexts/cashier.context";
 import { db } from "../../config/firebase.config";
@@ -43,6 +43,7 @@ const CashierPage = () => {
     productsTotalPrice,
     clearProducts,
     decreaseProductQuantity,
+    addProductsToRequest,
   } = useContext(CashierContext);
   const { fetchCategories } = useContext(CategoryContext);
   useEffect(() => {
@@ -99,6 +100,9 @@ const CashierPage = () => {
 
   const handleDecreaseProductsToPedido = (productId) => {
     decreaseProductQuantity(productId);
+  };
+  const handleIcreaseProductsToPedido = (product) => {
+    addProductsToRequest(product);
   };
 
   return (
@@ -173,6 +177,11 @@ const CashierPage = () => {
                   onClick={() => handleDecreaseProductsToPedido(item.id)}
                 >
                   <AiOutlineMinus />
+                </CustomButton>
+                <CustomButton
+                  onClick={() => handleIcreaseProductsToPedido(item)}
+                >
+                  <AiOutlinePlus />
                 </CustomButton>
               </ProductQuantityContainer>
             ))}
