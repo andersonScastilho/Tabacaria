@@ -1,27 +1,19 @@
 import { useNavigate } from "react-router-dom";
-import { useContext, useState, useMemo } from "react";
+import { useContext, useState } from "react";
 import { Spin as Hamburger, Spin } from "hamburger-react";
 
 import { GiMagicHat } from "react-icons/gi";
-import { BsSearch } from "react-icons/bs";
 import { UserContext } from "../../contexts/user.context";
 import { signOut } from "firebase/auth";
 import { auth } from "../../config/firebase.config";
 import { RiLogoutBoxRLine } from "react-icons/ri";
-import { CategoryContext } from "../../contexts/categories.context";
-import { CashierContext } from "../../contexts/cashier.context";
 
 import CustomButton from "../custom-button/custom-button.component";
-import ProductItemCompoent from "../product-item/product-item.component";
 
 import {
   ButtonContainer,
   HeaderContainer,
-  InputSearch,
-  SearchContainer,
-  SearchContent,
   TitleHeader,
-  SearchProductContainer,
   IconeHeader,
   SpinMenu,
   MenuContainer,
@@ -34,8 +26,6 @@ import {
 
 const Header = ({ searchProducts }) => {
   const { isAuthenticated } = useContext(UserContext);
-  const { categories } = useContext(CategoryContext);
-  const { addProductsToRequest } = useContext(CashierContext);
 
   const navigate = useNavigate();
 
@@ -61,35 +51,6 @@ const Header = ({ searchProducts }) => {
     }
   };
 
-  const [search, setSearch] = useState("");
-
-  const allProducts = [];
-
-  categories.map((category) =>
-    category.subCategories.map((type) =>
-      type.products.map((product) => allProducts.push(product))
-    )
-  );
-
-  const products = [];
-
-  allProducts.filter((product) => products.push(product));
-
-  const productsFiltred = useMemo(() => {
-    const LowerBuscar = search.toLowerCase();
-    return products.filter((product) =>
-      product.mark
-        ? product.mark.toLowerCase().includes(LowerBuscar) ||
-          product.name.toLowerCase().includes(LowerBuscar)
-        : product.name.toLowerCase().includes(LowerBuscar)
-    );
-  }, [search]);
-
-  const handleAddProductToCashier = (product) => {
-    addProductsToRequest(product);
-    setSearch("");
-  };
-
   return (
     <HeaderContainer>
       <IconeHeader>
@@ -101,39 +62,6 @@ const Header = ({ searchProducts }) => {
         />
       </IconeHeader>
       <TitleHeader>Maximu's Lounge Bar</TitleHeader>
-      {searchProducts && (
-        <SearchContainer>
-          <SearchContent>
-            <InputSearch
-              type="text"
-              value={search}
-              onChange={(event) => setSearch(event.target.value)}
-            />
-            <p
-              style={{
-                position: " relative",
-                left: "-30px",
-                top: "4px",
-              }}
-            >
-              {<BsSearch size={22} />}
-            </p>
-          </SearchContent>
-          {search !== "" && productsFiltred.length !== 0 && (
-            <SearchProductContainer>
-              {productsFiltred.map((product) => (
-                <ProductItemCompoent
-                  key={product.id}
-                  mark={true}
-                  button={true}
-                  product={product}
-                  onClick={() => handleAddProductToCashier(product)}
-                />
-              ))}
-            </SearchProductContainer>
-          )}
-        </SearchContainer>
-      )}
       <ButtonContainer>
         {isAuthenticated && (
           <>
