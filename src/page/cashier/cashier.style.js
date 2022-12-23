@@ -40,6 +40,12 @@ export const InputRequired = styled.input`
   }
 `;
 export const PreviewItensContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+`;
+export const PreviewItensContent = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   background-color: #dee7e7;
@@ -48,7 +54,7 @@ export const PreviewItensContainer = styled.div`
   width: 400px;
   overflow: auto;
 `;
-export const PreviewItensContent = styled.div`
+export const PreviewProductsContainer = styled.div`
   border-radius: 3px;
   display: flex;
   flex-direction: column;
@@ -126,4 +132,24 @@ export const InputTextArea = styled.textarea`
   border-radius: 4px;
   padding: 3px;
   font-weight: 500;
+`;
+export const SearchContainer = styled.div``;
+export const InputSearch = styled.input`
+  border-radius: 5px;
+  padding: 4px;
+`;
+export const SearchProductContainer = styled.div`
+  position: absolute;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  max-height: 400px;
+  overflow: auto;
+  background-color: darkgray;
+  padding: 7px;
+`;
+export const SearchContent = styled.div`
+  display: flex;
+  padding: 3px;
 `;
