@@ -1,7 +1,6 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-
-import { RequestContext } from "../../contexts/request.context";
+import LoadingComponent from "../../component/loading/loading.component";
 
 import Header from "../../component/header/header.component";
 import Footer from "../../component/footer/footer.component";
@@ -18,9 +17,30 @@ import {
   LabelFilterFechamento,
   TitleFechamento,
 } from "./closure.styles";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../config/firebase.config";
 
 const ClosurePage = () => {
-  const { request, fetchRequest } = useContext(RequestContext);
+  const [request, setRequest] = useState([]);
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const fetchRequest = async () => {
+    try {
+      setIsLoading(true);
+      const requestFromFirestore = [];
+      const querySnapshot = await getDocs(collection(db, "Pedidos"));
+      querySnapshot.forEach((doc) => {
+        let data = { ...doc.data(), idFromFirestore: doc.id };
+        requestFromFirestore.push(data);
+      });
+      setRequest(requestFromFirestore);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
   useEffect(() => {
     fetchRequest();
   }, []);
@@ -65,6 +85,7 @@ const ClosurePage = () => {
 
   return (
     <>
+      {isLoading && <LoadingComponent />}
       <Header />
       <FechamentoContainer>
         <FechamentoFilterContainer>

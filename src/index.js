@@ -6,17 +6,14 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import CategoryContextProvider from "./contexts/categories.context";
 import UserContextProvider from "./contexts/user.context";
-import RequestContextProvider from "./contexts/request.context";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <CategoryContextProvider>
       <UserContextProvider>
-        <RequestContextProvider>
-          <ChakraProvider>
-            <App />
-          </ChakraProvider>
-        </RequestContextProvider>
+        <ChakraProvider>
+          <App />
+        </ChakraProvider>
       </UserContextProvider>
     </CategoryContextProvider>
   </React.StrictMode>
