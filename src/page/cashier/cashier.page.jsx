@@ -157,6 +157,8 @@ const CashierPage = () => {
       clearProducts();
       setValue("nameClient", "");
       setValue("tableClient", "");
+      setValue("observation", "");
+      setValue("formOfPayment", "false");
       toast({
         title: "Pedido foi adicionado.",
         description: "Adicionamos o pedido na fila",
