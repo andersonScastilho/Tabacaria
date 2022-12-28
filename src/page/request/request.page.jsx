@@ -24,7 +24,7 @@ const RequestPage = () => {
 
   const currentDate = moment().format("DD/MM/YYYY");
 
-  const unsubscribe = onSnapshot(q, (querySnapshot) => {
+  onSnapshot(q, (querySnapshot) => {
     const requests = [];
     querySnapshot.forEach((doc) => {
       let data = { ...doc.data(), idFromFirestore: doc.id };
@@ -51,7 +51,10 @@ const RequestPage = () => {
     const date = moment(request.currentDate).format("DD/MM/YYYY");
     return request.currentDate && date === currentDate;
   });
-
+  const takeHors = (data) => {
+    let date = moment(data).format("HH:mm:ss");
+    return date;
+  };
   const [area, setArea] = useState("value1");
 
   const navigate = useNavigate();
@@ -79,7 +82,9 @@ const RequestPage = () => {
                 <RequestContent key={request.idFromFirestore}>
                   <RequestText>Cliente: {request.nameClient}</RequestText>
                   <RequestText>Mesa: {request.tableClient}</RequestText>
-                  <RequestText>Horario {request.currentHors}</RequestText>
+                  <RequestText>
+                    Horario: {takeHors(request.currentDate)}
+                  </RequestText>
                   <RequestStatus status={request.paymentStats}>
                     <SpanDescription>Pagamento: </SpanDescription>
                     {request.paymentStats}
@@ -120,7 +125,7 @@ const RequestPage = () => {
                 <RequestContent key={request.idFromFirestore}>
                   <RequestText>Nome: {request.nameClient}</RequestText>
                   <RequestText>Mesa: {request.tableClient}</RequestText>
-                  <RequestText>Horario {request.currentHors}</RequestText>
+
                   <RequestStatus status={request.paymentStats}>
                     <SpanDescription>Pagamento: </SpanDescription>
                     {request.paymentStats}
